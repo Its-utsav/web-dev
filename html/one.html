@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML basic details</title>
+    <style>
+      * {
+        background-color: white;
+        color: rgb(177, 53, 165);
+      }
+      /* above is example of inline css */
+    </style>
+    <!-- <link rel="stylesheet" href="style.css">  -->
+    <!-- above is the example of external css majorly use  -->
+    <!-- alternate css, and more about meta tages and many more use mdn or google :) -->
   </head>
 
   <body>
-    <h1>ALL TEXT EFFECTS</h1>
+    table of contant
+    <br />
+    <ol>
+      <li><a href="#text">text </a></li>
+      <li><a href="#" class="links">links </a></li>
+      <li><a href="#table">table </a></li>
+      <li><a href="#lists">list </a></li>
+      <li><a href="#img">images </a></li>
+      <li><a href="#forms">forms </a></li>
+    </ol>
+    <h1 id="text">ALL TEXT EFFECTS</h1>
 
     <!-- <h1>Heading 1<
         /h1> -->
@@ -45,7 +65,7 @@
     <p>a<sup>2</sup>+b<sup>2</sup>=a<sup>2</sup>+2(a*b)+b<sup>2</sup></p>
 
     <!-- links -->
-    <h2>LINKS</h2>
+    <h2 class="links">LINKS</h2>
     <br />
     <a href="google.com">visit google but in same tab</a>
     <!-- a link herf is attribute -->
@@ -64,12 +84,8 @@ potentially redirect users to malware or phishing sites. -->
     <br />
     <a href="mailto:utsavdhimmar987@gmail.com">Email me </a>
     <br />
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
-      alt="html-logo"
-      width="100px"
-    />
-    <h2>LIST</h2>
+
+    <h2 id="lists">LIST</h2>
     <br />
     <h2>unorder - list no custome type</h2>
     <ul>
@@ -98,17 +114,270 @@ potentially redirect users to malware or phishing sites. -->
       <li>JAVASCRIPT</li>
     </ol>
     <br />
+    <p>Description List</p>
+    <dl>
+      <dt>Hello,</dt>
+      <dd>Wolrd!!</dd>
+    </dl>
 
-    <p>Table start here</p>
-
+    <h2 id="table">Table start here</h2>
     <table border="2px">
-      <th>Roll No.</th>
-      <th>Name</th>
-      <th>Age</th>
-
+      <thead>
+        <th>Roll No.</th>
+        <th>Name</th>
+        <th>Age</th>
+      </thead>
+      <tbody>
+        <td>1</td>
+        <td>Utsav</td>
+        <td>17</td>
+      </tbody>
+    </table>
+    <p>table 2</p>
+    <table border="2px">
+      <thead>
+        <tr>
+          <th>Roll No.</th>
+          <th>Name</th>
+          <th colspan="3">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3">1</td>
+          <td>Utsav</td>
+          <td colspan="3">17</td>
+        </tr>
+        <tr>
+          <td colspan="2">2</td>
+          <td>Harry</td>
+          <td>27</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>table 3</p>
+    <table border="3px">
       <tr>
-        <tbody></tbody>
+        <td>row 1 col 1</td>
+        <td>row 1 col 2</td>
+        <td>row 1 col 3</td>
+      </tr>
+      <tr>
+        <td colspan="3">This second row spans all three columns</td>
+      </tr>
+      <tr>
+        <td rowspan="2">This cell spans two rows</td>
+        <td>row 3 col 2</td>
+        <td>row 3 col 3</td>
+      </tr>
+      <tr>
+        <td>row 4 col 2</td>
+        <td>row 4 col 3</td>
       </tr>
     </table>
+
+    <!-- <p>table 4</p>
+
+    <table border="2px">
+  <caption>
+    Superheros and sidekicks
+  </caption>
+  <colgroup>
+    <col />
+    <col span="2" class="batman" />
+    <col span="2" class="flash" />
+  </colgroup>
+  <tr>
+    <td>
+    <th scope="col">Batman</th>
+    <th scope="col">Robin</th>
+    <th scope="col">The Flash</th>
+    <th scope="col">Kid Flash</th>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">Skill</th>
+    <td>Smarts</td>
+    <td>Dex, acrobat</td>
+    <td>Super speed</td>
+    <td>Super speed</td>
+  </tr>
+</table> -->
+    <!-- table with herader ,body , footer, caption -->
+    <table border="2">
+      <caption>
+        Students
+      </caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Utsav</td>
+          <td>17</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>footer 1</td>
+          <td>footer 2</td>
+        </tr>
+      </tfoot>
+    </table>
+    <!-- <h2>ID and CLASSes</h2> -->
+    <!-- Important Note: How ID and Class values are treated outside of HTML -->
+    <!-- all id attribute must be uniques, while space are not allow , only digit are allowed but use string that have meaning, main use for javascript ,even can use for giving style -->
+    <!-- some or all class name can be same main use for css or can be use for java script  -->
+
+    <!--  -->
+    <!--  -->
+
+    <h2 id="img">images start here</h2>
+    <!-- img wiht it's orignal size -->
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+      alt="html-logo"
+    />
+    <!-- images with html width attribute  -->
+    <hr />
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+      alt="html-logo"
+      width="100px"
+    />
+    <br />
+    <p>image with link</p>
+    <a href="https://en.wikipedia.org/wiki/HTML"
+      ><img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+        alt="html-logo"
+        width="100px"
+    /></a>
+    <!-- for Responsive images use css : ) and :(  -->
+    <!-- example  -->
+    <!-- <img
+      sizes="(min-width: 1200px) 580px,
+ (min-width: 640px) 48vw,
+ 98vw"
+      srcset="
+        img/hello-300.jpg   300w,
+        img/hello-600.jpg   600w,
+        img/hello-900.jpg   900w,
+        img/hello-1200.jpg 1200w
+      "
+      src="img/hello-900.jpg"
+      alt="hello"
+    /> -->
+    <!-- <img src="http://jaced.com/blogpix/2007/trisquarecircle/002.gif" usemap="#shapes">
+    <map name="shapes">
+        <area shape="polygon" coords="79,6,5,134,153,134">
+        <area shape="rectangle" coords="177,6,306,134">
+       
+        <area shape="circle" coords="397,71,65">
+</map>        -->
+
+    <!-- An image maps is an image with clickable areas that usually act as hyperlinks.
+The image is defined by the <img> tag, and the map is defined by a <map> tag with <area> tags to denote each
+clickable area. Use the usemap and name attributes to bind the image and the map. -->
+    <h2 id="forms">forms</h2>
+    <form>
+      <label>
+        Name:
+        <input type="text" name="text" id="" placeholder="enter name" />
+        <!-- text field -->
+      </label>
+      <br />
+
+      <br />
+      <label>
+        Age
+        <input type="number" name="age" id="" placeholder="enter your age " />
+      </label>
+      <br />
+      <br />
+      <label>
+        Date of birth:
+        <input type="datetime" name="" id="" placeholder="Date of birth" />
+      </label>
+      <br />
+      <br />
+      <!-- imp start from here -->
+      <!-- radio button use for selecting any one options -->
+      <label>
+        Gender: Male
+        <input type="radio" name="gender" id="" placeholder="male" checked />
+        <!-- checked for intially check -->
+        Female
+        <input type="radio" name="gender" id="" placeholder="Female" />
+        <br />or
+        <br />
+
+        <fieldset>
+          <legend>Gender</legend>
+          Male
+          <input type="radio" name="fegender" id="" placeholder="male" />
+          <!-- checked for intially check -->
+          Female
+          <input
+            type="radio"
+            name="fegender"
+            id=""
+            placeholder="Female"
+            checked
+          />
+        </fieldset>
+      </label>
+      <br />
+      <br />
+      <!-- check box use for selection multiple options -->
+      <label>
+        Fav Game: GTA III:
+        <input type="checkbox" name="game" id="" />
+        GTA VC:
+        <input type="checkbox" name="game" id="" />
+        GTA SA:
+        <input type="checkbox" name="game" id="" />
+      </label>
+      <br />
+      <br />
+      <label>
+        Comment :
+        <textarea
+          name="comment"
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="comment"
+        ></textarea>
+      </label>
+      <br />
+      <br />
+      <label>
+        select
+        <select name="cars" id="cars">
+          <option value="car1">car1</option>
+          <option value="car2">car2</option>
+          <option value="car3">car3</option>
+        </select>
+      </label>
+      <br />
+      <br />
+      <input type="submit" value="submit" />
+      <input type="reset" value="reset" />
+    </form>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!-- <script>
+        console.log("Hello, Wolrd");
+    </script>
+-->
+    <!-- above example of javascript -->
+    <!-- <script src="script.js"></script> -->
+    <!-- above examle for external javascript -->
   </body>
 </html>
