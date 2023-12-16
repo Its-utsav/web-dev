@@ -88,7 +88,7 @@
       }
 
       const validateGuess = (guess) => {
-        if (guess < 0) {
+        if (guess < 0 && isNaN(guess)) {
           console.log(`${guess} is less than zero`);
         } else if (guess >= 100) {
           console.log(`${guess} is more than 100`);
