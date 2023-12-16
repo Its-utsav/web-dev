@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>guess the number</title>
+    <style>
+      * {
+        background-color: #161a30;
+        color: #f0ece5;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        text-align: center;
+      }
+      #wrapper {
+        /* background-color: rgb(89, 233, 233); */
+        border: 2px solid #b6bbc4;
+      }
+      .submit {
+        border: none;
+        border-radius: 3px;
+        color: #31304d;
+        background-color: #b6bbc4;
+        margin-top: 40px;
+        width: 100px;
+        height: 30px;
+      }
+      .submit:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Guess a number</h1>
+      <p>
+        guess the number between 1 to 100 ,<br />
+        you have total 10 chance
+      </p>
+      <form action="#" class="form">
+        <label>
+          Guess the number:
+          <input
+            type="number"
+            name=""
+            id="numinput"
+            placeholder="Enter any number"
+          />
+        </label>
+        <br />
+        <input type="button" value="submit" class="submit" />
+      </form>
+
+      <div class="resultSection">
+        <p>Previous Guess:<span class="guess"></span></p>
+        <p>Guess Remaining:<span class="remain">10</span></p>
+        <br />
+        <p class="ans"></p>
+      </div>
+    </div>
+    <!-- script -->
+    <script src="script.js"></script>
+  </body>
+</html>
