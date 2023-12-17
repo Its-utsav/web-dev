@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMAll JAVASCRIPT ASYNC CODE</title>
+  </head>
+  <body>
+    <fieldset id="set-1">
+      <legend>async code - 1</legend>
+      <h1>hello,world!!!</h1>
+      <p>
+        above text will change in 5 second , if don't want to change than click
+        on stop
+      </p>
+      <button id="stop">stop</button>
+      <br />
+      <span id="stoptxt"></span>
+    </fieldset>
+    <fieldset id="set-2">
+      <legend>async code - 2</legend>
+      <h2>time:-</h2>
+      <span id="changeTime"></span>
+      <br />
+      <button id="btnstart">start</button>
+      <button id="btnstop">stop</button>
+    </fieldset>
+    <!-- script -->
+    <script>
+      // for fieldset 1
+      //   setTimeout(() => {
+      //     console.log("hello");
+      //   }, 3000); // print after enterd millisecond
+
+      //   setInterval(() => {
+      //     console.log(new Date().toLocaleString());
+      //   }, 1000);
+      // this will print in every 1 second
+      const stopMe = document.querySelector("#stop");
+      const stopTxt = document.querySelector("#stoptxt");
+      const changeTxt = document.querySelector("h1");
+      // some time we need to stop some set time or blah , blah
+      const change = () => {
+        changeTxt.innerHTML = "This is javascript code";
+      };
+      const changeMe = setTimeout(change, 5000); // so this will change h1 text but what if we don't want to change text so here come clearTimeout
+      stopMe.addEventListener("click", () => {
+        clearTimeout(changeMe); // need to pass refernce
+        stopTxt.innerHTML = "now text can't change";
+      });
+
+      // fieldset -1 code end here
+
+      // fieldset - 2 code start here
+      const start = document.querySelector("#btnstart");
+      const end = document.querySelector("#btnstop");
+      const timeChange = document.querySelector("#changeTime");
+
+      let settime;
+
+      start.addEventListener("click", () => {
+        settime = setInterval(() => {
+          let date = new Date().toLocaleString();
+          timeChange.innerHTML = `${date}`;
+        }, 1000);
+        console.log("hello");
+      });
+
+      end.addEventListener("click", () => {
+        clearInterval(settime);
+        console.log("bye");
+      });
+
+      // fieldset - 2 code end here
+    </script>
+  </body>
+</html>
