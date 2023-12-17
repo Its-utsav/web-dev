@@ -1,0 +1,12 @@
+css-> cascading style shetts
+    1. give style to row HTML
+    2. make website responsive(unique layout  for mobile and other all device )
+    3. synatx
+     ###:-  selector {property:value};
+     ex:-   p{color: red};
+    4. three way to set css a. inline(not recommanded) b. internal(for giving style for small website) c. external (most recommanded and use)
+
+
+
+
+    let's go for practical 
