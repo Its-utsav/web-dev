@@ -16,36 +16,71 @@ body {
 }
 .main {
   background-color: white;
-  justify-content: center;
+  padding: 2rem 3rem;
+}
+.h2-center {
+  text-align: center;
+}
+form {
+  display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-}
-.h2-center{
-    text-align: center;
-  
-}
-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
+  position: relative;
 }
 
 form input {
-    font-weight: lighter;
-    border: none;
+  font-weight: lighter;
+  border: none;
+  padding: 0.5rem;
 }
-input:focus{
-    outline: none;
+input:focus {
+  outline: none;
 }
-.user-name{
-    margin-bottom: .7rem;
+.user-name {
+  margin-bottom: 0.7rem;
+}
+.input-div {
+  padding-bottom: 0.5rem;
 }
 form i {
-    font-size: 1rem;
-    margin-right: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
 }
 form input {
-    font-size: 1rem;
+  font-size: 1rem;
+}
+.btn {
+  padding: 0.8rem 0.7rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(to right, #8d68c5, #e34494);
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  width: 200px;
+}
+.forgetPass {
+  position: absolute;
+  right: 0rem;
+  cursor: pointer;
+  bottom: 8rem;
+  color: rgb(113, 119, 124);
+  font-size: 0.8rem;
+}
+.other-sign {
+  font-size: 12px;
+}
+.footer {
+  text-align: center;
+}
+.links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+.signUp {
+  font-size: 10px;
+  margin-bottom: 0.3rem;
 }
