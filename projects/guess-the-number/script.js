@@ -1,6 +1,6 @@
 let randomNumber = parseInt(Math.random() * 100 + 1);
 const userNumInput = document.querySelector("#numinput");
-const submit = document.querySelector(".submit");
+const submit = document.querySelector(".btn");
 const guessNum = document.querySelector(".guess");
 const ans = document.querySelector(".ans");
 const restart = document.querySelector(".resultSection");
@@ -69,7 +69,7 @@ const displayMsg = (msg) => {
 const endGame = () => {
   userNumInput.setAttribute("disabled", "");
   p.classList.add("button");
-  p.innerHTML = `<button id="newgame">start agian </button>`;
+  p.innerHTML = `<button id="newgame" class="btn">start agian </button>`;
   restart.appendChild(p);
   playGame = false;
   newGame();
