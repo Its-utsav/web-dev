@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      p {
+        font-size: 3.5rem;
+      }
+      .txt {
+        color: #de8512;
+      }
+      .cursor {
+        background-color: #dbe912;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <span class="js">Javascript</span> is <span class="txt"></span>
+      <span class="cursor">&nbsp;</span>
+    </p>
+    <!-- script -->
+    <script>
+      const text = document.querySelector(".txt");
+      const cursor = document.querySelector(".cursor");
+
+      const words = ["Love", "Jhakaas", "mast", "dhinchak", "Weird"];
+
+      function type() {
+        let index = 0;
+        const inter = setInterval(() => {
+          text.innerHTML = words[index];
+          index = (index + 1) % words.length;
+          if (index == 0) {
+            clearInterval(inter);
+            setTimeout(erase, 1000);
+          }
+        }, 2000);
+      }
+      function erase() {
+        setInterval(() => {
+          text.innerHTML = "";
+        }, 1000);
+      }
+
+      type();
+      //   erase();
+    </script>
+  </body>
+</html>

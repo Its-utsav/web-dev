@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&display=swap");
+
+      body {
+        height: 100vh;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      h1 {
+        color: #fff;
+        font-size: 4rem;
+        font-family: "Playfair Display SC", serif;
+      }
+
+      p {
+        color: #fff;
+        max-width: 700px;
+        font-family: sans-serif;
+        letter-spacing: 2px;
+        line-height: 22px;
+        margin-bottom: 40px;
+      }
+
+      button {
+        padding: 0;
+        margin: 0;
+        border: transparent;
+        background: transparent;
+        color: #fff;
+        border: 2px solid white;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      /* JavaScript */
+      div.cursor {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 25px;
+        height: 25px;
+        background: yellow;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: cursor 6s infinite alternate;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor"></div>
+    <div class="container">
+      <h1>Mouse Cursor Project</h1>
+      <p>You can only manage people, not the time</p>
+      <p>- Hitesh Choudhary</p>
+      <button>Chai aur code</button>
+    </div>
+
+    <script>
+      const cursor = document.querySelector(".cursor");
+      // an array of 10 colors in hex value
+      const colors = [
+        "#FF6633",
+        "#FFB399",
+        "#FF33FF",
+        "#FFFF99",
+        "#00B3E6",
+        "#E6B333",
+        "#3366E6",
+        "#999966",
+        "#99FF99",
+        "#B34D4D",
+      ];
+      // add circle to cursor and change it's color as cursor moves on the screen. Pick color from these array
+
+      cursor.addEventListener("mousemove", (e) => {
+        cursor.style.top = e.pageY + "px";
+        cursor.style.left = e.pageX + "px";
+        cursor.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
+      });
+    </script>
+  </body>
+</html>

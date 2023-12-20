@@ -12,7 +12,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    
   </head>
   <body>
     <div class="main">
@@ -22,7 +21,7 @@
         </li>
         <ul>
           <i id="heart" class="fa-regular fa-heart"></i>
-          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-bars line"></i>
         </ul>
       </div>
 
@@ -37,13 +36,24 @@
       <button class="btn">HIRE ME</button>
       <div class="social">
         <div class="social-items">
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-youtube"></i>
-          <i class="fa-brands fa-github"></i>
+          <div class="tw">
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+          <div class="yt">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+          <div class="github">
+            <i class="fa-brands fa-github"></i>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+      const heart = document.querySelector("#heart");
+      heart.addEventListener('click',()=>{
+        heart.style.color= 'red';
+      });
+    </script>
   </body>
 </html>

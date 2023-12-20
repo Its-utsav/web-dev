@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+  </head>
+  <style>
+    section {
+      border: 3px solid red;
+      margin-bottom: 30px;
+    }
+    section h1 {
+      text-align: center;
+      margin: 3px;
+    }
+    h1 {
+      font-size: large;
+    }
+    .para {
+      border: 3px solid green;
+    }
+    .scroller {
+      /* border: 3px solid yellow; */
+      height: 5px;
+      position: fixed;
+      width: calc(100% - 6em);
+      top: 10px;
+      left: 3em;
+      border-radius: 3px;
+    }
+    .progerss {
+      height: 100%;
+      width: 0;
+      border-radius: 3px;
+      /* https://www.grabient.com/ */
+      background: linear-gradient(30deg, #21d4fd, #b721ff);
+      transition: width 0.1s;
+    }
+  </style>
+  <body>
+    <section>
+      <h1>title 1</h1>
+      <div class="para">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga repellat
+        laboriosam animi dolorum reprehenderit corrupti a quae deleniti!
+        Nesciunt rem, unde voluptatum beatae blanditiis provident earum ipsum
+        odio natus autem facilis animi officia ut et voluptatem asperiores illum
+        nobis labore dolores. In, commodi ducimus.
+      </div>
+    </section>
+    <section>
+      <h1>title 2</h1>
+      <div class="para">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+        corrupti rerum similique dolor. Aperiam temporibus voluptate officiis,
+        et quia eum iusto nostrum maxime accusamus dolor velit similique
+        laudantium excepturi voluptatum sint est omnis ea consequuntur maiores
+        pariatur tempore debitis asperiores. Temporibus explicabo vitae
+        laudantium voluptatibus veritatis nulla reprehenderit odit tempore
+        molestiae vero, dolor non autem numquam deserunt incidunt commodi
+        excepturi impedit ab corporis eos, amet voluptates.
+      </div>
+    </section>
+    <section>
+      <h1>title 3</h1>
+      <div class="para">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus
+        reprehenderit magni incidunt cumque perferendis repellat distinctio eum
+        laudantium minima pariatur numquam omnis voluptatibus, quo rerum!
+        Officia voluptatum fugiat, dolore nulla, quod quos a tempore ab
+        voluptatem est perspiciatis velit exercitationem itaque ea
+        necessitatibus ut. Sed porro nesciunt similique quisquam accusamus quam
+        animi incidunt impedit dolores, magni obcaecati explicabo quod velit
+        placeat esse expedita! A consectetur maxime quibusdam amet iure odio.
+        Veniam, voluptatibus. Omnis est temporibus sed corporis?
+      </div>
+    </section>
+    <section>
+      <h1>title 4</h1>
+      <div class="para">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum dolorem
+        tempora dolores necessitatibus, excepturi ducimus est expedita velit
+        tempore temporibus impedit incidunt animi, sapiente corrupti
+        consequatur, earum tenetur sunt explicabo dignissimos placeat? Ut
+        perspiciatis quam recusandae ex qui ab vero animi pariatur deserunt non
+        magnam quis architecto, nobis iusto a perferendis. Vitae eius cumque
+        veritatis aspernatur dolorum atque quam accusamus? Tempora error veniam
+        quibusdam, voluptates assumenda eligendi pariatur quasi voluptatibus,
+        quisquam aliquid officia porro! Sit provident at eos, quia maiores
+        facilis laudantium atque! Id natus cupiditate perferendis corrupti culpa
+        cum iste sed sapiente voluptate autem quas suscipit earum tempore animi,
+        blanditiis assumenda ab asperiores, exercitationem qui. Distinctio
+        perspiciatis, molestias incidunt sit quod quibusdam est quidem provident
+        reprehenderit tenetur obcaecati iure rerum ducimus recusandae!
+      </div>
+    </section>
+    <section>
+      <h1>title 5</h1>
+      <div class="para">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut blanditiis
+        repudiandae, enim sequi, velit ullam repellat cum tenetur cupiditate
+        deserunt quos minus nostrum temporibus tempora assumenda, molestiae
+        tempore ad possimus consequatur! Nulla nihil sapiente ratione tempora at
+        perferendis eius delectus porro officia corporis animi, mollitia sed
+        quis quo repellendus vero commodi dignissimos inventore esse natus
+        blanditiis! Corrupti, et? Sequi exercitationem tenetur libero beatae
+        aut. Distinctio aperiam, provident voluptate a consequuntur deleniti.
+        Qui maxime magni pariatur, alias vero ipsum. Dignissimos quibusdam sed
+        quisquam nemo magnam esse a provident vitae veritatis accusamus!
+      </div>
+    </section>
+    <div class="scroller">
+      <div class="progerss"></div>
+    </div>
+    <!-- script -->
+    <script>
+      const progessBar = document.querySelector(".scroller .progerss");
+      window.addEventListener("scroll", () => {
+        const scrollHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollProgess = (window.scrollY / scrollHeight) * 100;
+        progessBar.style.width = scrollProgess + "%";
+      });
+    </script>
+  </body>
+</html>
