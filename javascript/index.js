@@ -364,6 +364,23 @@ for (let i = 1; i <= 10; i++) {
   }
   console.log(i);
 }
+--------------------------------------------- new loop ------ for..in -------------------
+
+
+// especially for array and objeci 
+for (key in object){
+  // body
+}
+
+let obj = {
+  name: "javscript",
+  age: 28,
+};
+
+for (let key in obj) {
+  console.log(key); // this for printing key
+  console.log(obj[key]); // this for printing key value
+}
 
 */
 //
@@ -384,6 +401,280 @@ let arr = [1, true, "hello", null, undefined, { num: 1 },67.8];
 //
 
 /* ====== object ====
+=== 2 way to create object =====
+
+let user = new Object() // with constructor
+
+let user1 = {}
+
+let user = {
+  "key":value, // here key is string and value can be anything 
+}
+
+
+============================
+
+let user = {
+  name: "javascript",
+  age: 28,
+  email: "Javascript@example.com",
+};
+
+// display the value of object
+// console.log(user["name"]); // in bractes key must be in enclosed with qoutes
+// console.log(user.name); // javascript
+// console.log(user.age); // 28
+// console.log(user.email); // Javascript@example.com
+
+// // adding key value in object
+
+user.bod = 1998; // add in the object
+
+// console.log(user.bod);
+// console.log(user);
+
+// delete from the object
+
+delete user.email;
+
+console.log(user);
+
+--------------------------------------
+// multiword property
+let user = {
+  name: "John",
+  age: 30,
+  "likes birds": true, // multiword property name must be quoted
+};
+
+// console.log(user["name"]); //
+// console.log(user["likes birds"]); // display multiword property
+// delete user["likes birds"]           // delete multiword property
+
+// console.log(user);
+
+
+---------------------------------
+// given space spearted key for an object
+let user = {
+  name: "js",
+  age: 28,
+};
+
+let key = "Founder Name";
+user[key] = true;
+
+console.log(user);
+
+// the variable key may be calculated at run-time or depend on the user input.
+
+
+------------------------- GOOD  - - - - - - - - - - - - - - - - 
+
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = prompt("What do you want to know about the user?", "name");
+
+// access by variable
+alert( user[key] ); // John (if enter "name")
+---------------------------------------
+
+let fruit = prompt("Which fruit to buy?", "apple");
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+
+alert( bag.apple ); // 5 if fruit="apple"
+
+he meaning of a computed property is simple: [fruit] means that the property name should be taken from fruit.
+
+
+//So, if a visitor enters "apple", bag will become {apple: 5}.
+
+
+// In real code, we often use existing variables as values for property names.
+
+// function info(name, age) {
+//   return {
+//     name: name,
+//     age: age,
+//   };
+// }
+
+// both above and bellow code are same
+
+function info(name, age, bod) {
+  return {
+    name, // name :name
+    age, // age : age
+    bod: 1998,
+  };
+}
+let details = info("javscript", 23);
+let details2 = info("harry", 45);
+let details3 = info("carry", 45,2001);
+
+console.log(details.name);
+console.log(details2.age);
+console.log(details3.bod);
+
+// There are no limitations on property names. They can be any strings or symbols
+
+--------------------------------------
+
+let obj = {
+  name: "javascript",
+  age: 28,
+  bod: 1998,
+};
+
+let Nullobj = {};
+console.log(obj.noSuchProperty === undefined);
+-----------------------------------------
+
+// in operator
+
+// "key" in obj
+
+let user = {
+  name: "javasript",
+  age: 28,
+  bod: 1998,
+};
+
+// console.log("name" in user); // true
+console.log("gender" in user); // false because no such gender exiest in user object
+
+------------------------------
+let obj = {
+  test: undefined
+};
+
+console.log(obj.test); // undefined
+console.log(obj["test"]); // undefined
+// even test key is available but still undefined , so we use in operator 
+console.log("test" in obj);  // true 
+
+
+-----------------------  copy object into other object by reference(so change in origanal object effect an other object) --------------
+
+let user = {
+  name: "JS",
+  age: 28,
+};
+
+// console.log(user);
+
+let copyUser = user; // copy with reference
+
+// console.log(copyUser);
+
+console.log(user == copyUser); // true
+console.log(user === copyUser); // true
+// because both object are same
+
+// Const objects can be modified
+
+
+====================== clone object =========
+
+let newObj = {
+  name: "Js",
+  age: 28,
+};
+
+console.log(newObj);
+
+let copyObj = {};
+
+for (let key in newObj) {
+  copyObj[key] = newObj[key];
+}
+copyObj.dob = 1998;
+console.log(copyObj);
+// now newObj and copyObj are different========
+
+-------------------
+
+// let newObj = {
+//   name: "Js",
+//   age: 28,
+// };
+
+// console.log(newObj);
+
+// let copyObj = {};
+
+// we can also use :- Objcet.assign(destination,sources);
+
+// Objcet.assign(destination,sources); can be use with different way 
+// in below example we assign new key(property) with help of Object.assign();
+let user = { name: "John" };
+let permissions1 = { canView: true };
+let permissions2 = { canEdit: true };
+// copies all properties from permissions1 and permissions2 into user
+Object.assign(user, permissions1, permissions2);
+
+console.log(user);
+
+let newObj = {
+  name: "Js",
+  age: 28,
+};
+
+let clone = Object.assign({}, newObj);
+
+clone.dob = 1998;
+console.log(clone);
+
+
+---------
+
+// nesting cloning
+
+// let obj = {
+//   FullName: {
+//     firstName: "David",
+//     MidddelName: "Warner",
+//   },
+// };
+
+
+// console.log(obj.FullName.firstName);// printing nested object
+// console.log(obj.firstName);// printing nested object will give undefined
+// console.log(obj["FullName"]); //
+
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+let clone = Object.assign({}, user);
+
+console.log(clone);
+---------------------- structuredClone -----------
+
+const originalObject = {
+  name: "John",
+  age: 25,
+  address: {
+    city: "Mumbai",
+    country: "India",
+  },
+};
+
+// Using structuredClone to create a deep copy
+const clonedObject = structuredClone(originalObject);
+clonedObject.dob = 1993;
+console.log(clonedObject);
 
 */
 //
@@ -391,11 +682,18 @@ let arr = [1, true, "hello", null, undefined, { num: 1 },67.8];
 /* ============= function ===
 -Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.
 
+synatx:- 
+
+function functionName(parameter1,parameter2,.....,parametern){
+  //body
+}
+
 // declaration of function
 
 function sayHello(){
     console.log("hello");
 } 
+ without function calling function will not execute 
 
 // calling function
 sayHello();
@@ -414,7 +712,7 @@ function sum(a, b = 5) {
   console.log(a + b);
 }
 
-sum(1); //output is 6 because user didn't provide second parameter
+sum(1); // output is 6 because user didn't provide second parameter value
 ----------------------------------------------------------------------
 function sum(a, b = 5) {
   console.log(a + b);
@@ -429,9 +727,75 @@ function sum(a, b = 5) {
 sum(1,2);
 
 
+function msgFun(msg="hello"){
+  return msg;
+}
+
+function sayHi(name,msg = msgFun("bye bye")){
+  console.log(`${msg} to ${name} `);
+}
+
+sayHi("mark");
+
+// above code in example of default function when sayHi function called than msgFun() also called ,
+
+let add = function sum(a, b) { 
+  // sum is not valid
+  console.log(a + b);
+};
+
+add(12, 13);
+sum(1,2); // above code in not valid when we call sum() because sum is not a function
+
+
+let add = function (a, b) {
+  console.log(a + b);
+};
+
+add(12, 13);
+
+//a global Function Declaration is visible in the whole script, no matter where it is
+when we declare function than it would be gloable function , so first call than use is possible but , with function expression first call and than declarion not valid 
+
+// this will worj=k
+ sayHello("utsav");
+function sayHello(name) {
+  console.log(`hello to ${name}`);
+}
+
+--------------------------------------------------------------
+not work
+sayHello("utsav");
+let sayHello = function (name) {
+  console.log(`hello to ${name}`);
+}
+
+================================================================== ==============================
+                                    ARROW FUNCTION              
+================================================================== ==============================
+
+// let FunctionName = (parameterN,default="value")=>{
+//   // body
+// }
+
+
+///example:- 
+let sum = (a, b) => {
+  console.log(`${a} + ${b} = ${a + b}`);
+};
+
+sum(1,2)
+
+// now time to short function
+
+// 1.
+let sum = (a, b) => {console.log(`${a} + ${b} = ${a + b}`);};
+// 2.
+let sum = (a, b) => console.log(`${a} + ${b} = ${a + b}`);
+// 3. if we have only one paramete than () are optional
+let sum = a => a ;
+sum(1, 2);
 */
-
-
 
 /* ==========  Manipulating Arrays ======  Arrays (part 2)  =======
 
@@ -475,3 +839,82 @@ console.log(arr); //
 
 // NOTE 1. truthy and falsey vallue
 // NOTE 2. Nullish coalescing operator '??'
+
+/* ================== task =============================
+// from object tasks
+
+q.1 
+Create an empty object user.
+Add the property name with the value John.
+Add the property surname with the value Smith.
+Change the value of the name to Pete.
+Remove the property name from the object.
+
+ans;-
+let user = {};
+user.name = "John";
+user.surname = "Smith";
+
+user.name = "Pete";
+
+delete user.name
+
+2. Sum object properties
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130
+}
+ans:-
+
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130,
+};
+
+let sum = 0;
+for (let key in salaries) {
+  sum += salaries[key];
+}
+
+console.log(sum);
+
+
+3. Multiply numeric property values by 2
+// before the call
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
+
+multiplyNumeric(menu);
+
+// after the call
+menu = {
+  width: 400,
+  height: 600,
+  title: "My menu"
+};
+
+// solution 1:-
+function multiplyNumeric(obj) {
+  for (let key in menu) {
+    if (!isNaN(menu[key])) {
+      obj[key] *= 2;
+    }
+  }
+}
+
+// solution 2:-
+function multiplyNumeric(obj) {
+  for (let key in menu) {
+    if (typeof menu[key] == "number") {
+      obj[key] *= 2;
+    }
+  }
+}
+
+
+*/
