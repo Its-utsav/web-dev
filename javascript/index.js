@@ -676,6 +676,112 @@ const clonedObject = structuredClone(originalObject);
 clonedObject.dob = 1993;
 console.log(clonedObject);
 
+-------------------- object method , .this
+
+// A function that is a property of an object is called its method.
+eg.;-
+let obj = {
+  name: "Js",
+  age: 28,
+};
+
+obj.sayHi = function () {
+  console.log(`hi to ${obj.name}`);
+};
+
+// now sayHi property is function method
+obj.sayHi();
+
+
+// let obj = {
+//   sayHi: function () {
+//     console.log("hello");
+//   },
+// };
+
+
+//  in shorter synatx
+let obj ={
+  sayHi(){
+    console.log("HI");
+  }
+}
+
+obj.sayHi();
+
+--------------this keyword---
+// this keyword use for current contax
+// The value of this is evaluated during the run-time, depending on the context.
+// The value of this is defined at run-time.
+let obj = {
+  name: "Js",
+  age: 28,
+  email: "js@exmple.com",
+  sayHi(){
+    // console.log(`Hi,to ${this.name}`); 
+    // console.log(`Hi,to ${obj.name}`); 
+  }
+};
+
+
+console.log(this); // this will return null in node.js and in browser it will return window object
+
+obj.sayHi()
+
+let user1 = { name: "JavaScript" };
+let user2 = { name: "Typescript" };
+
+function sayName (){
+  console.log(`${this.name}`);
+}
+
+user1.fun = sayName; // now name key value print
+user2.fun = sayName; //
+
+console.log(user1)
+user1.fun(); 
+console.log(user1["fun"]);
+
+------------------------------------
+// this is magical but don't work with arrow function ()=>{}
+// here arrow() uses this from the outer user.sayHi() method:
+
+// let user = {
+//   name: "JS",
+//   age: 28,
+//   let arrow = ()=>{},
+// };
+
+// this will not work
+
+let user = {
+  name: "JS",
+  age: 28,
+  sayHi() {
+    let arrow = () => {
+      console.log(this.name);
+    };
+    arrow(); // comment 1. user.sayHi(); // not work
+  },
+};
+
+// user.arrow(); // not work thow error
+// user.sayHi(); // this work but no any output  because we didn't call arrow();
+// un-comment below and above code
+user.sayHi(); // now this work and give output
+
+in short:-
+
+1.Functions that are stored in object properties are called “methods”.
+2.Methods allow objects to “act” like object.doSomething().
+3.Methods can reference the object as this.
+4.The value of this is defined at run-time.
+
+5.When a function is declared, it may use this, but that this has no value until the function is called.
+6.A function can be copied between objects.
+6.When a function is called in the “method” syntax: object.method(), the value of this during the call is object.
+7.Please note that arrow functions are special: they have no this. When this is accessed inside an arrow function, it is taken from outside.
+
 */
 //
 
@@ -796,8 +902,103 @@ let sum = (a, b) => console.log(`${a} + ${b} = ${a + b}`);
 let sum = a => a ;
 sum(1, 2);
 */
+//
 
-/* ==========  Manipulating Arrays ======  Arrays (part 2)  =======
+/* ============== Constructor, operator "new" ===============
+----
+1. The regular {...} syntax allows us to create one object. But often we need to create many similar objects, like multiple users or menu items and so on.
+
+2. That can be done using constructor functions and the "new" operator.
+
+
+note :- Constructor functions technically are regular functions. 
+  There are two conventions though:
+
+1.  They are named with capital letter first.
+2.  They should be executed only with "new" operator.
+
+
+// function User(name) {
+//   this.name = name;
+// }
+
+// let user1 = new User("harry");
+
+// console.log(user1.name);
+
+// abive code execute in below step
+
+// function User(name) {
+  // 1.
+  // this = {}  //   implicity
+
+  // 2.
+  // this.name = name;
+
+  // 3.
+  // return this; // implicity
+// }
+
+
+// let user1 = new User("harry");
+
+// let user1 ={
+//   name:"harry"
+// }
+
+// if we want to create other users, we can call new User("Ann"), new User("Alice") and so on.
+
+
+If we have many lines of code all about creation of a single complex object, we can wrap them in an immediately called constructor function, like this:
+
+let funUser = new (function () {
+  this.name = "John";
+  this.isAdmin = false;
+
+  // ...other code for user creation
+  // maybe complex logic and statements
+  // local variables etc
+})();
+
+// This constructor can’t be called again, because it is not saved anywhere, just created and called. So this trick aims to encapsulate the code that constructs the single object, without future reuse.
+
+---------------------
+// the new.target property can be used inside a function to determine whether the function was called with the new keyword (as a constructor) or without it (as a regular function).
+
+// Inside a function, we can check whether it was called with new or without it, using a special new.target property.
+
+// It is undefined for regular calls and equals the function if called with new:
+
+// function User() {
+//   alert(new.target);
+// }
+
+// // without "new":
+// User(); // undefined
+
+// // with "new":
+// new User(); // function User { ... }
+
+// function MyConstructor() {
+//   if (new.target) {
+//     console.log("Called with new keyword (constructor mode)");
+//   } else {
+//     console.log("Called without new keyword (regular function mode)");
+//   }
+// }
+
+// // Called with the new keyword
+// let instance = new MyConstructor();
+// // Output: Called with new keyword (constructor mode)
+
+// // Called without the new keyword
+// MyConstructor();
+// Output: Called without new keyword (regular function mode)
+
+*/
+//
+
+/* ==========  Manipulating Arrays ====== =======
 
 1.Arrays can also function as a stack. The push and pop methods insert and remove variables from the end of an array.
 
@@ -916,5 +1117,93 @@ function multiplyNumeric(obj) {
   }
 }
 
+---------------------------- object this ------------
+function makeUser() {
+  return {
+    name: "John",
+    ref: this,
+  };
+}
 
+let user = makeUser();
+
+console.log(user.ref.name); // What's the result?
+
+// ye code undefined return karge kyaki , hamare pass koy bhi current contax nahi hai , 
+// isliye ref:this , windoe.this banjayega , and user.ref.name - window.name ban jaye ga
+
+2. --------------
+Create an object calculator with three methods:
+
+read() prompts for two values and saves them as object properties with names a and b respectively.
+sum() returns the sum of saved values.
+mul() multiplies saved values and returns the result.
+ans:-
+let calculator = {
+  read() {
+    this.a = Number(prompt("Enter number:"));
+    this.b = Number(prompt("Enter number:"));
+  },
+  sum() {
+    return this.a + this.b;
+  },
+  mul() {
+    return this.a * this.b;
+  },
+};
+
+calculator.read(2, 4);
+console.log(calculator.sum());
+console.log(calculator.mul());
+
+3. ------------
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+  },
+  down() {
+    this.step--;
+  },
+  showStep: function() { // shows the current step
+    alert( this.step );
+  }
+};
+
+// if we need to make several calls in sequence, can do it like this:
+
+ladder.up();
+ladder.up();
+ladder.down();
+ladder.showStep(); // 1
+ladder.down();
+ladder.showStep(); // 0
+
+// Modify the code of up, down and showStep to make the calls chainable, like this:
+
+ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
+
+ans:-
+
+
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep: function () {
+    // shows the current step
+    console.log(this.step);
+    return this;
+  },
+};
+
+// if we need to make several calls in sequence, can do it like this:
+
+ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
 */
