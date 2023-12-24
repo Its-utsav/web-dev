@@ -389,6 +389,23 @@ for (let key in obj) {
 1. JavaScript can hold an array of variables in an Array object. In JavaScript, an array also functions as a list, a stack or a queue.
 2.- Arrays in JavaScript are sparse, meaning that we can also assign variables to random locations even though previous cells were undefined.
 3.Because JavaScript Arrays are just special kinds of objects, you can have elements of different types stored together in the same array.
+----
+
+
+Objects allow you to store keyed collections of values. That’s fine.
+
+But quite often we find that we need an ordered collection, where we have a 1st, a 2nd, a 3rd element and so on. For example, we need that to store a list of something: users, goods, HTML elements etc.
+
+It is not convenient to use an object here, because it provides no methods to manage the order of elements. We can’t insert a new property “between” the existing ones. Objects are just not meant for such use.
+
+There exists a special data structure named Array, to store ordered collections.
+
+
+two way to declare array:-
+
+// let arr = []; // 1
+
+// let arr = new Array(); // 2
 
 let arr = [1,2,3];
 let arr2 = new Array(1,2,3);
@@ -397,8 +414,130 @@ console.log(arr);
 console.log(arr[2]);
 
 let arr = [1, true, "hello", null, undefined, { num: 1 },67.8];
+
+let webDev = [
+  "Html",
+  "Css",
+  "Javascript",
+  "Git",
+  "MongoDB",
+  "Express",
+  "React",
+  "Node",
+];
+
+// console.log(webDev); // display full array
+// console.log(webDev[0]); // html because html at 0 index postion
+
+// display last array elemnt
+
+
+// console.log(webDev[webDev.length - 1]); // node
+console.log(webDev.at(-1));
+// replace git with git-github
+
+// full based on code
+
+// let indexOfgit = webDev.indexOf("Git");
+// if (indexOfgit != -1) {
+//   webDev[indexOfgit] = "Git-Github";
+//   // console.log(indexOfgit);
+// } else {
+//   console.log("no no");
+// }
+// console.log(webDev);
+
+
+-------------------
+1.Arrays can also function as a stack. The push and pop methods insert and remove variables from the end of an array.
+-- push  add element at end and pop remove elemnts from end of elemnt 
+const numbers = [1, 2, 3, 4, 5, 6];
+
+numbers.push(7); // add 7 at end of an array
+numbers.push(7,30); // add 7 and 30 at end of an array
+// console.log(numbers);
+
+const nums = [10,20,30,40,50,60,70,80,90,100];
+nums.pop(100); // only one element 100 will remove and array is not modified  
+
+console.log(nums);;
+
+
+-. The unshift and shift methods are similar to push and pop, only they work from the beginning of the array. 
+
+// unshift add elements add start
+// shidt remove elements form start an array
+const num2 = [2,3,4,5,6,7,8,9,10];
+num2.unshift(1);
+num2.unshift(1,100); // can add Multiple elements at beginning of and array
+console.log(num2);
+
+const num3= [1,2,3,4,5,6,7,8,9,10];
+num3.shift(1); // only remove one element from an array at beginning of array
+console.log(num3);
+
+-------- Methods push/pop run fast, while shift/unshift are slow.
+
+=-=-=-=-=-=-=-=-=
+loops in array
+
+let arr = ["a", "b", "c", "d", "e"];
+
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
+
+// for(let key in arr){
+//   console.log(key); // give index
+//   // console.log(arr[key]); // give values of index
+// }
+
+// for (let value of arr) {
+//   console.log(value);
+// }
+
+// length
+
+// let arr = [];
+// arr[120] = "JavaScript";
+
+// console.log(arr.length);
+// increase doest't matter
+// but decrease matter
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+arr.length = 3; // even orignal size of array is 7 but we set 3 LoL
+
+// console.log(arr); // [ 1, 2, 3 ]
+
+arr.length = 5;
+
+// console.log(arr); // [ 1, 2, 3, <2 empty items> ]
+
+// clear the size of an array
+
+arr.length = 0; // LoL-2
+
 */
+
+
+
 //
+
+/* temp
+
+// Splicing:- 
+ - remove certain part form an array and create a new array
+let arr = [10, 20, 30, 40];
+
+console.log(arr);
+// synatx:- array.splice(start, deleteCount, item1, item2, ...);
+let newArr = arr.splice(1,2); // this will return deleted elements
+console.log(newArr); //
+console.log(arr); //
+
+*/
 
 /* =============== object ====
 === 2 way to create object =====
@@ -1504,59 +1643,92 @@ let str = "i am learing javascript";
 // }
 
 
---------------------- includes, startWith ,endWith --------------
+--------------------- includes, startWith ,endsWith --------------
 -- includes('stringForFind',position) give boolean value if includes than it give true other wise false
 -- position is optional
-
-*/
-// -----------=============----------------------====--------------=======------------------===----------------
 
 let str = "i am learing javascript";
 // console.log(str.includes('am')); // true
 // console.log(str.includes("am", 4)); // false because 'am' string already gone
 
-console.log(str.startsWith('am')); // false because string start with 'i';
-console.log(str.startsWith('am',2)); // tru because string start with 'am' but postion 2 and 'am' start at 2 index ;
+// console.log(str.startsWith('am')); // false because string start with 'i';
+// console.log(str.startsWith('am',2)); // tru because string start with 'am' but postion 2 and 'am' start at 2 index ;
 
+// endsWith ;
 
-/* ==========  Manipulating Arrays ====== =======
+// -- it is opposite of startWith
+console.log(str.endsWith("pt")) // true because str variable end with "pt"
+console.log(str.endsWith('java',2)); // false becasue str varibale end with 'pt'
 
-1.Arrays can also function as a stack. The push and pop methods insert and remove variables from the end of an array.
+------------------ breaking the string(slice)-----------
+// String.slice(startingPosition,endingPosition)
+// - starting index included but ending position not included :)
+let str = "JavaScript";
+// console.log(str.slice(4,10)); // it give Script
 
-const numbers = [1, 2, 3, 4, 5, 6];
+// expalin :- at 4th index S and last index 10 (which is is not included) so till second last means index means 9 th index string sliceing done 
+// console.log(str.slice(-4,-10)); //""
+// console.log(str.slice(-10,-4)); //JavaSc
 
-numbers.push(7); // add 7 at end of an array
-numbers.push(7,30); // add 7 and 30 at end of an array
-// console.log(numbers);
+---------------------------- String.substring() -----------
 
-const nums = [10,20,30,40,50,60,70,80,90,100];
-nums.pop(100); // only one element 100 will remove and array is not modified  
+let str = "JavaScript";
+// console.log(str.substring(4,10)); // it give Script 
+// console.log(str.substring(10,4)); // it also give Script 
+// because the given parameter ar invalid , and to maintain a valid range.
+-- only postive value
 
-console.log(nums);;
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-
 
+str.substr(start [, length])
+Returns the part of the string from start, with the given length.
 
--. The unshift and shift methods are similar to push and pop, only they work from the beginning of the array. 
+In contrast with the previous methods, this one allows us to specify the length instead of the ending position:
 
-const num2 = [2,3,4,5,6,7,8,9,10];
-num2.unshift(1);
-num2.unshift(1,100); // can add Multiple elements at beginning of and array
-console.log(num2);
+let str = "JavaScript";
+// start with 4 index than go till 6
+console.log(str.substr(4,6));
 
-const num3= [1,2,3,4,5,6,7,8,9,10];
-num3.shift(1); // only remove one element from an array at beginning of array
-console.log(num3);
+method          	    | selects…	                                  | negatives
+slice(start, end)	    | from start to end (not including end)       | 	allows negatives
+substring(start, end)	| between start and end (not including end)	  |  negative values mean 0
+substr(start, length) |	from start get length characters	          | allows negative start
 
-// Splicing:- 
- - remove certain part form an array and create a new array
-let arr = [10, 20, 30, 40];
+All of them can do the job. Formally, substr has a minor drawback: it is described not in the core JavaScript specification, but in Annex B, which covers browser-only features that exist mainly for historical reasons. So, non-browser environments may fail to support it. But in practice it works everywhere.
 
-console.log(arr);
-// synatx:- array.splice(start, deleteCount, item1, item2, ...);
-let newArr = arr.splice(1,2); // this will return deleted elements
-console.log(newArr); //
-console.log(arr); //
+Of the other two variants, slice is a little bit more flexible, it allows negative arguments and shorter to write.
+
+So, for practical use it’s enough to remember only slice
+
+-------------
+let str = "a";
+console.log("A" > "a"); // 65 > 97 so false
+// because A unicode -> 65 and a unicode is 97
+// console.log(str.charCodeAt());
+console.log("a".charCodeAt());
+console.log("A".charCodeAt());
+
+console.log("A".codePointAt(0)); // give 65
+console.log("a".codePointAt(0)); // give 97
+console.log("a".codePointAt(0).toString(16)); // give 61 ?
+
+//Creates a character by its numeric code
+
+console.log(String.fromCharCode(65)); // A
+console.log(String.fromCharCode(97)); // a
+
+// print every character is supporetd by js
+let str = "";
+
+for (let i = 65; i <= 220; i++) {
+  str += String.fromCharCode(i);
+}
+
+console.log(str);
+// ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
 
 */
+// -----------=============----------------------====--------------=======------------------===----------------
 
 // NOTE 1. truthy and falsey vallue
 // NOTE 2. Nullish coalescing operator '??'
@@ -1726,4 +1898,37 @@ let ladder = {
 // if we need to make several calls in sequence, can do it like this:
 
 ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
+*/
+
+/* ====== task 2 ====
+Write a function checkSpam(str) that returns true if str contains ‘viagra’ or ‘XXX’, otherwise false.
+
+   The function must be case-insensitive:
+
+checkSpam('buy ViAgRA now') == true
+checkSpam('free xxxxx') == true
+checkSpam("innocent rabbit") == false
+
+function checkSpam(str) {
+  let lowerStr = str.toLowerCase();
+  // if (lowerStr.includes("viagra") || lowerStr.includes("XXX")) {
+  //   console.log(true);
+  // } else {
+  //   console.log(false);
+  // }
+  // above is ans 1
+
+  return lowerStr.includes("viagra") || lowerStr.includes("XXX");
+}
+// console.log("hello1");
+let result1= checkSpam("buy ViAgRA now");
+console.log(` ans for buy ViAgRA now ${result1}`);
+let result2 = checkSpam("free xxxxx");
+console.log(` ans for free xxxxx ${result2}`);
+let result3 = checkSpam("innocent rabbit");
+console.log(` ans for innocent rabbit ${result3}`);
+
+
+
+
 */
