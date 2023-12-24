@@ -1,6 +1,6 @@
 // console.log("Hello,World!!");
 ///
-/* =============== Types of Variable and Data types ========
+/* ========================= Types of Variable and Data types ========
 
 JavaScript is dynamic - type language (duck -type) language , every variable define by using three keyword var , let or const .
 
@@ -51,7 +51,7 @@ console.log(typeof notSaid);  //undefined
 */
 //
 
-/* ================ operators ===== 
+/* ====================== operators ===== 
 console.log(1 + 5); // 6
 console.log(60 - 5); // 55 
 console.log(7 * 5); // 35 
@@ -108,7 +108,7 @@ console.log(!gender);
 */
 //
 
-/* ====     Types conversion    =====
+/* ===============     Types conversion    =====
 let bool = true;
 // console.log(typeof bool); // boolean
 
@@ -172,7 +172,7 @@ console.log(test2);
 */
 //
 
-/* ==== conditional statements
+/* ============= conditional statements
 // most simple only if
 if(condition){
  // if condition evalute true than execute other vise note
@@ -280,7 +280,7 @@ switch (age) {
 */
 //
 
-/* == ======= alert , confirm and prompt =============
+/* == ============== alert , confirm and prompt =============
 
 ***** in Node.js we can't perform alert, confirm,prompt you need browser ****
 const age = prompt("entre yout age");
@@ -295,7 +295,7 @@ alert(`${age == true ? "vote" : " can't vote"}`);
 */
 //
 
-/* ================= Iterative statements================
+/* ================================== Iterative statements================
 1. while  loop-
 -> while(condition){
     // code
@@ -385,7 +385,7 @@ for (let key in obj) {
 */
 //
 
-/* ============   Arrays (part 1) ======================
+/* ===============   Arrays (part 1) ======================
 1. JavaScript can hold an array of variables in an Array object. In JavaScript, an array also functions as a list, a stack or a queue.
 2.- Arrays in JavaScript are sparse, meaning that we can also assign variables to random locations even though previous cells were undefined.
 3.Because JavaScript Arrays are just special kinds of objects, you can have elements of different types stored together in the same array.
@@ -400,7 +400,7 @@ let arr = [1, true, "hello", null, undefined, { num: 1 },67.8];
 */
 //
 
-/* ====== object ====
+/* =============== object ====
 === 2 way to create object =====
 
 let user = new Object() // with constructor
@@ -785,7 +785,7 @@ in short:-
 */
 //
 
-/* ============= function ===
+/* ==================== function ===
 -Functions are the main “building blocks” of the program. They allow the code to be called many times without repetition.
 
 synatx:- 
@@ -904,7 +904,7 @@ sum(1, 2);
 */
 //
 
-/* ============== Constructor, operator "new" ===============
+/* =============== Constructor, operator "new" ===============
 ----
 1. The regular {...} syntax allows us to create one object. But often we need to create many similar objects, like multiple users or menu items and so on.
 
@@ -998,6 +998,527 @@ let funUser = new (function () {
 */
 //
 
+/* ================================ Symbols ==============
+
+By specification, only two primitive types may serve as object property keys:
+
+string type, or symbol type.
+
+- symbol always representes unique identifier
+
+let sym1 = Symbol(1);
+let sym2 = Symbol(1);
+
+// console.log(sym1 == sym2); // both always false 
+// console.log(sym1 === sym2); //
+
+// symbol can be convert into the string but cannot be directly convert into a number or used in to mathematical operations
+
+let sym1 = Symbol(1);
+let str = String(sym1);
+
+console.log(sym1);
+console.log(str);
+
+// above code can convert into the string
+
+// in below code i am trying to convert string symbol into number
+
+
+
+let sym =  Symbol('js');
+let num = Number(sym); // error we can't convert string symbol into number
+
+let add = num + num ; // even this is not possible
+
+console.log(sym);
+console.log(num);
+console.log(add);
+
+
+----------------- Symbol.description
+let sym1 = Symbol(1);
+let str = String(sym1);
+
+console.log(sym1); // 
+console.log(sym1.description); // give actual value of symbol 
+
+
+---------------------
+let user = {
+  name: "js",
+};
+
+let id = Symbol("testId");
+
+user[id] = 1;
+
+console.log(user);
+
+This use of symbols allows you to add properties to objects in a way that avoids accidental collisions with other properties, as symbols are guaranteed to be unique. The property added with the symbol as the key is not easily discoverable through standard property access methods, providing a level of privacy or "hidden" property behavior.
+
+ -=-=----------- Symbols in an object literal ------------------
+
+If we want to use a symbol in an object literal {...}, we need square brackets around it.
+
+let sym = Symbol("id");
+let sym2 = Symbol("name");
+
+let obj = {
+  [sym]: "1",
+  [sym2]: "js",
+};
+
+// console.log(obj);
+// console.log(obj[sym]);
+// console.log(obj[sym2]);
+
+// display key and its value with help of for in loop
+
+for (let key in obj) {
+  console.log(key, obj[key]); // somethig wrong in my code
+}
+
+-----------------------------
+
+let sym = Symbol("id");
+let sym2 = Symbol("name");
+
+let obj = {
+  [sym]: "1",
+  [sym2]: "js",
+};
+
+// console.log(obj);
+// console.log(obj[sym]);
+// console.log(obj[sym2]);
+
+// display key and its value with help of for in loop
+
+for (let key in obj) {
+  console.log(key, obj[key]); // somethig wrong in my code
+}
+
+console.log(obj[sym2]); // when sym and sym2 used as key it wrork but it didn't work in loop
+
+------------------- Symbol.for() -----------
+--  as we know all symbol are unique even we give same name , with Symbol.for()  we can give same name to another symbol
+
+// let sym = Symbol("test"); // give false because this symbol not in registers  global
+
+let sym = Symbol.for("test"); // now it registers in global
+let symAgin = Symbol.for("test");
+
+console.log(sym === symAgin); // true
+
+
+-------- Symbol.keyfor() ---------------
+
+-- this return key name
+
+let sym = Symbol.for("test");
+let sym2 = Symbol.for("id");
+
+console.log(Symbol.keyFor(sym));
+console.log(Symbol.keyFor(sym2));
+
+
+------------- description ------------
+let globalSym = Symbol.for("test");
+let localSym = Symbol("1");
+
+console.log(Symbol.keyFor(globalSym)); // in global
+console.log(Symbol.keyFor(localSym)); // local so undefined
+ 
+console.log(globalSym.description); // give value
+console.log(localSym.description);  // give value
+
+*/
+//
+
+/* =================== object-top rimitive =====================
+The [[ToPrimitive]] algorithm involves two steps:
+
+1. Hint Argument: The algorithm takes a "hint" argument, which can be either "number" or "string." The hint indicates whether the conversion is for a numeric or string context.
+
+
+2. ValueOf and ToString Methods: The algorithm first checks if the object has a valueOf method. If the result is primitive, it is returned. If not, the algorithm checks for a toString method and uses its result.
+
+--------- panding --------------------
+
+*/
+//
+
+/* ========== method of primitives data types =========
+- primitives datatypes are the basic data types that hold single value , they are immutabel(can not be changed) and direct hold the value
+- there are main 7 primives data types:-
+string , number, boolean , undefined, null ,synbol, BigInt,
+
+let str = "javascript";
+let num = 28;
+let bool = true;
+let bool2 = false;
+let wtf = undefined;
+let empty = null;
+let sym = Symbol("test");
+let bignum = BigInt(74364362456345367245);
+
+----- some example  of primitives methods --------
+const str = "Javascript";
+
+// console.log(str.length); // printing length of string // property
+// console.log(str.toUpperCase()); // printing in uppercase
+// console.log(str.toLowerCase()); // printing in lowercse
+// console.log(str.charAt(1)); // return a because a at 1 index position
+console.log(str.charCodeAt(1)); // return charcter code of 1 index position in this case it return 97 (ASCII)
+
+----
+let num = 3.141592653589793;
+
+console.log(num.toFixed(2)); // return 2 integer (number)  after dot '.'
+console.log(num.toPrecision(3))
+
+
+---- no method are availabel for boolean,null,undefined
+
+
+*/
+//
+
+/* ================ number ====================
+- in js two types of number are available 
+1. Regular number in js stored in 64 bit format IEEE-754 double precision floating point numbers , we use most time
+
+2. BigInt numbers represent integers of arbitrary length. They are sometimes needed because a regular integer number can’t safely exceed (253-1) or be less than -(253-1), as we mentioned earlier in the chapter Data types.
+
+-------------------------------------- way to number ----------------------- 
+
+
+// let billion = 1000000000; // good but not so readable
+
+// let bi_ll_ion = 1_000_000_000; // it is just a syntactic sugar // js engine just ignore
+
+// console.log(bi_ll_ion); // print  normally 1000000000
+
+// let billionWith_e = 1e9; //billion in short word
+// 1 and 9 zero any prof ?
+
+// let numBillion = 1000000000;
+// console.log(billionWith_e === numBillion); // true
+
+// what if value is too short like 0.0000000002 ? or any other
+
+let num = 0.0000000002;
+let numWith_e = 2e-10;
+
+
+console.log(num === numWith_e); // true
+
+
+// hexadecimal
+// console.log(0xff); // 255
+// console.log(0xFF); // 255
+
+
+-------------
+// let num = 2; // for binary
+// let num = 9; // for octal
+// let num = 77; // for hexa decimal
+
+
+// console.log(num.toString(2)); // binary value -10
+// console.log(num.toString(8)); // octal value - 11
+// console.log(num.toString(16)); // hexa value - 4d
+----------------
+
+             round the number 
+
+// 1. with Math built-in object
+
+// let pi = 3.141592653589793;
+
+// a . floor
+// console.log(Math.floor(pi)); // give 3.  3.14 to 3 (round down)
+// b . celi
+// console.log(Math.ceil(pi)); //  give 4.  3.14 to 4 (round up)
+// c. round
+// console.log(Math.round(pi)); //  give 3.  3.14 to 3 (round)
+// d. trunc
+// console.log(Math.trunc(pi)); // remove value after decimal
+
+------------------------------------
+// if number is too big than it overflow in 64-bit storage and become a special numeric value Infinity
+
+// console.log(1e500); // give Infinity
+
+// more practicle example
+
+// console.log(0.1 + 0.2 == 0.3); //  WTF false
+// lets see more in depth
+// console.log(0.1 + 0.2); // 0.30000000000000004
+// ----- ..... 0.4 WTF it is not just in javascript
+// let fixed it
+
+let sum = 0.1 + 0.2;
+// console.log(sum.toFixed(3)); // now it is 0.300 lets compare again
+// console.log(sum.toFixed(3) == 0.300); // true
+//but
+// console.log(sum.toFixed(3) === 0.300); // now fasle
+// console.log(typeof sum.toFixed(3));  // string thats the reson above code is false lets solve
+console.log(+sum.toFixed(3) === 0.3); // now true --- 0.300 became number
+
+------------------------------------
+
+console.log(-0 == 0); // wtf true
+// check even datatype
+console.log(-0 === 0); //  true
+
+
+------------------- test --- isFinite and isNaN
+
+console.log(isFinite(3)); // true
+console.log(isFinite('str')); // false
+console.log(isFinite(Infinity)); // false
+console.log(isFinite(true)); // true
+console.log(isFinite(NaN)); // false
+
+------------
+console.log(isNaN('a')); // true because a is not a number
+console.log(isNaN(10)); //  false
+console.log(isNaN(Infinity)); // false
+console.log(isNaN(Symbol)); // true
+
+console.log(typeof NaN);
+console.log(isNaN(NaN)); // Well done
+
+
+
+------------------ parseInt and parseFloat ------
+--used to convrt  number string into number.
+
+
+// let num = "123";
+// console.log(typeof num); // string
+// console.log(parseInt(num)); // now number
+
+// let strNum = "123a";
+// console.log(typeof strNum);
+// console.log(parseInt(strNum)); // give a NaN because a can't convert into number
+
+// let pi = "3.141592653589793";
+// // console.log(parseInt(pi)); // it convert into integer
+// console.log(parseFloat(pi)); // give same exacte same value of pi
+
+let pi = "3.14.15.92.65.35.89.79.3";
+console.log(parseFloat(pi)); // only print 3.14
+
+// Math object
+
+// print random value (by default);
+
+// console.log(Math.random()); // random value between 0 to 1
+// console.log(Math.random()*10); // random value between 0 to 10
+// console.log(Math.random() * 10 + 1); // random value between 1 to 10
+
+// inshort +1 for preventing 0 and 10 for max(if we *100 than if get max value is 100 );
+
+//task print random value between 11 to 90;
+
+// let min = 11;
+// let max = 90;
+// console.log(Math.random() * (max - min + 1) + min);
+
+//task print random value between 11 to 90 which is integer;
+
+// let min = 11;
+// let max = 90;
+// console.log(Math.trunc(Math.random() * (max - min + 1) + min));
+
+
+// few  example
+
+// console.log(Math.max(1, 2, 3, 4, 5, 6, 7, 8, 9, 69)); // return max value
+// console.log(Math.min(10, 2, 30, 403, 43534, 643, 7, 8, 9, 69)); // return min value
+
+// console.log(Math.pow(2, 3)); // 8 = 2 * 2 * 2
+// console.log(2 ** 3);
+
+// // console.log(typeof Math.pow(2, 3)); // 8 = 2 * 2 * 2
+// // console.log(typeof (2 ** 3));
+
+// console.log(Math.pow(2, 3) === 2 ** 3); // true
+
+*/
+//
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = =  string = = = = = = = = = = = = = = = 
+- in js textual data stored as string , no separate type for single character 
+- string are enclosed in following
+
+ "" or '' or ``
+let str = "Javascript";
+let str2 = "Javascript";
+let str3 = `Javascript`;
+
+in `` (back ticks) we can use  direct variable value etc.
+
+let sum = (a, b) => {
+  console.log(`${a} + ${b} = ${a + b}`);
+};
+
+sum(1,2);
+
+// 1 + 2 = 3
+
+
+// Another advantage of using backticks is that they allow a string to span multiple lines:
+
+let guestList = `Guests:
+ * John
+ * Pete
+ * Mary
+`;
+console.log(guestList);
+
+// Guests:
+//  * John
+//  * Pete
+//  * Mary
+
+
+-=--=-=-=-===-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+escaped characters are special sequences that represent characters that are difficult or impossible to include directly in a string.
+
+they are written in \n like way.
+
+\n for new line
+\t for tab
+\b for backspace
+\' , \" ,   \\
+
+========================================
+let str = "Javascript";
+
+console.log(str.length); // 10
+
+
+
+// access the singel character
+let str = "Javascript";
+// console.log(str[0]); // j
+// console.log(str[1]); // a
+// console.log(str[2]); // v
+// console.log(str[3]); // a
+// console.log(str[4]); // s
+// console.log(str[5]); // c
+// console.log(str[6]); // r
+// console.log(str[7]); // i
+// console.log(str[8]); // p
+// console.log(str[9]); // t
+// console.log(str[10]); // undefind because length is 10 but index start with 0
+
+// console.log(str.at(0)); // J
+// console.log(str.at(1)); // a
+// console.log(str.at(2)); // v
+// console.log(str.at(3)); // a
+// console.log(str.at(4)); // s
+// console.log(str.at(5)); // c
+// console.log(str.at(6)); // r
+// console.log(str.at(7)); // i
+// console.log(str.at(8)); // p
+// console.log(str.at(9)); // t
+// console.log(str.at(10)); // undefind
+
+// opposite of nagative value
+
+console.log(str.at(-1)); //t
+console.log(str.at(-2)); //p
+console.log(str.at(-3)); //i
+console.log(str.at(-4)); //r
+console.log(str.at(-5)); //c
+console.log(str.at(-6)); //s
+console.log(str.at(-7)); //a
+console.log(str.at(-8)); //v
+console.log(str.at(-9)); //a
+console.log(str.at(-10)); // j
+
+// console.log(str[str.length - 1]); // last character of the string 
+// console.log(str(str.length - 1)); // give error because str is not a function and curly baractes can't useable 
+
+
+=--=-=-=-=-=-=-=-=-=-===09900
+// printing single character from the string
+
+let str = "Javascript";
+// for (let chara in str) {
+//   console.log(str[chara]);
+// }
+
+// for(let char of str){
+//   console.log(char);
+// }
+
+
+\\\\\\\\\\\\\\\
+
+// strings are immutables
+
+let str = "Javascript";
+str[0] = "C";
+console.log(str); // doesn't work
+
+
+// console.log(str.toLocaleLowerCase()); // javascript
+// console.log(str.toLocaleUpperCase()) // JAVASCRIPT
+// console.log(str.toLowerCase()) // JAVASCRIPT
+// console.log(str.toUpperCase()); // JAVASCRIPT
+console.log(str[1].toUpperCase());// A
+
+
+let str = "Javascript";
+console.log(str.indexOf("script")); // 4 index because s at 4 index
+console.log(str.lastIndexOf("a")); // 3 index because last 'a' to 3 index
+console.log(str.lastIndexOf("t")) // 9  index because last 't' to 9 index
+if not found than it give -1
+
+// it is case sensitive
+let str = "Javascript";
+// console.log(str.indexOf('s',3)); // 4
+// console.log(str.indexOf('s',7)); // -1 because s at 4 postion and and search from 7 index postion
+// console.log(str.indexOf("p",-1)); // 8
+
+// console.log(str.lastIndexOf("a",5)); // 3
+
+
+------------------
+let str = "i am learing javascript";
+
+// if(str.indexOf("am")){
+//   console.log("found in string");
+// }
+// this wil may work , corrected code
+// if (str.indexOf("AM") != -1) {
+//   console.log("found in string");
+// }else{
+//   console.log("not found"); // this code execute 
+// }
+
+
+--------------------- includes, startWith ,endWith --------------
+-- includes('stringForFind',position) give boolean value if includes than it give true other wise false
+-- position is optional
+
+*/
+// -----------=============----------------------====--------------=======------------------===----------------
+
+let str = "i am learing javascript";
+// console.log(str.includes('am')); // true
+// console.log(str.includes("am", 4)); // false because 'am' string already gone
+
+console.log(str.startsWith('am')); // false because string start with 'i';
+console.log(str.startsWith('am',2)); // tru because string start with 'am' but postion 2 and 'am' start at 2 index ;
+
+
 /* ==========  Manipulating Arrays ====== =======
 
 1.Arrays can also function as a stack. The push and pop methods insert and remove variables from the end of an array.
@@ -1036,7 +1557,6 @@ console.log(newArr); //
 console.log(arr); //
 
 */
-//
 
 // NOTE 1. truthy and falsey vallue
 // NOTE 2. Nullish coalescing operator '??'
