@@ -519,11 +519,395 @@ arr.length = 5;
 
 arr.length = 0; // LoL-2
 
+
+// example of multideimensinal array
+
+let arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+console.log(arr[1][1]); // 5
+
+// numeric array toString
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+let arr2 = arr.toString(); // now arr is string array any prof
+console.log(arr); 
+console.log(arr2);
+console.log(typeof arr2); // string
+
+console.log([]);        // Output: []
+console.log([] + "");   // Output: ""
+console.log([1]);        // Output: [1]
+console.log([1] + "");   // Output: "1"
+console.log([1, 2]);        // Output: [1, 2]
+console.log([1, 2] + "");   // Output: "1,2"
+Arrays in JavaScript, unlike some other programming languages, shouldn’t be compared with operator ==.
+
+This operator has no special treatment for arrays, it works with them as with any objects.
+
+// console.log(0 == []); // true
+// console.log("0" == []); // false
+// console.log(0 == ""); // true
+// console.log('0'==''); // false
+
+
+
+The call to new Array(number) creates an array with the given length, but without elements.
+
+The length property is the array length or, to be precise, its last numeric index plus one. It is auto-adjusted by array methods.
+If we shorten length manually, the array is truncated.
+Getting the elements:
+
+we can get element by its index, like arr[0]
+also we can use at(i) method that allows negative indexes. For negative values of i, it steps back from the end of the array. If i >= 0, it works same as arr[i].
+We can use an array as a deque with the following operations:
+
+push(...items) adds items to the end.
+pop() removes the element from the end and returns it.
+shift() removes the element from the beginning and returns it.
+unshift(...items) adds items to the beginning.
+To loop over the elements of the array:
+
+for (let i=0; i<arr.length; i++) – works fastest, old-browser-compatible.
+for (let item of arr) – the modern syntax for items only,
+for (let i in arr) – never use.
+To compare arrays, don’t use the == operator (as well as >, < and others), as they have no special treatment for arrays. They handle them as any objects, and it’s not what we usually want.
+
+Instead you can use for..of loop to compare arrays item-by-item.
 */
-
-
-
 //
+
+/* ==================== Arrays methods ==============
+-push() - add element at end of an array
+-pop() - remove elements and of an array
+-shift() - remove first elements form beginig of an array
+-unshift() - add elements at 0 th index
+
+
+------ few other----
+arry.splice(position,deleteCount,value1,value2);
+
+values are optional
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// arr.splice(2, 2);  // remove 3 and 4
+arr.splice(2,arr.length) // remove all elemnts after 2 index
+
+console.log(arr);
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+arr.splice(2, arr.length, "a", "b"); //delete and replace
+// emove all elemnts after 2 index than add a and b
+console.log(arr);
+
+// negative index are allow (work at end of an array)
+
+
+// slice()
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// let copyArr = arr.slice(2, 4); // create a copy from 2 index to 4 th index.
+let newCopy = arr.slice(-2); // last tow elements
+console.log(newCopy);
+
+----- joint two array or multiple elements
+
+
+let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [6, 7, 8, 9, 10];
+let arr3 = ["a,", "b"];
+// let newArray = arr1.concat(arr2); // joint two array
+// let newArray = arr1.concat(arr2, arr3); concat two array into one
+let newArray = arr1.concat(arr2, 99, 70);
+
+console.log(newArray);
+
+
+------------------------------ forEach() -----------------------
+
+Array.forEach((value,index,array,)=>{})
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+arr.forEach((value, index, array) => {
+  // console.log(value);// print individula array
+  // console.log(index); // print index
+  // console.log(array); // print whole array
+
+  // let  see which elemnts at which index
+  console.log(`Elment ${value} at ${index} in ${array} array`);
+});
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(element => console.log(element))
+
+many use of forEach();
+// searching in array
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// console.log(arr.indexOf(2));  // 1 
+// console.log(arr.indexOf('A'));  // -1 because but 'A' in not in array
+
+// console.log(arr.includes(2)); // true
+console.log(arr.includes(2,4)); // false because 2 located at 0 index but we search from 4th index
+
+
+
+let arr = [NaN];
+
+// console.log(arr.includes(NaN));  // true
+// console.log(arr.indexOf(NaN)); // -1
+
+// The includes method handles NaN correctly
+
+//find and findIndex/findLastIndex
+
+array.find(callback(element, index, array), thisArg);
+
+callback: A function that is called once for each element in the array until it returns true, indicating that the desired element has been found. The callback function is called with three arguments: element (the current element being processed), index (the index of the current element), and array (the array being traversed).
+
+thisArg (optional): An object to which the this keyword can refer in the callback function. If omitted, this refers to the global object.
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// example
+let result = arr.find((arr, index, array) => {
+  return arr > 5;
+});
+
+console.log(result);
+//It stops iterating once the first matching element is found
+
+
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// example of firstIndex
+
+// let result = arr.findIndex((arr, index, array) => {
+//   return arr > 5; // return index if condition is evaluate true
+// });
+
+// console.log(result);
+
+// findIndex() returns the index of the first element that satisfies the condition or -1 if no such element is found.
+
+
+// let result = arr.lastIndexOf((arr, index, array) => {
+//   return arr < 5; // return index if condition is evaluate true
+// });
+
+// let result = arr.lastIndexOf(2) // 1 
+// let result = arr.lastIndexOf(5,9); // 4 index
+let result = arr.lastIndexOf(5,1); // -1 because it will find 5 after 1 index
+console.log(result);
+// lastIndexOf() returns the index of the last occurrence of the specified value or -1 if the value is not found.
+------------------------- filter ----------------
+
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// let result = arr.filter((value,index,arr)=>{
+//  return value > 5; // condtion match than it return
+// })
+
+
+// console.log(result);
+
+// search
+
+// let programmingLang = [
+//   { id: 1, name: "JavaScript", level: "High" },
+//   { id: 2, name: "C", level: "Low" },
+//   { id: 3, name: "Java", level: "High" },
+//   { id: 4, name: "C++", level: "High", level: "Low" },
+//   { id: 5, name: "Python", level: "High" },
+// ];
+
+// let result = programmingLang.filter((value, index, arr) => {
+//   return (value.level === "High"); // diplay only high level language
+// });
+
+// console.log(result);
+
+//let programmingLang = [
+//   { id: 1, name: "JavaScript", level: "High" },
+//   { id: 2, name: "C", level: "Low" },
+//   { id: 3, name: "Java", level: "High" },
+//   { id: 4, name: "C++", level: "High", level: "Low" },
+//   { id: 5, name: "Python", level: "High" },
+// ];
+
+// let newArr = [];
+// let result = programmingLang.map((value, index, arr) => {
+//   if (value.name.startsWith("C") == 1) {
+//     newArr.push(value);
+//   }
+//   return value.name.startsWith("C");
+// });
+
+// console.log(result);
+// console.log(newArr);
+
+let unsortArr = [3, 4, 5, 78, 32, 100, 9, 56, 1];
+
+unsortArr.sort();
+
+// console.log(unsortArr); //[1, 100, 3, 32, 4, 5, 56, 78, 9];
+// what 1 and than directly 100 not 3
+
+let unsortArr = [3, 4, 5, 78, 32, 100, 9, 56, 1];
+unsortArr.sort((a, b) => {
+  return a - b;
+});
+
+console.log(unsortArr);
+
+
+let unsortArr = [3, 4, 5, 78, 32, 100, 9, 56, 1];
+// buble sort
+
+let size = unsortArr.length;
+let temp;
+// 1. normal bubble sort
+for (let i = 0; i < size; i++) {
+  for (let j = i + 1; j < size; j++) {
+    if (unsortArr[j] < unsortArr[i]) {
+      temp = unsortArr[i];
+      unsortArr[i] = unsortArr[j];
+      unsortArr[j] = temp;
+    }
+  }
+}
+
+console.log(unsortArr);
+
+
+let unsortArr = [3, 4, 5, 78, 32, 100, 9, 56, 1];
+unsortArr.reverse(); // reverse th array
+console.log(unsortArr);
+
+
+let arr = ["Österreich", "Andorra", "Vietnam"];
+
+arr.sort((a, b) => {
+   return a.localeCompare(b);
+});
+
+console.log(arr);
+
+
+------------ split and join -------------------
+
+// let name = "JavaScript,C";
+
+// let newName = name.split(",");
+
+// for(let value of newName){
+//   console.log(value);
+// }
+
+// console.log(newName);
+
+
+let name = ["JavaScript", "C"];
+
+let newName = name.join("-");
+console.log(newName);
+
+
+------------------------------- reduce ------------------------------
+array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue);
+
+callback: A function to execute on each element in the array, taking four arguments:
+
+accumulator: The accumulated result of the previous callback invocations.
+currentValue: The current element being processed in the array.
+currentIndex: (Optional) The index of the current element being processed.
+array: (Optional) The array reduce was called upon.
+initialValue: (Optional) A value to use as the first argument to the first call of the callback. If no initial value is provided, the first element of the array is used as the initial accumulator value.
+
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+let sum = arr.reduce((acc, value, index, arr) => {
+  return acc + value;
+}, 0); // Initialize the accumulator with 0
+
+console.log(`Final sum: ${sum}`);
+
+Arrays do not form a separate language type. They are based on object
+
+
+// console.log(typeof {}); // object
+// console.log(typeof []); // object
+
+// console.log(Array.isArray({})); // false
+// console.log(Array.isArray([])); // true
+
+A cheat sheet of array methods:
+
+To add/remove elements:
+
+push(...items) – adds items to the end,
+pop() – extracts an item from the end,
+shift() – extracts an item from the beginning,
+unshift(...items) – adds items to the beginning.
+splice(pos, deleteCount, ...items) – at index pos deletes deleteCount elements and inserts items.
+slice(start, end) – creates a new array, copies elements from index start till end (not inclusive) into it.
+concat(...items) – returns a new array: copies all members of the current one and adds items to it. If any of items is an array, then its elements are taken.
+To search among elements:
+
+indexOf/lastIndexOf(item, pos) – look for item starting from position pos, return the index or -1 if not found.
+includes(value) – returns true if the array has value, otherwise false.
+find/filter(func) – filter elements through the function, return first/all values that make it return true.
+findIndex is like find, but returns the index instead of a value.
+To iterate over elements:
+
+forEach(func) – calls func for every element, does not return anything.
+To transform the array:
+
+map(func) – creates a new array from results of calling func for every element.
+sort(func) – sorts the array in-place, then returns it.
+reverse() – reverses the array in-place, then returns it.
+split/join – convert a string to array and back.
+reduce/reduceRight(func, initial) – calculate a single value over the array by calling func for each element and passing an intermediate result between the calls.
+Additionally:
+
+Array.isArray(value) checks value for being an array, if so returns true, otherwise false.
+Please note that methods sort, reverse and splice modify the array itself.
+
+These methods are the most used ones, they cover 99% of use cases. But there are few others:
+
+arr.some(fn)/arr.every(fn) check the array.
+
+The function fn is called on each element of the array similar to map. If any/all results are true, returns true, otherwise false.
+
+These methods behave sort of like || and && operators: if fn returns a truthy value, arr.some() immediately returns true and stops iterating over the rest of items; if fn returns a falsy value, arr.every() immediately returns false and stops iterating over the rest of items as well.
+
+We can use every to compare arrays:
+
+function arraysEqual(arr1, arr2) {
+  return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
+}
+
+alert( arraysEqual([1, 2], [1, 2])); // true
+arr.fill(value, start, end) – fills the array with repeating value from index start to end.
+
+arr.copyWithin(target, start, end) – copies its elements from position start till position end into itself, at position target (overwrites existing).
+
+arr.flat(depth)/arr.flatMap(fn) create a new flat array from a multidimensional array.
+
+For the full list, see the manual.
+
+From the first sight it may seem that there are so many methods, quite difficult to remember. But actually that’s much easier.
+
+Look through the cheat sheet just to be aware of them. Then solve the tasks of this chapter to practice, so that you have experience with array methods.
+
+Afterwards whenever you need to do something with an array, and you don’t know how – come here, look at the cheat sheet and find the right method. Examples will help you to write it correctly. Soon you’ll automatically remember the methods, without specific efforts from your side.
+*/
 
 /* temp
 
@@ -1928,7 +2312,104 @@ console.log(` ans for free xxxxx ${result2}`);
 let result3 = checkSpam("innocent rabbit");
 console.log(` ans for innocent rabbit ${result3}`);
 
+-----
 
+Let’s try 5 array operations.
+
+Create an array styles with items “Jazz” and “Blues”.
+Append “Rock-n-Roll” to the end.
+Replace the value in the middle with “Classics”. Your code for finding the middle value should work for any arrays with odd length.
+Strip off the first value of the array and show it.
+Prepend Rap and Reggae to the array.
+
+
+
+let styles = ["Jazz", "Blues"]; // 1
+styles.push("Rock-n-Roll"); //2
+styles[Math.floor((styles.length - 1) / 2)] = "Classics"; //3
+// console.log(styles);
+styles.shift(0); //4
+
+styles.unshift("Rap", "Reggae");
+console.log(styles);
+
+Write the function sumInput() that:
+
+Asks the user for values using prompt and stores the values in the array.
+Finishes asking when the user enters a non-numeric value, an empty string, or presses “Cancel”.
+Calculates and returns the sum of array items.
+P.S. A zero 0 is a valid number, please don’t stop the input on zero.
+
+function sumInput() {
+  let num = [];
+  while (true) {
+    let input = Number(prompt("Enter the number:", 0));
+
+    if (input === "" || input === null || isNaN(input)) {
+      break;
+    } else {
+      num.push(input);
+    }
+  }
+
+  let sum = 0;
+  for (let number of num) {
+    sum += number;
+  }
+  return sum;
+}
+
+let result = sumInput();
+console.log(result);
 
 
 */
+//
+
+/* ========  task of array ============== 
+
+Write the function camelize(str) that changes dash-separated words like “my-short-string” into camel-cased “myShortString”.
+
+That is: removes all dashes, each word after dash becomes uppercased.
+
+Examples:
+
+camelize("background-color") == 'backgroundColor';
+camelize("list-style-image") == 'listStyleImage';
+camelize("-webkit-transition") == 'WebkitTransition';
+
+let camelize = (str) => {
+  return str.split("-").map()
+};
+
+2.
+Write a function filterRange(arr, a, b) that gets an array arr, looks for elements with values higher or equal to a and lower or equal to b and return a result as an array.
+
+The function should not modify the array. It should return the new array.
+
+For instance:
+
+let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+alert( filtered ); // 3,1 (matching values)
+
+alert( arr ); // 5,3,8,1 (not modified)
+
+======================
+// let filterRange = (arr, a, b) => {
+//   return arr.filter((value) => {
+//     return a <= value && b <= value;
+//   });
+// };
+
+// let num = [5, 3, 8, 1];
+
+// let filter = filterRange(num, 1, 4);
+// // console.log(num);
+// console.log(filter);
+
+*/
+
+
