@@ -2412,4 +2412,832 @@ alert( arr ); // 5,3,8,1 (not modified)
 
 */
 
+/*  Iterables
+Iterable:
+An "iterable" is an object in JavaScript that can be looped over. It has a method called [Symbol.iterator]() that returns an "iterator."
+
+Iterator:
+An "iterator" is an object with a next() method. The next() method returns the next item in the sequence and whether the iteration is done.
+
+let iterableObj = {
+  data:[1,2,3,4,5,6],
+  [Symbol.iterator](){
+    let index = 0;
+    return {
+      next : ()=>{
+        if(index < this.data.length){
+            return  {done:false , value : this.data[index++]}
+        }else{
+          return {done : true}
+        }
+      }
+    }
+  }
+}
+
+
+for(let key of iterableObj){
+  console.log(key);
+}
+
+
+
+let range = {
+  from: 1,
+  to: 5,
+};
+
+range[Symbol.iterator] = function () {
+  return {
+    current: this.from,
+    last: this.to,
+
+    next() {
+      if (this.current <= this.last) {
+        return { done: false, value: this.current++ };
+      } else {
+        return { done: true };
+      }
+    },
+  };
+};
+
+for (let num of range) {
+  console.log(num);
+}
+
+// Question:
+// Create an iterable object called countdown that produces the numbers from 5 to 1. Use it in a for...of loop to print each number.
+
+// Your Task:
+// Write the JavaScript code to create the countdown iterable and use it in a loop to print the numbers.
+
+let countdown = {
+  max: 5,
+  min: 1,
+};
+
+countdown[Symbol.iterator] = function () {
+  return {
+    current: this.max,
+    last: this.min,
+
+    next() {
+      if (this.current >= this.last) {
+        return { value: this.current--, done: false };
+      } else {
+        return { done: true };
+      }
+    },
+  };
+};
+
+for (let key of countdown) {
+  console.log(key);
+}
+
+
+Arrays and strings are most widely used built-in iterables.
+
+// let str = "JavaScript";
+
+let str = ["a","b"]
+for(let char of str){
+  console.log(char);
+}
+
+/// create  iteratoer explicitly
+
+let str = "JavaScript";
+
+let iterator = str[Symbol.iterator]();
+
+while (true) {
+  let result = iterator.next();
+  if (result.done) break;
+  console.log(result.value);
+}
+
+
+Iterables are objects that implement the Symbol.iterator method, as described above.
+
+Array-likes are objects that have indexes and length, so they look like arrays.
+
+let obj = {
+  name: "js",
+  bod: 1995,
+  age: 28,
+};
+
+console.log(obj.length); // undefined 
+
+// example of an object that is array like 
+
+// and don't even have push,pop
+
+let arrLikeObj = {
+  0: "Hello,",
+  1: "World",
+  length: 2,
+};
+
+
+// console.log(arrLikeObj.length); give 2
+
+// for(let key of arrLikeObj){} // TypeError: arrLikeObj is not iterable error give
+
+// solve this  problem and work object as array use Array.from
+
+Array.from(obj[, mapFn, thisArg])
+obj is neccecary but mapFn are optional
+let arrLikeObj = {
+  0: "Hello,",
+  1: "World",
+  length: 2,
+};
+
+let arr = Array.from(arrLikeObj); // now array
+// console.log(arr);
+
+arr.push("JavaScript");
+
+console.log(arr);
+
+let string = "JavaScript";
+
+let strArr = Array.from(string); // now it is array
+
+// console.log(strArr);
+// console.log(strArr[1]);
+// console.log(strArr[2]);
+// console.log(strArr.length);
+
+Objects that can be used in for..of are called iterable.
+
+Technically, iterables must implement the method named Symbol.iterator.
+The result of obj[Symbol.iterator]() is called an iterator. It handles further iteration process.
+An iterator must have the method named next() that returns an object {done: Boolean, value: any}, here done:true denotes the end of the iteration process, otherwise the value is the next value.
+The Symbol.iterator method is called automatically by for..of, but we also can do it directly.
+Built-in iterables like strings or arrays, also implement Symbol.iterator.
+String iterator knows about surrogate pairs.
+Objects that have indexed properties and length are called array-like. Such objects may also have other properties and methods, but lack the built-in methods of arrays.
+
+If we look inside the specification – we’ll see that most built-in methods assume that they work with iterables or array-likes instead of “real” arrays, because that’s more abstract.
+
+Array.from(obj[, mapFn, thisArg]) makes a real Array from an iterable or array-like obj, and we can then use array methods on it. The optional arguments mapFn and thisArg allow us to apply a function to each item.
+*/
+
+/* ======== map and set ==================
+
+
+Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
+
+new Map() – creates the map.
+map.set(key, value) – stores the value by the key.
+map.get(key) – returns the value by the key, undefined if key doesn’t exist in map.
+map.has(key) – returns true if the key exists, false otherwise.
+map.delete(key) – removes the element (the key/value pair) by the key.
+map.clear() – removes everything from the map.
+map.size – returns the current element count.
+ 
+
+let newMap = new Map();
+newMap.set("name", "JavaScript");
+newMap.set("age", 28);
+newMap.set("dob", 1995);
+newMap.set(1, "any randome value");
+
+// console.log(newMap);
+// console.log(newMap.get(1));
+// console.log(newMap.get("dob"));
+// console.log(newMap.get("use")); // use does'nt set so it give undefined
+// console.log(newMap.has("name")); // true because it name key exists in map
+// console.log(newMap.has("founder")); // false because founder key not exists in map
+// console.log(newMap.size); // give 4
+// console.log(newMap.size); // give 4
+// newMap.delete(1); // key 1 and its value now delete
+
+// newMap.clear(); // clear everything
+ 
+// console.log(newMap);
+
+// console.log(newMap.entries());
+
+let john = { name: "John" };
+
+// for every user, let's store their visits count
+let visitsCountMap = new Map();
+
+// john is the key for the map
+visitsCountMap.set(john, 123);
+
+console.log(visitsCountMap.get(john));
+
+Using objects as keys is one of the most notable and important Map features. The same does not count for Object. String as a key in Object is fine, but we can’t use another Object as a key in Object.
+
+// chian the map
+
+// map.set('1', 'str1')
+  // .set(1, 'num1')
+  // .set(true, 'bool1');
+
+  // iteration over Map
+
+let newMap = new Map();
+newMap.set("name", "JavaScript");
+newMap.set("age", 28);
+newMap.set("dob", 1995);
+newMap.set(1, "any randome value");
+
+// for(let key of newMap.keys()){
+//   console.log(key); // print only keys
+// }
+
+// for(let key of newMap.entries()){
+//   console.log(key); // print whole map with keys and value
+// }
+
+// for(let ett of newMap){
+//   console.log(ett);
+// }
+
+// for(let key of newMap.values()){
+//   console.log(key); // print only values
+// }
+
+// lets iterate in good manner
+
+// newMap.forEach((value, key, wholeMap) => {
+//   console.log(`${key} : ${value} `);
+// });
+// When a Map is created, we can pass an array (or another iterable) with key/value pairs for initialization.
+
+// let map = new Map([
+//   [1, "Hello"],
+//   ["1", "hi"],
+// ]);
+
+// console.log(map);
+// console.log(map.get(1));
+
+// create map from an object
+// 1. Object.entries()
+
+// let obj = {
+//   name: "JavaScript",
+//   age: 28,
+//   dob: 1995,
+// };
+
+
+// let mapFormAnObj = new Map(Object.entries(obj));
+
+// console.log(mapFormAnObj);
+// console.log(mapFormAnObj.get("name"));
+
+
+// There’s Object.fromEntries method that does the reverse: given an array of [key, value] pairs, it creates an object from them
+
+let obj = Object.fromEntries([
+  ["name", "JavaScript"],
+  ["age", 28],
+
+]);
+console.log(obj);
+
+// create obj from map
+
+let jsMap = new Map([
+  ["Name", "JavaScript"],
+  ["Age", 28],
+  ["BOD", 1995],
+]);
+
+let jsObj = Object.fromEntries(jsMap);
+// console.log(jsObj);
+
+----------------------------map end here -----------------
+
+----------------------------set start here -----------------
+A Set is a special type collection – “set of values” (without keys), where each value may occur only once
+
+new Set([iterable]) – creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
+set.add(value) – adds a value, returns the set itself.
+set.delete(value) – removes the value, returns true if value existed at the moment of the call, otherwise false.
+set.has(value) – returns true if the value exists in the set, otherwise false.
+set.clear() – removes everything from the set.
+set.size – is the elements count.
+
+
+
+
+let set = new Set();
+
+let harry = { name: "Harry" };
+
+let rahul = { name: "Rahul" };
+let ravi = { name: "Ravi" };
+
+set.add(harry);
+set.add(rahul);
+set.add(ravi);
+set.add(harry); // harry is already in set bu try to again add in set
+set.add(rahul); // same as harry rahul alredy in set but again try to add in set
+
+console.log(set); // only display unique values
+
+console.log(set.size); // only count unique set value and than it give 3 size
+
+
+// iteration over the set
+
+let newSet = new Set(["JavaScript", "C", "C++", "Java"]);
+
+// for(let value of newSet){
+//   console.log(value); // give individual value
+// }
+
+// console.log(newSet); // give whole set
+
+newSet.forEach((value1,value2,wholeSet)=>{
+  console.log(`${value1} : ${value2} `);
+})
+
+
+Map – is a collection of keyed values.
+
+Methods and properties:
+
+new Map([iterable]) – creates the map, with optional iterable (e.g. array) of [key,value] pairs for initialization.
+map.set(key, value) – stores the value by the key, returns the map itself.
+map.get(key) – returns the value by the key, undefined if key doesn’t exist in map.
+map.has(key) – returns true if the key exists, false otherwise.
+map.delete(key) – removes the element by the key, returns true if key existed at the moment of the call, otherwise false.
+map.clear() – removes everything from the map.
+map.size – returns the current element count.
+The differences from a regular Object:
+
+Any keys, objects can be keys.
+Additional convenient methods, the size property.
+Set – is a collection of unique values.
+
+Methods and properties:
+
+new Set([iterable]) – creates the set, with optional iterable (e.g. array) of values for initialization.
+set.add(value) – adds a value (does nothing if value exists), returns the set itself.
+set.delete(value) – removes the value, returns true if value existed at the moment of the call, otherwise false.
+set.has(value) – returns true if the value exists in the set, otherwise false.
+set.clear() – removes everything from the set.
+set.size – is the elements count.
+Iteration over Map and Set is always in the insertion order, so we can’t say that these collections are unordered, but we can’t reorder elements or directly get an element by its number.
+*/
+
+/* ==== task of map and set ==========
+
+
+
+Create a function unique(arr) that should return an array with unique items of arr.
+
+For instance:
+
+function unique(arr) {
+// code
+}
+
+let values = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+alert( unique(values) ); // Hare, Krishna, :-O
+ans:-
+// function unique(arr) {
+//   return Array.from(new Set(arr))
+// }
+
+// let values = [
+//   "Hare",
+//   "Krishna",
+//   "Hare",
+//   "Krishna",
+//   "Krishna",
+//   "Krishna",
+//   "Hare",
+//   "Hare",
+//   ":-O",
+// ];
+
+// console.log(unique(values));
+
+
+*/
+
+/* ======== WeakMap  and WeekSet
+--- pandding 
+[1] link - https://javascript.info/weakmap-weakset 
+[2] link - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+
+from chatGPT:-
+`WeakMap` and `WeakSet` are specialized collections in JavaScript, and while they might not be used as frequently as other data structures, they do serve specific purposes and can be important in certain scenarios. Let's discuss each one:
+
+1. **WeakMap:**
+   - **Use Case:** WeakMaps are often used when you want to associate data with objects in a way that doesn't prevent those objects from being garbage collected when they are no longer in use.
+   - **Key Characteristics:**
+     - Keys in a WeakMap must be objects.
+     - Values can be any data type.
+     - The entries in a WeakMap do not prevent the referenced objects from being garbage collected.
+     - WeakMaps are not enumerable, meaning you cannot iterate over their entries.
+   - **Common Use:** Storing private data associated with objects, where the private data should not prevent the objects from being garbage collected.
+
+   ```javascript
+   let weakMap = new WeakMap();
+
+   let obj1 = {};
+   let obj2 = {};
+
+   weakMap.set(obj1, "Private Data for obj1");
+   weakMap.set(obj2, "Private Data for obj2");
+   ```
+
+2. **WeakSet:**
+   - **Use Case:** WeakSets are used to store a collection of unique objects. Like WeakMaps, they allow objects to be garbage collected if there are no other references to them.
+   - **Key Characteristics:**
+     - WeakSets can only contain objects (primitive values are not allowed).
+     - The entries in a WeakSet do not prevent the referenced objects from being garbage collected.
+     - WeakSets do not have methods for iterating over their entries.
+   - **Common Use:** Managing a collection of objects where the membership of the objects in the collection should not prevent them from being garbage collected.
+
+   ```javascript
+   let weakSet = new WeakSet();
+
+   let obj1 = {};
+   let obj2 = {};
+
+   weakSet.add(obj1);
+   weakSet.add(obj2);
+   ```
+
+**Important Considerations:**
+- While `WeakMap` and `WeakSet` have specific use cases, they might not be needed in every application. In many scenarios, regular `Map` and `Set` objects are sufficient.
+- The use of weak collections is often tied to scenarios where you need to manage memory more explicitly, such as in certain types of memory-sensitive applications or frameworks.
+
+In summary, whether `WeakMap` and `WeakSet` are important depends on the specific requirements and constraints of your application. They provide solutions to certain challenges related to memory management and object references, but their usage may not be necessary in every scenario.
+*/
+
+/* key , values, entries
+// let obj = {
+//   Name: "JavaScript",
+//   Age: 28,
+//   Dob: 1995,
+// };
+
+// // console.log(Object.keys(obj));
+// // console.log(Object.values(obj));
+// // console.log(Object.entries(obj));
+
+// // loop on values 
+
+// for(let value of Object.values(obj)){
+//   console.log(value);
+// }
+
+
+
+There is a salaries object with arbitrary number of salaries.
+
+Write the function sumSalaries(salaries) that returns the sum of all salaries using Object.values and the for..of loop.
+
+If salaries is empty, then the result must be 0.
+
+For instance:
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+alert( sumSalaries(salaries) ); // 650
+
+let salaries = {
+  John: 100,
+  Pete: 300,
+  Mary: 250,
+};
+
+function sumSalaries(salaries) {
+  let sum = 0;
+
+  for (let values of Object.values(salaries)) {
+    if (!isNaN(values) || values == "") {
+      sum += values;
+    }
+  }
+  return sum;
+}
+
+console.log(sumSalaries(salaries));
+
+Write a function count(obj) that returns the number of properties in the object:
+
+let user = {
+  name: 'John',
+  age: 30
+};
+
+alert( count(user) ); // 2
+
+let user = {
+  name: 'John',
+  age: 30
+};
+
+function count(obj){
+  return Object.keys(obj).length  
+}
+
+
+*/
+
+/*  Destructuring 
+
+// =--=-=-=-=-=-=-=-=-=-=-=-=-- arya destructuring ======================= 
+
+// let arr = ["David", "Warner"];
+
+// let [fname, lname] = arr;
+
+// console.log(fname);
+// console.log(lname);
+
+
+// an other exmaple 
+
+// let [fname,lname] = "David Warner".split(" ");
+// console.log(fname);
+// console.log(lname);
+
+// let [fname, , age] = ["JavaScript", 1995, 28]; // in this case only name and age destructur and Bod jus ignore
+
+// console.log(fname);
+// console.log(age);
+
+// let user = {};
+// 
+// [user.name,user.surname]= "harry bhai ".split(" ");
+
+// console.log(user.name);
+// console.log(user.surname);
+
+
+let obj = {
+  name: "JavaScript",
+  age: 28,
+  dob: 1995,
+};
+
+
+for(let [key,value] of Object.entries(obj)){
+  console.log(`${key} : ${value}`);
+}
+
+
+// with map
+
+let jsMap = new Map([
+  ["name", "JavaScript"],
+  ["age", 28],
+]);
+// console.log(jsMap);
+
+for(let [key,val] of jsMap){
+  console.log(`${key} : ${val}`);
+}
+
+//  swap variable using Destructuring
+
+let num = 45;
+let num2 = 55;
+
+[num, num2] = [num2, num];
+
+console.log(` first number ${num} and second number ${num2}`);
+
+------------------------- ... rest oprator --------
+let [greet,name,...rest] = ["Hello","JavaScript","Js is good"];
+
+console.log(rest);
+console.log(rest.length);
+
+******************** and more  =========
+
+// default value
+// let [fname,laname] = [];
+
+// console.log(fname);
+// console.log(laname); // both  return undefined
+
+let [fname = "David", laname = "Mark"] = ["harry"];
+// let [fname = "David", laname = "Mark"] = [];
+// this above are the default values if we provide than it accept it other wise not
+console.log(fname);
+console.log(laname);
+
+=-=-=-=-==-=-=-=-=-=-= object destructring =-=-=-=-=-=-=-==-=-=-=
+
+// let obj = {
+//   name: "JavaScript",
+//   age: 28,
+//   birth: 1995,
+// };
+
+// let { name, age, birth } = obj;
+
+// console.log(` name is ${name} , age :${age} and birthday is ${birth} `);
+
+// order does't matter
+
+let obj = {
+  heigth: 123,
+  width: 123,
+  name: "ha ha ",
+};
+
+let { name, heigth, width } = obj;
+
+console.log(heigth);
+
+
+let options = {
+  title: "Menu",
+  width: 100,
+  height: 200
+};
+
+// { sourceProperty: targetVariable }
+let {width: w, height: h, title} = options;
+// writing width is too long lets short it
+
+console.log(w);
+
+// defualt values
+
+let obj = {
+  name: "JavaScript",
+};
+
+let { age = 28, dob = 1995 } = obj;
+console.log(age);
+
+let options = {
+  title: "Menu"
+};
+
+let {width: w = 100, height: h = 200, title} = options;
+// its too work
+
+let obj = {
+  name: "JavaScript",
+  age: 28,
+  dob: 1995,
+};
+
+let { name, ...rest } = obj;
+console.log(`name is ${name} age is ${rest.age} and birth is ${rest.dob}`);
+
+// nested destructuring
+let order = {
+  items: ["cake", "pizza"],
+  cock: true,
+  payment: {
+    type: "upi",
+    place: "shop",
+  },
+};
+
+let {
+  items: [item1, item2],
+  payment: { type, place },
+  buyerName = "JavaScript",
+} = order;
+
+console.log(
+  ` Buyer name is ${buyerName} and he buy ${item1} and ${item2} from ${place} and pay via ${type}`
+);
+
+
+Destructuring assignment allows for instantly mapping an object or array onto many variables.
+
+The full object syntax:
+
+let {prop : varName = default, ...rest} = object
+This means that property prop should go into the variable varName and, if no such property exists, then the default value should be used.
+
+Object properties that have no mapping are copied to the rest object.
+
+The full array syntax:
+
+let [item1 = default, item2, ...rest] = array
+The first item goes to item1; the second goes into item2, all the rest makes the array rest.
+
+It’s possible to extract data from nested arrays/objects, for that the left side must have the same structure as the right one.
+
+
+
+*/
+
+/* *********************  Date and Time ********
+
+
+let today = new Date(); // display current date and time
+console.log(today);
+
+
+let print  1-jan-1970
+let oldestDate = new Date(0);
+
+console.log(oldestDate);
+
+let Jan02_1970 = new Date(24 * 3600 * 1000);
+let Dec31_1969 = new Date(-24 * 3600 * 1000);
+
+new Date(year, month, date, hours, minutes, seconds, ms)
+Create the date with the given components in the local time zone. Only the first two arguments are obligatory.
+
+The year should have 4 digits. For compatibility, 2 digits are also accepted and considered 19xx, e.g. 98 is the same as 1998 here, but always using 4 digits is strongly encouraged.
+The month count starts with 0 (Jan), up to 11 (Dec).
+The date parameter is actually the day of month, if absent then 1 is assumed.
+If hours/minutes/seconds/ms is absent, they are assumed to be equal 0.
+
+// get date , month , time and etc.
+
+let time = new Date();
+
+// console.log(time.getDate()); // return today date 
+// console.log(time.getDay()); // return day of a week
+// console.log(time.getFullYear()); // return year
+// console.log(time.getHours());  // return hour time in 24 - hour format
+// console.log(time.getMonth()); // return month index jan - 0 and dec-11
+// console.log(time.getTime()); // return time in milisecond from 1st jan 1970
+// console.log(time.getTimezoneOffset()); // return time b/w utc and local computer in minuets
+ 
+// and many more
+
+// set the date
+
+let time = new Date();
+
+console.log(time.setDate(2));
+
+
+same way we can set The following methods allow to set date/time components:
+
+setFullYear(year, [month], [date])
+setMonth(month, [date])
+setDate(date)
+setHours(hour, [min], [sec], [ms])
+setMinutes(min, [sec], [ms])
+setSeconds(sec, [ms])
+setMilliseconds(ms)
+setTime(milliseconds)
+
+let time = new Date(2025,1,29).toDateString();
+
+// in 2025 a feb month have only 28 day so it auto set next month and date
+
+console.log(time);
+
+Date and time in JavaScript are represented with the Date object. We can’t create “only date” or “only time”: Date objects always carry both.
+Months are counted from zero (yes, January is a zero month).
+Days of week in getDay() are also counted from zero (that’s Sunday).
+Date auto-corrects itself when out-of-range components are set. Good for adding/subtracting days/months/hours.
+Dates can be subtracted, giving their difference in milliseconds. That’s because a Date becomes the timestamp when converted to a number.
+Use Date.now() to get the current timestamp fast.
+Note that unlike many other systems, timestamps in JavaScript are in milliseconds, not in seconds.
+
+
+tasks:-
+
+
+1. Create a Date object for the date: Feb 20, 2012, 3:12am. The time zone is local.:-
+
+let time = new Date(2012, 1, 20, 3, 12);
+console.log(time);
+
+European countries have days of week starting with Monday (number 1), then Tuesday (number 2) and till Sunday (number 7). Write a function getLocalDay(date) that returns the “European” day of week for date.
+
+let date = new Date(2012, 0, 3);  // 3 Jan 2012
+alert( getLocalDay(date) );       // tuesday, should show 2
+
+let date = new Date(2012, 0, 3);
+function getLocalDay(date) {
+  let day = date.getDay();
+  if (day === 0) {
+    day == 7;
+  }
+  return day;
+}
+
+console.log(getLocalDay(date));
+*/
+
 
