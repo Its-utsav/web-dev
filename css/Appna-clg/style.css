@@ -1,0 +1,42 @@
+/* * {
+  font-family: "Times New Roman", Times, serif;
+}
+.heading {
+  text-align: center;
+  text-transform: capitalize;
+}
+#outer {
+  font-size: 25px;
+}
+#inner {
+    font-size: 10px;
+} */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+/* .round{
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    border-radius: 50%;
+} */
+.nav {
+  background-color: #0f1111;
+  font-size: 25px;
+  height: 60px;
+}
+.logo {
+  color: #f08804;
+}
+a {
+  margin-right: 200px;
+  text-decoration: none;
+  color: white;
+}
+.btn {
+  background-color: #f08804;
+  border: none;
+  color: white;
+}
