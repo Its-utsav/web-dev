@@ -22,14 +22,14 @@ async function checkWeather(city) {
   // console.log(typeof tempInKel);
 
   function kelToCel(temp) {
-    return temp-273.15;
+    return temp - 273.15;
   }
 
   const tempInCel = kelToCel(tempInKel);
   document.querySelector(".city").innerHTML = data.name;
-  document.querySelector(".temp").innerHTML = tempInCel.toFixed(2);
-  document.querySelector(".wind").innerHTML = data.wind.speed;
-  document.querySelector(".humidity").innerHTML = data.main.humidity;
+  document.querySelector(".temp").innerHTML = tempInCel.toFixed(2) + "&deg;F";
+  document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+  document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
 }
 
 searchBtn.addEventListener("click", (e) => {
