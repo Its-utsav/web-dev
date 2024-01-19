@@ -1,5 +1,8 @@
 @import url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2');
-
+html,body{
+    height: 100vh;
+    width: 100vw;
+}
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +15,12 @@
     background-position: center;
     background-size: cover;
     height: 700px;
-    /* background: #00000066; */
+
     box-shadow: inset 0px 0px 270px 100px #161212;
 }
 
 .navbar {
-    /* background-color: green; */
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,7 +29,7 @@
 
 .nav-logo img {
     width: 148px;
-    /* position: relative; */
+   
     margin: 1rem;
     margin-left: 1.5rem;
 }
@@ -57,7 +60,7 @@
 /* main */
 
 .main-content {
-    /* background-color: rgb(38, 38, 13); */
+    
     margin: auto;
     margin-top: 10rem;
     width: auto;
@@ -86,11 +89,11 @@
 }
 
 .input-area {
-    /* background-color: rgb(52, 52, 56); */
+   
     display: flex;
     flex-direction: row;
     height: 56px;
-    /* width: 890px; */
+   
 }
 
 
@@ -103,7 +106,7 @@ form .entre-email {
     line-height: 56px;
     color: inherit;
     padding-left: 1.5rem;
-    /* padding: 1.5rem 1rem 0.5rem; */
+    
 }
 
 
@@ -136,7 +139,8 @@ form .entre-email {
     justify-content: space-between;
     height: 463px;
 }
-.left{
+
+.area1 .left {
     margin-left: 1rem;
 }
 
@@ -150,32 +154,213 @@ form .entre-email {
     font-weight: 200;
 }
 
-.right{
-    /* background-image: url('https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png'); */
-    /* background-position: center; */
-    /* background-size: cover; */
+.area1 .right {
+  
     height: 450px;
     width: 640px;
-    /* background-color: red; */
-    /* border: 2px solid red; */
+ 
 }
 
-.right img{
-     background-position: center;
+.right img {
+    background-position: center;
     background-size: cover;
     height: 450px;
     width: 640px;
 }
-.tv{
+
+.tv {
     position: relative;
 }
 
-.tv img{
+.tv img {
     position: relative;
     z-index: 1000;
+    width: 100%;
 }
-.tv-video video{
+
+.tv-video video {
     position: absolute;
     top: 20%;
     left: 12%;
+    width: 75%;
+}
+
+.mobile img {
+    /* border: 2px solid red; */
+    height: 410px;
+
+}
+
+.mobile {
+    position: relative;
+}
+
+.area2 .right {
+    margin-right: 1rem;
+}
+
+.box {
+    background-color: #000000;
+    height: 80px;
+    position: absolute;
+    top: 75%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 6.8rem;
+    border: 2px solid rgb(42, 41, 41);
+    border-radius: 5px;
+}
+
+.mobo-txt2 {
+    color: #0071EB;
+}
+
+.str-things img {
+    height: 64px;
+    /* width: 45px; */
+    margin-left: 0.4rem;
+}
+
+.download-icon {
+    background-image: url("https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif");
+    background-position: center;
+    background-size: cover;
+    margin-right: 0.3rem;
+    height: 48px;
+    width: 48px;
+}
+
+.area3 .left {
+    margin-left: 1rem;
+}
+
+.com-scr {
+    position: relative;
+}
+
+.com-scr img {
+    position: relative;
+    z-index: 1000;
+}
+
+.com-video video {
+    position: absolute;
+    top: 7%;
+    left: 18%;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    max-width: 63%;
+    max-height: 47%;
+}
+
+.area5 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.que {
+    width: 80%;
+
+}
+
+.frque {
+    font-size: 2.5rem;
+    text-align: center;
+    
+}
+
+
+
+.que-list li {
+    list-style: none;
+ 
+    background-color: #2d2d2d; 
+}
+
+.que-box {
+    padding: 1rem;
+    cursor: pointer;
+    
+}
+
+.que-list li .que-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+.list-opt{
+    margin-top: 1rem;
+}
+
+.icon {
+    color: white;
+    margin-right: 1rem;
+}
+
+.ans-box {
+    background-color: inherit;
+    display: none;
+    padding: 1rem 0.4rem;
+    border-top: 1px solid white;
+    
+}
+
+.ans{
+    background-color: white;
+}
+
+
+.area6 {
+    border-top: 10px solid #232323;
+    background-color: #000000;
+    color: rgba(255, 255, 255, 0.7);
+  
+    height: 463px;
+}
+
+.call-link {
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.call {
+    margin: 2.5rem 1rem;
+}
+
+.foot-links ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.foot-links ul li {
+    margin: 1rem;
+    list-style-type: none;
+    width: 200px;
+
+}
+
+.foot-links ul li a {
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+
+.foot-lang-sel {
+    margin: 1rem;
+    border: 2px solid red;
+    height: auto;
+    width: auto;
+    padding: 1rem;
+}
+
+.location{
+    margin-left:1rem ;
 }
