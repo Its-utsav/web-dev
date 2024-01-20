@@ -22,7 +22,7 @@ allBox.forEach((box) => {
   }
   function hide() {
     console.log("nono");
-    ans.style.display = "none";
+    ans.style.display = "block";
     icon.innerHTML = `<i class="fa-solid fa-plus que-icon"></i>`
     flag = false;
   }
