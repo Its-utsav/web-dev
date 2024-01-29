@@ -386,7 +386,7 @@ console.log(k);
 // modules  - import export
 //
 /*  promises - async js
-// * try and catch - async js
+
 in real world, when we need to do some task in future and we have no 100% sureity that
 we can do some task in future may be we can't do that in future
 // e.g. on 10 feb i need go college  , i am go college and attend lectures (promis resolve ),but due to illniness i am unable to go college (promis rejected), 
@@ -508,11 +508,6 @@ function getDataWithPromies() {
 
 getDataWithPromies();
 
-
-
-*/
-// https://randomuser.me/api/
-
 async function getDataWithAsync() {
   let raw = await fetch("https://randomuser.me/api/"); // this task is async task so wait for to fetch data
   // let data =  raw.json(); // this dependece on async task but execute imidiatly // so we must made this task also async
@@ -521,3 +516,30 @@ async function getDataWithAsync() {
 }
 
 getDataWithAsync();
+
+*/
+// https://randomuser.me/api/
+
+/* * try and catch - async js
+// js is a interpreter based language so it run code line by line after detect error it stop exection code when
+// errot found , but when we need to run code after that error without try and catch so it is not posianle
+
+// without try and catch
+
+// console.log("Hey 1");
+// console.log(Hey); // give error because hey variable not defined -- and stop execution
+// console.log("Hey 2"); // not execute
+
+//with try and catch
+
+console.log("Hey 1"); 
+try {
+  console.log(Hey); 
+} catch (err) {
+  console.log(err); // print that error but don't stop exection of program
+}
+console.log("Hey 2"); // this will print
+
+*/
+
+
