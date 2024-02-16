@@ -4,11 +4,31 @@ import "./App.css";
 // create a method that check that value should be 0 to 20 and stop clicking
 function App() {
   let [counter, setCounter] = useState(5);
-  let i = 1;
+
   const addValue = () => {
     // counter = counter + 1;
     // setCounter(counter);
-    setCounter(counter + 1);
+
+    // setCounter(counter + 1);
+
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+
+    // guwas the output for above 5 commented code
+    // it will not +5 becuase useState will send above 5 line into batch (aboce 5 line do same task)
+    // what if i nedd to write like above and plus by 5
+
+    // setCounter(counter + 5); // 1
+
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+
     // console.log("clicked ", i++, counter);
     checkValue(counter);
   };
@@ -20,8 +40,8 @@ function App() {
   };
 
   function checkValue(counter) {
-    if (counter == 0 || counter == 20) {
-      // return  alert("stop") 
+    if (counter < 0 || counter > 20) {
+      // alert("stop");
       return false;
     }
   }
@@ -36,12 +56,14 @@ function App() {
       <h2>Counter value : {counter}</h2>
 
       <div>
-        <button onClick={addValue} disabled={counter == 20}>
+        <button onClick={addValue} disabled={counter >= 20}>
           add value
         </button>
         <br />
         <br />
-        <button onClick={decValue} disabled={counter == 0}>dec value</button>
+        <button onClick={decValue} disabled={counter <= 0}>
+          dec value
+        </button>
       </div>
 
       <p> why i am here {counter}</p>
