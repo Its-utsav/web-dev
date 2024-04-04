@@ -5,7 +5,7 @@
 1. [what is react](#what-is-react)
 2. [what is components](#what-is-components)
 3. [JSX](#jsx)
-
+4. [props](#props)
 ## what is react
 
 - react is a JavaScript library for rendering small ui(user interface) like button,text ,images even render full complex page
@@ -147,4 +147,27 @@ export default function App() {
     </>
   );
 }
+```
+## props
+- react comoponents use props to communicate to each other, parent compononent can pass some info to child (might like html attribute even pass js value like array,object,function)
+- props are immutable , it can be dynamic (need to use state hook)
+
+_eg of props_
+
+```jsx
+export default function App(){
+   return (
+    <>
+      <h1>Hello</h1>
+      <img src="https://i.imgur.com/1bX5QH6.jpg" alt="" width={100} />
+    </>
+  );
+}
+```
+- here src, alt, width are props
+- react componenet take only one argument that is props
+```jsx 
+export default function App({name,age,gender}){
+  // content
+} 
 ```
