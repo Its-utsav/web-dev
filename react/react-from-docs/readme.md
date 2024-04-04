@@ -4,6 +4,7 @@
 
 1. [what is react](#what-is-react)
 2. [what is components](#what-is-components)
+3. [JSX](#jsx)
 
 ## what is react
 
@@ -23,61 +24,127 @@ export default function HelloWorld() {
 }
 ```
 
-_NOTE_ - react function name must start with capital letter but why ? ans => react treat *lower case* letters as **HTML** tags and *Upper case* letters as **custom react components** 
+_NOTE_ - react function name must start with capital letter but why ? ans => react treat _lower case_ letters as **HTML** tags and _Upper case_ letters as **custom react components**
 
 - now HelloWorld Function can be used many time in web page just writing with `</HelloWorld>` or `<HelloWorld> </HelloWorld>`
 
------------
+---
+
 _components defination can not be nested_
 **don't try below code it may raise error / bugs**
+
 ```jsx
-export default function App(){
+export default function App() {
   // parent componenet
   // dont do this
-  function Child(){
-  }
+  function Child() {}
 }
 ```
+
 **try this**
 
 ```jsx
-export default function App(){
- // comopnents defination
+export default function App() {
+  // comopnents defination
 }
-function Child(){
-//  comopnents defination
+function Child() {
+  //  comopnents defination
 }
 ```
+
 - the magic of components lies on reusability for this we can sperate the componenets in different file and use with `export` and `import`
 
-- two way to export 
+- two way to export
+
   1. default export
-  -  only Test component will be used 
+
+  - only Test component will be used
+
   ```jsx
-  export default function Test(){
+  export default function Test() {
     // jsx
   }
-  ``` 
+  ```
+
   2. named export
-  - muliple export possiable multiple use of component also possiable 
+
+  - muliple export possiable multiple use of component also possiable
+
   ```jsx
-  export function Lol(){
+  export function Lol() {
     //jsx
   }
 
-  export const Heh = ()=>{
+  export const Heh = () => {
     // jsx
-  }
-
+  };
   ```
+
   3. Mixed export (only react)
+
   - one defaule export and multiple named export
+
   ```jsx
-  export default function One(){
+  export default function One() {
     // jsx
   }
 
-  export const Two = ()=>{
+  export const Two = () => {
     //jsx
-  }
+  };
   ```
+
+## JSX
+
+- jsx look like html markup but bit stricter and can display dynamic information.
+- react function/comopnent return jsx (javascript extenstion) that render
+- react render component(markup) and logic live together in same place .
+
+**rules**
+
+1. only one jsx can return
+   - for this wrap content inside
+   ```html
+   <div>
+     <!--content go here  -->
+   </div>
+   ```
+   or use react **fragment**
+   ```html
+   <>
+    <!--content go here  -->
+   </>
+   ```
+   - why
+     JSX looks like HTML, but under the hood it is transformed into plain JavaScript objects. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.
+2. need to close all tags
+   - even self closing tag `<img/>`
+3. use camelCase
+   - due to javascript reversed keywords
+
+- to use dynmaic value use `{}` even for attribute
+  _eg_
+
+```jsx
+export default function App() {
+  // example of dynamic content
+  const name = "UTSAV";
+  let age = 17;
+  const bornYear = 2006;
+  const gender = "male";
+  const google = "https://www.google.com";
+  return (
+    <>
+      <h1>Hello react</h1>
+      <p>
+        {name} is {age} year old and {gender == "male" ? "his" : "her"} born
+        year is {bornYear}.
+      </p>
+      <p style={{ color: "red" }}>text in red</p>
+      <a href={google} target="_blank">
+        visit google
+      </a>
+    </>
+  );
+}
+```
