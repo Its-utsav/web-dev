@@ -6,6 +6,7 @@
 2. [what is components](#what-is-components)
 3. [JSX](#jsx)
 4. [props](#props)
+4. [render list](#render-list)
 ## what is react
 
 - react is a JavaScript library for rendering small ui(user interface) like button,text ,images even render full complex page
@@ -171,3 +172,8 @@ export default function App({name,age,gender}){
   // content
 } 
 ```
+## render-list
+- use of javascript array method like `map()` and `filter()`
+- for rendering list two thing are important 
+1. use array method like `map()` ,`filter()` etc
+2. every list must have unique key (most of time index) to prevent from o much rendering
