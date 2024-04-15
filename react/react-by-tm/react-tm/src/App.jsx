@@ -1,23 +1,28 @@
+import React from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import HomeCard from './components/HomeCard'
+import { JobsList } from './components/JobsList'
 
-import './App.css'
-
-function App() {
-  const name = "utsav";
-  const nameList = ['utsav', 'raj', 'rahul', 'sam', 'harry']
-  let isLogedin = true;
-
+export const App = () => {
   return (
     <>
-      <div className='bg-slate-600 text-white'>
-        <h1 className="bg-red-200 text-black ">Hello to React from {name}</h1>
-        <ul>
-          {nameList.map((name, index) => <li key={index} className="mt-2 p-2 m-0.5 bg-red-500 cursor-pointer">{name}</li>)}
-        </ul>
-        {isLogedin ? <h2> hello welcome back </h2> : <h2>First time visit ?</h2>}
-        {isLogedin && <h2>Hi user</h2>}
-      </div>
+      <Navbar />
+      <Hero title={"Become a React Dev"} subtitle={"find a react job that fits yor skills and needs "} />
+      <HomeCard/>
+      <JobsList/>    
+
+    <section className="m-auto max-w-lg my-10 px-6">
+      <a
+        href="jobs.html"
+        className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+        >View All Jobs</a
+      >
+    </section>
+
+    {/* <script src="js/main.js"></script> */}
+
+
     </>
   )
 }
-
-export default App
