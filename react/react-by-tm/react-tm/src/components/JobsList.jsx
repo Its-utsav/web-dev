@@ -11,7 +11,7 @@ export const JobsList = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {jobs.map((job, index) => {
-                        return <JobPost key={index} job={job} />
+                        return <JobPost key={job.id} job={job} />
                     })}
                 </div>
             </div>
