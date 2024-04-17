@@ -63,8 +63,6 @@ menu.addEventListener("click", () => {
 });
 
 
-console.log(window.innerWidth)
-
-if(window.innerWidth > 808){
-  menuOpenIcon.remove()
-}
+// if(window.innerWidth > 808){
+//   menuOpenIcon.remove()
+// }
