@@ -143,9 +143,21 @@ function Counter() {
 
 function a() {
   let x = 90,
-    z = 30; // not used of z so z will be grabage collecetd by smart javascript grabage collecteor 
+    z = 30; // not used of z so z will be grabage collecetd by smart javascript grabage collecteor
   return function b() {
-    console.log(x); 
+    console.log(x);
   };
 }
-a()()
+// a()()
+
+a();
+
+function a() {
+  // function body
+}
+x(); // wont work
+let x = function () {
+  // function body
+};
+
+// x(); // here work
