@@ -141,23 +141,48 @@ function Counter() {
 // count1.incrementCount() // 4
 // count1.decrementCount() // 3
 
-function a() {
-  let x = 90,
-    z = 30; // not used of z so z will be grabage collecetd by smart javascript grabage collecteor
-  return function b() {
-    console.log(x);
-  };
-}
+// function a() {
+//   let x = 90,
+//     z = 30; // not used of z so z will be grabage collecetd by smart javascript grabage collecteor
+//   return function b() {
+//     console.log(x);
+//   };
+// }
 // a()()
 
-a();
+// a();
 
-function a() {
-  // function body
-}
-x(); // wont work
-let x = function () {
-  // function body
-};
+// function a() {
+//   // function body
+// }
+// // x(); // wont work
+// let x = function () {
+//   // function body
+// };
 
 // x(); // here work
+
+// setTimeout(() => {
+//   console.log("From timer after 5 second");
+// }, 5000);
+
+// function x(y) {
+//   console.log("X called");
+//   y();
+// }
+
+// x(function y() {
+//   console.log("Y is called");
+// });
+// let i = 1; // not a good idea anyone can modify this i
+// document.getElementById("btn").addEventListener("click", function xyz() {
+//   console.log("Button cliked", i++);
+// });
+
+function btnClick() {
+  let count = 1;
+  document.getElementById("btn").addEventListener("click", function xyz() {
+    console.log("Button cliked", count++); // closuer
+  });
+}
+btnClick();
