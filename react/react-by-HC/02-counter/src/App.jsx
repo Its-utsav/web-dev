@@ -8,9 +8,31 @@ function App() {
 
   let addValue = () => {
     // setCounter(counter + 1);
-    setCounter(
-      preCounter => (preCounter < 20 ? preCounter + 1 : preCounter)
-    ); // chatGPT
+    // interview question is counter value will increase by 5 ? 
+    // - absolutely f* not 
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1);
+    // setCounter(counter + 1); // wont work
+    // why useState() method aka HOOK update state or vraible in batches
+    // that why counter varible update by 1 not by 5 or any number
+
+    // setCounter(preCounter => preCounter + 1);
+    // setCounter(preCounter => preCounter + 1);
+    // setCounter(preCounter => preCounter + 1);
+    // setCounter(preCounter => preCounter + 1);
+    // setCounter(preCounter => preCounter + 1);
+    setCounter(preCounter => (preCounter < 20 ? preCounter + 1 : preCounter ));
+    setCounter(preCounter => (preCounter < 20 ? preCounter + 1 : preCounter ));
+    setCounter(preCounter => (preCounter < 20 ? preCounter + 1 : preCounter ));
+    setCounter(preCounter => (preCounter < 20 ? preCounter + 1 : preCounter ));
+    setCounter(preCounter => (preCounter < 20 ? preCounter + 1 : preCounter )); 
+    // answer for the question 
+   
+
+    // setCounter(
+    //   preCounter => (preCounter < 20 ? preCounter + 1 : preCounter)
+    // ); // chatGPT
   }
 
   let decValue = () => {
@@ -41,8 +63,8 @@ function App() {
       </span>
 
 
-      <button
-        onClick={addValue}
+      <button style={{ margin: "2rem" }}
+        onClick={addValue }
         title='increase to the counter'
         // disabled={counter < 20 ? false : true} //  with my thinking
         // disabled={counter == 20} // gemini
