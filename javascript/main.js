@@ -7,7 +7,7 @@
 
 // console.log(Number.isNaN(n)); // check whether NotaNumber or not
 
-// console.log(Number.isSafeInteger(9007199254740991)); // check whether number is max safe or not 
+// console.log(Number.isSafeInteger(9007199254740991)); // check whether number is max safe or not
 // console.log(Number.MAX_SAFE_INTEGER); // maximux safe number
 
 // console.log(Number.MAX_SAFE_INTEGER);
@@ -16,7 +16,7 @@
 // console.log(Number.MIN_VALUE);
 // Number.parseInt -. convert into int
 // Number.parseFloat -  convert into float integer
-let newNum  = 100000;
+let newNum = 100000;
 // console.log(newNum.toLocaleString('IN'))
 
 // let numObj = new Number(120);
@@ -24,8 +24,34 @@ let newNum  = 100000;
 
 // console.log(num);
 
-// arithmetic and bitwise 
-// +, - ,* ,/ , % , & , | , ! , ^ , << , >> , 
-
+// arithmetic and bitwise
+// +, - ,* ,/ , % , & , | , ! , ^ , << , >> ,
 
 // concat, charAt, substring, slice, indexOf, lastIndexOf, toUpperCase, toLowerCase, trim,
+
+// ------------ HC
+
+// let name;
+
+// console.log(name);
+
+// ("use strict");
+
+// var ls = "lol";
+
+// console.log(ls);
+
+let name = "js";
+
+// console.log(typeof name);
+
+let age = 18;
+
+// console.log(typeof age);
+
+let arr = [1,2,3];
+
+// console.log(typeof arr);
+
+console.log(typeof null);
+console.log(typeof undefined);
