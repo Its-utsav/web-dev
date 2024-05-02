@@ -4,7 +4,7 @@
 
 1. [Variable](#variables)
 2. [DataTypes](#datatype)
-3. [Type conversion And Opearions](#type-conversion-and-opearions)
+3. [Type conversion And Opeartions](#type-conversion-and-opeartions)
 
 ## Variables
 
@@ -164,11 +164,11 @@ function abc() {
 - stack memory - we get a copy of a variable 
 - heap memory - we get reference of variable (modification apply in even in original)
 - some graphical represntion
-![image of stack and heap memory](img\image.png)
+![image of stack and heap memory](https://media.discordapp.net/attachments/1205479570900521003/1235546985927540766/stack-heap.png?ex=6634c44c&is=663372cc&hm=d5b5f78416ccc921c8bcd7c4745e3a35245ddea645173dff0ede242f69d139cd&=&format=webp&quality=lossless&width=1431&height=580)
 
 
 
-## Type conversion And Opearions
+## Type conversion And Opeartions
 
 - In js type conversion is very nightmare topic but not a impossible
 - Js is dynamic type language not a static langauge means we don't need to define type of the varibale
