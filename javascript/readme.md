@@ -5,6 +5,8 @@
 1. [Variable](#variables)
 2. [DataTypes](#datatype)
 3. [Type conversion And Opeartions](#type-conversion-and-opeartions)
+4. [Strings](#strings)
+5. [Number and Match Obj](#number-and-math-object)
 
 ## Variables
 
@@ -159,14 +161,13 @@ function abc() {
 ```
 
 ---
-- two types of memory 
+
+- two types of memory
 - Stack (Primitive) , Heap (Non - primitive )
-- stack memory - we get a copy of a variable 
+- stack memory - we get a copy of a variable
 - heap memory - we get reference of variable (modification apply in even in original)
 - some graphical represntion
-![image of stack and heap memory](https://media.discordapp.net/attachments/1205479570900521003/1235546985927540766/stack-heap.png?ex=6634c44c&is=663372cc&hm=d5b5f78416ccc921c8bcd7c4745e3a35245ddea645173dff0ede242f69d139cd&=&format=webp&quality=lossless&width=1431&height=580)
-
-
+  ![image of stack and heap memory](https://media.discordapp.net/attachments/1205479570900521003/1235546985927540766/stack-heap.png?ex=6634c44c&is=663372cc&hm=d5b5f78416ccc921c8bcd7c4745e3a35245ddea645173dff0ede242f69d139cd&=&format=webp&quality=lossless&width=1431&height=580)
 
 ## Type conversion And Opeartions
 
@@ -274,6 +275,7 @@ console.log(typeof strNum);
   - `NaN` stand for Not a Number
   - it check given parameter is **not a number** or not
   - its type is `number`
+  - [go on numbers to read about NaN](#number-and-math-object)
   ```js
   console.log(isNaN("1")); // true due to type conversion
   console.log(isNaN("LOL")); // false
@@ -319,4 +321,136 @@ console.log(1 === 1); // true
 console.log(1 === "1"); // false
 ```
 
+## Strings
 
+- sequnces of characarters
+- string can be represent as character of an array
+- `"hi".__proto__` in `console`
+
+```js
+let name = "Utsav";
+
+console.log("Hello From " + name); // old way to concation
+console.log(`Hello From ${name}`); // new way
+console.log(name[0]); // only U will print
+console.log(name.length); // 5 print the length of a string
+
+let chai = "green";
+console.log(chai.__proto__); // GOD
+console.log(chai.toUpperCase()); // convert into upper case
+console.log(chai.toLowerCase()); // convert into upper case
+console.log(chai.charAt(1)); // r it print character at any index
+
+console.log(chai.charAt(chai.length + 1)); // if index is greater than string then " " will return
+console.log(chai.charCodeAt(2)); // we get asccii value of any index
+
+console.log(chai.indexOf("n")); // give index of sub string
+
+const subChai = chai.substring(0, 2); // ge start from g and end at e
+const newSubChai = chai.slice(0, 2); // same as above
+const negSubChai = chai.slice(-4, 3); //
+// G R E E N
+// 0 1 2 3 4
+
+// -4 -> start from end of the string 'r'
+// 3 -> start from the begining of the sting only 'e' due it last index will exclude
+
+console.log(negSubChai);
+
+let stringArr = chai.split(""); // string convertinto array as per spliter
+// we can optional give maxSplit (limit)
+
+console.log(stringArr);
+
+console.log(chai.search("g")); // this method serach charcter in string and return index
+// if charcater not found than it return -1
+
+console.log(chai.startsWith("l")); // this method check string start with sub string or not it return boolean value
+// same we have endsWith
+
+let str = "        utsav        ";
+
+console.log(str.trim()); // remove white space from start and end from the string
+// same we can rmove space from the only start and end
+
+let strX = "Hello World !!!";
+
+console.log(strX.replace("o", ")")); // replace only first occurences
+// for all replacement replaceAll() method
+
+let str = "my name is utsav";
+
+console.log(str.includes("mark")); // this method check that string contains substring or not
+```
+
+**Note** : this is just little bit overview of a string methods , and thier all diffrent methods aviliable in `JavaScript` for Differnt purpose [click here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) read about string methods
+
+## Number and Math Object
+
+- In js `123` and `3.14` treat as number not a sperate datatype like `c`, `c++` or any other language
+- Number in js are very straightforword. it has very few methods
+
+```js
+let num = 123; // normal variable decalraion
+
+let numWithNumber = Number(123); // using  number keyword 
+
+let numWithNewKewyword = new Number(123) // we create a number with number object with the help of new
+
+console.table([num,numWithNumber,numWithNewKewyword]) // all are same
+
+console.log(num.toString()); // now 123 convert into string so string method are can be apply
+
+console.log(num.toFixed(2)); // 123.00
+console.log(num.toFixed(3)); // 123.000
+
+let newNum = 3.14;
+console.log(newNum.toPrecision(1)); // 3
+console.log(newNum.toPrecision(2)); // 3.1
+console.log(newNum.toPrecision(3)); // 3.14 
+console.log(newNum.toPrecision(4)); // 3.140
+
+
+let ranchosFatherSalary = 25000000; // from 3 idiots 😂
+// we are unable to read it
+// js : dont wory
+console.log(ranchosFatherSalary.toLocaleString("en-in")); // slary convert into as per indian starndard
+
+let max_num = Number.MAX_SAFE_INTEGER;
+let min_num = Number.MIN_SAFE_INTEGER;
+console.log(max_num, min_num);
+// js can perform any operations on number between this numbers than it may create issue 
+// that why BigInt come
+
+```
+---- 
+- Math Object
+```js
+
+console.log((Math.abs(-4))); // only egetive to posive
+console.log(Math.round(4.5)); // as per normal standard
+console.log(Math.ceil(4.5)); // value up
+console.log(Math.floor(4.5)); // value maintain 4
+
+console.log(Math.pow(2, 3) === 2 ** 3); // true that means both are same
+
+console.log(Math.min(1,2,3,4,5,6,7,8,9,0)); // give minmum number
+console.log(Math.max(1,2,3,4,5,6,7,8,9,0)); // give maximum number
+
+
+
+// most important method
+
+// Math.random() it give random number between 0 and 1
+
+console.log(Math.random() * 10); // now value b/w 0 to 10
+console.log(Math.random() * 10 + 1); // now value b/w 1 to 10 
+
+
+let min = 10;
+
+let max = 100;
+
+console.log(Math.floor(Math.random() * (max - min + 1) + min));
+// now value always be 10 to 100
+```

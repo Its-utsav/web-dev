@@ -16,7 +16,7 @@
 // console.log(Number.MIN_VALUE);
 // Number.parseInt -. convert into int
 // Number.parseFloat -  convert into float integer
-let newNum = 100000;
+// let newNum = 100000;
 // console.log(newNum.toLocaleString('IN'))
 
 // let numObj = new Number(120);
@@ -161,7 +161,7 @@ let newNum = 100000;
 // let name = "Utsav";
 
 // let yName = name; // name value copy to yName
-// yName = "Harry"; // here we try to change the value of a yName 
+// yName = "Harry"; // here we try to change the value of a yName
 
 // console.log(yName); // harry
 // console.log(name); // utsav
@@ -171,6 +171,114 @@ let newNum = 100000;
 //     age : 17,
 // }
 // let userTwo = userOne ;
-// userTwo.name = "Harry" 
+// userTwo.name = "Harry"
 // console.log(userOne)
 // console.log(userTwo)
+
+// let name = "Utsav";
+
+// console.log("Hello From " + name); // old way to concation
+// console.log(`Hello From ${name}`); // new way
+
+let chai = "green";
+// console.log(chai.__proto__); // GOD
+// console.log(chai.toUpperCase()); // convert into upper case
+// console.log(chai.toLowerCase()); // convert into upper case
+// console.log(chai.charAt(1)); // r it print character at any index
+
+// console.log(chai.charAt(chai.length + 1)); // if index is greater than string then " " will return
+// console.log(chai.charCodeAt(2)); // we get asccii value of any index
+
+// console.log(chai.indexOf("n")); // give index of sub string
+
+const subChai = chai.substring(0, 2); // ge start from g and end at e
+const newSubChai = chai.slice(0, 2); // same as above
+const negSubChai = chai.slice(-4, 3); //
+// G R E E N
+// 0 1 2 3 4
+
+// -4 -> start from end of the string 'r'
+// 3 -> start from the begining of the sting only 'e' due it last index will exclude
+
+// console.log(negSubChai);
+
+let stringArr = chai.split(""); // string convertinto array as per spliter
+// we can optional give maxSplit (limit)
+
+// console.log(stringArr);
+
+// console.log(chai.search("g")); // this method serach charcter in string and return index
+// if charcater not found than it return -1
+
+// console.log(chai.startsWith("l")); // this method check string start with sub string or not it return boolean value
+// same we have endsWith
+
+// let str = "        utsav        ";
+
+// console.log(str.trim()); // remove white space from start and end from the string
+// // same we can rmove space from the only start and end
+
+// let strX = "Hello World !!!";
+
+// console.log(strX.replace("o", ")")); // replace only first occurences
+
+// let str = "my name is utsav";
+
+// console.log(str.includes("mark")); // this method check that string contains substring or not
+
+// ---- - Numbers
+
+let num = 123; // normal variable decalraion
+// console.log(num.__proto__);
+// let numWithNumber = Number(123); // using  number keyword
+
+// let numWithNewKewyword = new Number(123) // we create a number with number object with the help of new
+
+// console.table([num,numWithNumber,numWithNewKewyword]) // both are same
+
+// console.log(num.toString()); // now 123 convert into string so string method are can be apply
+
+// console.log(num.toFixed(2)); // 123.00
+// console.log(num.toFixed(3)); // 123.000
+
+// let newNum = 3.14;
+// console.log(newNum.toPrecision(1)); // 3
+// console.log(newNum.toPrecision(2)); // 3.1
+// console.log(newNum.toPrecision(3)); // 3.14
+// console.log(newNum.toPrecision(4)); // 3.140
+
+let ranchosFatherSalary = 25000000; // from 3 idiots 😂
+// bydefault it standard in us format
+// we are unable to read it
+// js : dont wory
+// console.log(ranchosFatherSalary.toLocaleString("en-in")); // salary convert into as per indian starndard
+
+// let max_num = Number.MAX_SAFE_INTEGER;
+// let min_num = Number.MIN_SAFE_INTEGER;
+// console.log(max_num, min_num);
+
+console.log(Math);
+
+// console.log((Math.abs(-4))); // only egetive to posive
+// console.log(Math.round(4.5)); // as per normal standard
+// console.log(Math.ceil(4.5)); // value up
+// console.log(Math.floor(4.5)); // value maintain 4
+
+// console.log(Math.pow(2, 3) === 2 ** 3); // true that means both are same
+
+// console.log(Math.min(1,2,3,4,5,6,7,8,9,0)); // give minmum number
+// console.log(Math.max(1,2,3,4,5,6,7,8,9,0)); // give maximu number
+
+// most important method
+
+// Math.random() it give random number between 0 and 1
+
+// console.log(Math.random() * 10); // now value b/w 0 to 10
+// console.log(Math.random() * 10 + 1); // now value b/w 1 to 10
+
+let min = 10;
+
+let max = 100;
+
+console.log(Math.floor(Math.random() * (max - min + 1) + min));
+// now value always be 10 to 100
