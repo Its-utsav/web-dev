@@ -7,6 +7,8 @@
 3. [Type conversion And Opeartions](#type-conversion-and-opeartions)
 4. [Strings](#strings)
 5. [Number and Match Obj](#number-and-math-object)
+6. [Date](#date)
+7. [Array](#array)
 
 ## Variables
 
@@ -393,11 +395,11 @@ console.log(str.includes("mark")); // this method check that string contains sub
 ```js
 let num = 123; // normal variable decalraion
 
-let numWithNumber = Number(123); // using  number keyword 
+let numWithNumber = Number(123); // using  number keyword
 
-let numWithNewKewyword = new Number(123) // we create a number with number object with the help of new
+let numWithNewKewyword = new Number(123); // we create a number with number object with the help of new
 
-console.table([num,numWithNumber,numWithNewKewyword]) // all are same
+console.table([num, numWithNumber, numWithNewKewyword]); // all are same
 
 console.log(num.toString()); // now 123 convert into string so string method are can be apply
 
@@ -407,9 +409,8 @@ console.log(num.toFixed(3)); // 123.000
 let newNum = 3.14;
 console.log(newNum.toPrecision(1)); // 3
 console.log(newNum.toPrecision(2)); // 3.1
-console.log(newNum.toPrecision(3)); // 3.14 
+console.log(newNum.toPrecision(3)); // 3.14
 console.log(newNum.toPrecision(4)); // 3.140
-
 
 let ranchosFatherSalary = 25000000; // from 3 idiots 😂
 // we are unable to read it
@@ -419,33 +420,31 @@ console.log(ranchosFatherSalary.toLocaleString("en-in")); // slary convert into 
 let max_num = Number.MAX_SAFE_INTEGER;
 let min_num = Number.MIN_SAFE_INTEGER;
 console.log(max_num, min_num);
-// js can perform any operations on number between this numbers than it may create issue 
+// js can perform any operations on number between this numbers than it may create issue
 // that why BigInt come
-
 ```
----- 
-- Math Object
-```js
 
-console.log((Math.abs(-4))); // only egetive to posive
+---
+
+- Math Object
+
+```js
+console.log(Math.abs(-4)); // only egetive to posive
 console.log(Math.round(4.5)); // as per normal standard
 console.log(Math.ceil(4.5)); // value up
 console.log(Math.floor(4.5)); // value maintain 4
 
 console.log(Math.pow(2, 3) === 2 ** 3); // true that means both are same
 
-console.log(Math.min(1,2,3,4,5,6,7,8,9,0)); // give minmum number
-console.log(Math.max(1,2,3,4,5,6,7,8,9,0)); // give maximum number
-
-
+console.log(Math.min(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)); // give minmum number
+console.log(Math.max(1, 2, 3, 4, 5, 6, 7, 8, 9, 0)); // give maximum number
 
 // most important method
 
 // Math.random() it give random number between 0 and 1
 
 console.log(Math.random() * 10); // now value b/w 0 to 10
-console.log(Math.random() * 10 + 1); // now value b/w 1 to 10 
-
+console.log(Math.random() * 10 + 1); // now value b/w 1 to 10
 
 let min = 10;
 
@@ -453,4 +452,124 @@ let max = 100;
 
 console.log(Math.floor(Math.random() * (max - min + 1) + min));
 // now value always be 10 to 100
+```
+
+## Date
+
+- Dates 🫣
+- JavaScript `Date` objects represent a single moment in time in a platform-independent format
+- js date start from mid night from 1 jan 1970 UTC
+- date object calucalte time in milli second (soon change)
+- month index start with 0
+
+```js
+let date = new Date();
+console.log(typeof date); // object
+console.log(date);
+// in node - 2024-05-03T09:27:51.563Z // ISO string
+// in browser may print somethign diffrent
+console.log(date.toString());
+// Fri May 03 2024 14:59:35 GMT+0530 (India Standard Time)
+// now readble
+
+console.log(date.toDateString());
+console.log(date.toISOString());
+console.log(date.toLocaleDateString());
+console.log(date.toLocaleTimeString());
+
+let myDate = new Date(2024, 1, 1); // this own date
+// here month start from 0 (means 0 0 => jan , 1=> Feb)
+
+let myDate = new Date(2024, 1, 1, 22, 45, 90);
+// note here second is 90 which is wrong but in output 30 second added to the minutes
+let indiaDate = new Date("2024-05-03");
+console.log(indiaDate);
+
+let timeNow = Date.now();
+console.log(Date(timeNow));
+
+// full cutomization
+
+date.toLocaleString("default", {
+  weekday: "long",
+  month: "short",
+});
+
+console.log(date);
+```
+
+- we can retrive date, year , fullyear, month, date , time ,hour ,second etc , even in UTC
+
+```js
+let date = new Date();
+
+console.log(date.getFullYear());
+console.log(date.getMonth());
+console.log(date.getDay());
+```
+
+## Array
+
+- in js array can store `any datatype`
+- js array are resizeble
+- zero based indexing
+
+```js
+let arr = [1, 2, 3.14, true];
+
+let hero = ["iron man", "shakiman", "super man"];
+
+const arrWithArr = new Array(1, 2, 3);
+
+console.table(hero[0]);
+console.table(hero[1]);
+console.table(hero[2]);
+console.table(hero[3]); // undefined
+
+arr.push(8, 9, 10); // add element at last
+let removedEle = arr.pop(); // remove and return last element
+
+// wrost to method it take to much time to execute operation
+arr.unshift("x", "y"); // add element at first and change all existing element index
+
+let removedFirstEle = arr.shift(); // remove and return first element
+
+console.log(arr);
+console.log(
+  `Last Element removed ${removedLastEle},First Element removed ${removedFirstEle}`
+);
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+console.log(arr.includes(2)); // return booloean
+console.log(arr.indexOf(0)); // -1 because 0 not avialbel in arr
+
+console.log(arr.join()); /// join into one string
+
+// slice and splice
+
+console.log(arr.slice(1, 4)); // return a copy for start and end section
+// do not modify array
+
+let partOfArr = arr.splice(1, 4); // last index include
+console.log(arr); // hmm affect original array [main different b/w slice and splice]
+console.log(partOfArr);
+
+const marvel_heros = ["thor", "Ironman", "spiderman"];
+const dc_heros = ["superman", "flash", "batman"];
+
+marvel_heros.push(dc_heros); // go wrong array inside array
+
+console.log(marvel_heros);
+console.log(marvel_heros[3][1]); // flash
+
+let numArr = [1, 2, 3];
+let all_hero = marvel_heros.concat(dc_heros, numArr); // ok good
+
+console.log(all_hero);
+// new way  +++
+
+let hero_all = [...marvel_heros, ...dc_heros]; // spread operator
+
+console.log(hero_all);
 ```
