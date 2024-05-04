@@ -401,19 +401,69 @@ let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
 // arr.flat(Infinity); at all level
 // console.log(singleArr);
 
-console.log(Array.isArray("Hello")); // return boolean value
+// console.log(Array.isArray("Hello")); // return boolean value
 // check given paramter is array or not
 
-console.log(Array.from("Hello")); // convert into array
+// console.log(Array.from("Hello")); // convert into array
 
 // console.log(Array.from({ name: "Utsav" })); // most intersing case return []
 
 // console.log(Array.of({ name: "Utsav" }));
 
-let num1 = 1;
-let num2 = 2;
-let num3 = 3;
+// let num1 = 1;
+// let num2 = 2;
+// let num3 = 3;
 
-let newArray = Array.of(num1, num2, num3);
+// let newArray = Array.of(num1, num2, num3);
 
-console.log(newArray);
+// console.log(newArray);
+
+// Object.create()
+// let car = {
+//   name: "BMW", // in behinde name will treat as 'name'
+//   model: "i3",
+//   year: 2023,
+// };
+
+// console.log(car.name);
+// console.log(car["year"]);
+
+// let newObj = new Object({
+//   name: "BMW",
+//   model: "i3",
+//   year: 2023,
+// });
+
+// console.log(newObj == car); // both object store at differnt memory
+// console.log(Object.is(car, newObj));
+
+let gender = Symbol("male");
+let user = {
+  name: "Utsav",
+  age: 17,
+  isStudent: true,
+  // // gender: "male", // not working
+  [gender]: "male", // its a synatx and symboled key property
+};
+
+// console.log(typeof user.gender); // string insted of symbol
+// console.log(typeof user[gender]); // string insted of symbol
+
+user["email"] = "utsav@gmail.com"; // add at last
+
+// Object.freeze(user); // freeze the object no edit or n update
+
+user["age"] = 100;
+user["haveFourLeg"] = false;
+
+user.greet = function () {
+  console.log(`hello user`);
+};
+
+user.advanceGreet = function () {
+  console.log(`Hello , ${this.name}`);
+};
+
+console.log(user);
+user.greet();
+user.advanceGreet()

@@ -9,6 +9,7 @@
 5. [Number and Match Obj](#number-and-math-object)
 6. [Date](#date)
 7. [Array](#array)
+8. [Object](#object)
 
 ## Variables
 
@@ -572,4 +573,125 @@ console.log(all_hero);
 let hero_all = [...marvel_heros, ...dc_heros]; // spread operator
 
 console.log(hero_all);
+
+let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
+// array insside array , at 4 level
+
+// console.log(arr);
+// convert into 1 array
+
+// let singleArr = arr.flat(5); // 5 nested level can convert into aarray
+
+// arr.flat(Infinity); at all level
+// console.log(singleArr);
+
+console.log(Array.isArray("Hello")); // return boolean value
+// check given paramter is array or not
+
+console.log(Array.from("Hello")); // convert into array
+
+// console.log(Array.from({ name: "Utsav" })); // most intersing case return []
+
+// console.log(Array.of({ name: "Utsav" }));
+
+let num1 = 1;
+let num2 = 2;
+let num3 = 3;
+
+let newArray = Array.of(num1, num2, num3);
+
+console.log(newArray);
+```
+
+## Object
+
+- Two way to declare object in `JS`
+- 1. `Objcet Literal` - most simple way to decalre object
+- ```js
+  // small example
+
+  let car = {
+    name: "BMW",
+    model: "i3",
+    year: 2023,
+  };
+  ```
+
+- 2. `Object constructor` - with the help of function `learn later`
+  - more complex example
+
+```js
+function Car(name, model, year) {
+  this.name = name;
+  this.model = model;
+  this.year = year;
+}
+
+let bmwCar = new Car("BMW", "X6", 2020);
+```
+
+- `singleton` - when we create object with `objcet constructor` ,only one type of object
+
+```js
+let car = {
+  name: "BMW", // in behinde name will treat as 'name'
+  model: "i3",
+  year: 2023,
+};
+
+// way to access object
+console.log(car.name);
+console.log(car["year"]);
+
+let newObj = new Object({
+  name: "BMW",
+  model: "i3",
+  year: 2023,
+});
+
+console.log(newObj == car); // both object store at differnt memory
+console.log(Object.is(car, newObj));
+
+
+
+
+user["email"] = "utsav@gmail.com"; // add at last
+
+
+
+user["age"] = 100;
+user["haveFourLeg"] = false;
+
+user.greet = function () {
+  console.log(`hello user`);
+};
+
+user.advanceGreet = function () {
+  console.log(`Hello , ${this.name}`);
+};
+
+console.log(user);
+user.greet();
+user.advanceGreet()
+
+
+// Object.freeze(user); // freeze the object no edit or no update
+```
+
+- possible interview question
+
+1. how to use Symbol as objcet key ?
+
+```js
+let gender = Symbol("male");
+let user = {
+  name: "Utsav",
+  age: 17,
+  isStudent: true,
+  // gender: "male", // not working
+  [gender]: "male", // its a synatx and symboled key property
+};
+
+// console.log(typeof user.gender); // string insted of symbol
+console.log(typeof user[gender]); // string insted of symbol
 ```
