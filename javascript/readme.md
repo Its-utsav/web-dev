@@ -605,9 +605,11 @@ console.log(newArray);
 
 ## Object
 
+- any nested level of object possible
 - Two way to declare object in `JS`
 - 1. `Objcet Literal` - most simple way to decalre object
-- ```js
+- 
+```js
   // small example
 
   let car = {
@@ -621,16 +623,22 @@ console.log(newArray);
   - more complex example
 
 ```js
+
 function Car(name, model, year) {
   this.name = name;
   this.model = model;
   this.year = year;
 }
 
+
 let bmwCar = new Car("BMW", "X6", 2020);
+
 ```
+----
 
 - `singleton` - when we create object with `objcet constructor` ,only one type of object
+
+----
 
 ```js
 let car = {
@@ -652,12 +660,7 @@ let newObj = new Object({
 console.log(newObj == car); // both object store at differnt memory
 console.log(Object.is(car, newObj));
 
-
-
-
 user["email"] = "utsav@gmail.com"; // add at last
-
-
 
 user["age"] = 100;
 user["haveFourLeg"] = false;
@@ -672,8 +675,7 @@ user.advanceGreet = function () {
 
 console.log(user);
 user.greet();
-user.advanceGreet()
-
+user.advanceGreet();
 
 // Object.freeze(user); // freeze the object no edit or no update
 ```
@@ -695,3 +697,76 @@ let user = {
 // console.log(typeof user.gender); // string insted of symbol
 console.log(typeof user[gender]); // string insted of symbol
 ```
+
+---
+
+```js
+let userOne = new Object(); // singletone object
+let user = {}; // non object
+
+console.log(user);
+console.log(userOne);
+
+user.id = 101;
+user.name = "Sam";
+user.isLoggedIn = false;
+console.log(user);
+
+console.log(Object.keys(user)); // all key put in one array
+console.log(Object.values(user)); // all value put in one array
+
+let userTwo = {
+  id: 101,
+  fullName: {
+    userFullName: {
+      firstName: "Utsav",
+      lastName: "Dhimmar",
+    },
+  },
+};
+
+console.log(userTwo.fullName?.userFullName.firstName);
+// merger two object
+let objOne = {
+  1: "a",
+  2: "b",
+};
+
+let objTwo = {
+  3: "c",
+  4: "d",
+};
+
+let objThree = { objOne, objTwo }; // it create problem
+let objThree = Object.assign({}, objOne, objTwo);
+// here {} usefull when we have multiple object and it is optional
+// if we don't write `{}` than all second source object copy into first object scource
+let objFour = { ...objOne, ...objTwo }; // spread operator
+console.log(objThree);
+console.log(objFour);
+```
+
+- when we recive data from database majorly time data recevide in below format
+
+```js
+let data = [
+  {
+    id: 101,
+    name: "Utsav",
+  },
+  {
+    id: 102,
+    name: "Sam",
+  },
+  {
+    id: 103,
+    name: "Mark",
+  },
+];
+
+
+console.log(data[0].id);
+```
+
+
+

@@ -437,33 +437,95 @@ let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
 // console.log(newObj == car); // both object store at differnt memory
 // console.log(Object.is(car, newObj));
 
-let gender = Symbol("male");
-let user = {
-  name: "Utsav",
-  age: 17,
-  isStudent: true,
-  // // gender: "male", // not working
-  [gender]: "male", // its a synatx and symboled key property
+// let gender = Symbol("male");
+// let user = {
+//   name: "Utsav",
+//   age: 17,
+//   isStudent: true,
+//   // // gender: "male", // not working
+//   [gender]: "male", // its a synatx and symboled key property
+// };
+
+// // console.log(typeof user.gender); // string insted of symbol
+// // console.log(typeof user[gender]); // string insted of symbol
+
+// user["email"] = "utsav@gmail.com"; // add at last
+
+// // Object.freeze(user); // freeze the object no edit or n update
+
+// user["age"] = 100;
+// user["haveFourLeg"] = false;
+
+// user.greet = function () {
+//   console.log(`hello user`);
+// };
+
+// user.advanceGreet = function () {
+//   console.log(`Hello , ${this.name}`);
+// };
+
+// console.log(user);
+// user.greet();
+// user.advanceGreet()
+
+// let userOne = new Object(); // singletone object
+// console.log(userOne);
+let user = {}; // non singletone object
+user.id = 101;
+user.name = "Sam";
+user.isLoggedIn = false;
+// console.log(user);
+
+let userTwo = {
+  id: 101,
+  fullName: {
+    userFullName: {
+      firstName: "Utsav",
+      lastName: "Dhimmar",
+    },
+  },
 };
 
-// console.log(typeof user.gender); // string insted of symbol
-// console.log(typeof user[gender]); // string insted of symbol
-
-user["email"] = "utsav@gmail.com"; // add at last
-
-// Object.freeze(user); // freeze the object no edit or n update
-
-user["age"] = 100;
-user["haveFourLeg"] = false;
-
-user.greet = function () {
-  console.log(`hello user`);
+// console.log(userTwo.fullName?.userFullName.firstName);
+// merger two object
+let objOne = {
+  1: "a",
+  2: "b",
 };
 
-user.advanceGreet = function () {
-  console.log(`Hello , ${this.name}`);
+let objTwo = {
+  3: "c",
+  4: "d",
 };
 
-console.log(user);
-user.greet();
-user.advanceGreet()
+// let objThree = { objOne, objTwo }; // it create problem
+let objThree = Object.assign({}, objOne, objTwo);
+// here {} usefull when we have multiple object and it is optional
+// if we don't write `{}` than all second source object copy into first object scource
+let objFour = { ...objOne, ...objTwo }; // spread operator
+// console.log(objThree);
+// console.log(objFour);
+
+// when we recive data from database majurly time data recevide in below formate
+
+let data = [
+  {
+    id: 101,
+    name: "Utsav",
+  },
+  {
+    id: 102,
+    name: "Sam",
+  },
+  {
+    id: 103,
+    name: "Mark",
+  },
+];
+
+console.log(data[0].id);
+console.log(Object.keys(user)); // all key put in one array
+console.log(Object.values(user)); // all value put in one array
+console.log(Object.entries(user)); // all key value pair put in array // les use
+
+console.log(user.hasOwnProperty("gender")); // check any key avilable or not return boolean value
