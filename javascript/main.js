@@ -390,7 +390,7 @@
 
 // console.log(hero_all);
 
-let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
+// let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
 // array insside array , at 4 level
 
 // console.log(arr);
@@ -470,62 +470,140 @@ let arr = [1, 2, 3, [4, [5, 6, [7, [8, 9]]]], 0];
 
 // let userOne = new Object(); // singletone object
 // console.log(userOne);
-let user = {}; // non singletone object
-user.id = 101;
-user.name = "Sam";
-user.isLoggedIn = false;
-// console.log(user);
+// let user = {}; // non singletone object
+// user.id = 101;
+// user.name = "Sam";
+// user.isLoggedIn = false;
+// // console.log(user);
 
-let userTwo = {
-  id: 101,
-  fullName: {
-    userFullName: {
-      firstName: "Utsav",
-      lastName: "Dhimmar",
-    },
-  },
-};
+// let userTwo = {
+//   id: 101,
+//   fullName: {
+//     userFullName: {
+//       firstName: "Utsav",
+//       lastName: "Dhimmar",
+//     },
+//   },
+// };
 
 // console.log(userTwo.fullName?.userFullName.firstName);
 // merger two object
-let objOne = {
-  1: "a",
-  2: "b",
-};
+// let objOne = {
+//   1: "a",
+//   2: "b",
+// };
 
-let objTwo = {
-  3: "c",
-  4: "d",
-};
+// let objTwo = {
+//   3: "c",
+//   4: "d",
+// };
 
-// let objThree = { objOne, objTwo }; // it create problem
-let objThree = Object.assign({}, objOne, objTwo);
-// here {} usefull when we have multiple object and it is optional
-// if we don't write `{}` than all second source object copy into first object scource
-let objFour = { ...objOne, ...objTwo }; // spread operator
+// // let objThree = { objOne, objTwo }; // it create problem
+// let objThree = Object.assign({}, objOne, objTwo);
+// // here {} usefull when we have multiple object and it is optional
+// // if we don't write `{}` than all second source object copy into first object scource
+// let objFour = { ...objOne, ...objTwo }; // spread operator
 // console.log(objThree);
 // console.log(objFour);
 
 // when we recive data from database majurly time data recevide in below formate
 
-let data = [
-  {
-    id: 101,
-    name: "Utsav",
-  },
-  {
-    id: 102,
-    name: "Sam",
-  },
-  {
-    id: 103,
-    name: "Mark",
-  },
-];
+// let data = [
+//   {
+//     id: 101,
+//     name: "Utsav",
+//   },
+//   {
+//     id: 102,
+//     name: "Sam",
+//   },
+//   {
+//     id: 103,
+//     name: "Mark",
+//   },
+// ];
 
-console.log(data[0].id);
-console.log(Object.keys(user)); // all key put in one array
-console.log(Object.values(user)); // all value put in one array
-console.log(Object.entries(user)); // all key value pair put in array // les use
+// console.log(data[0].id);
+// console.log(Object.keys(user)); // all key put in one array
+// console.log(Object.values(user)); // all value put in one array
+// console.log(Object.entries(user)); // all key value pair put in array // les use
 
-console.log(user.hasOwnProperty("gender")); // check any key avilable or not return boolean value
+// console.log(user.hasOwnProperty("gender")); // check any key avilable or not return boolean value
+
+// // desctructiong object
+
+// // let { name } = user;
+// let { name : userNaem } = user; // same as above just we give alternative name
+
+// console.log(name);
+
+//       -  -------- function -----
+
+// function addTwoNum(num1, num2) {
+//   if ((typeof num1 !== "number" || typeof num2 !== "number") || (!num1 || !num2)) {
+//     throw new Error(
+//       `Both input ${typeof num1 !== "number" ? num1 : num2} must be number`
+//     );
+//   } else {
+//     return num1 + num2;
+//   }
+// }
+
+// console.log(addTwoNum(1, 12));
+
+// function add(...num1) { // spread operator return array
+//   return num1;
+// }
+
+// console.log(add(1, 1, 2, 3, 4));
+
+// let arr = [1,2,3,4];
+
+// function returnval (array){
+//   return array[1];
+// }
+
+// console.log((returnval(arr)));
+
+// function one() {
+//   const name = "Utsav";
+
+//   function two() {
+//     const age = 17;
+
+//     console.log(name);
+//   } // all the statement of function two destory here
+//   two();
+//   // console.log(age); // throw error
+// }
+
+// one();
+
+// let user = {
+//   username: "Utsav",
+//   age: 17,
+//   welcomeMsg: function () {
+//     console.log(`Hello ${this.username}`);
+//   },
+// };
+
+// user.welcomeMsg()
+
+// console.log(this);
+// // in node this -> { }
+// // in browser this -> window object
+// const lol = () => ({ username: "Utsav" });
+// console.log(lol())
+
+// (function () {
+//   let x = 12;
+//   console.log(x);
+// })();
+// console.log(x); // raised error
+
+
+(
+  (name = "JS")=>{
+    console.log(name);
+  }
+)('utsav');

@@ -10,6 +10,7 @@
 6. [Date](#date)
 7. [Array](#array)
 8. [Object](#object)
+9. [Function](#functions)
 
 ## Variables
 
@@ -608,37 +609,36 @@ console.log(newArray);
 - any nested level of object possible
 - Two way to declare object in `JS`
 - 1. `Objcet Literal` - most simple way to decalre object
-- 
-```js
-  // small example
+-
 
-  let car = {
-    name: "BMW",
-    model: "i3",
-    year: 2023,
-  };
-  ```
+```js
+// small example
+
+let car = {
+  name: "BMW",
+  model: "i3",
+  year: 2023,
+};
+```
 
 - 2. `Object constructor` - with the help of function `learn later`
   - more complex example
 
 ```js
-
 function Car(name, model, year) {
   this.name = name;
   this.model = model;
   this.year = year;
 }
 
-
 let bmwCar = new Car("BMW", "X6", 2020);
-
 ```
-----
+
+---
 
 - `singleton` - when we create object with `objcet constructor` ,only one type of object
 
-----
+---
 
 ```js
 let car = {
@@ -764,9 +764,157 @@ let data = [
   },
 ];
 
-
 console.log(data[0].id);
+
+// desctructiong object
+
+let { name } = user;
+let { name: userNaem } = user; // same as above just we give alternative name
+
+console.log(name);
 ```
 
+## Functions
 
+- function are heart ❤️ of js
 
+```js
+function printSomething() {
+  console.log("Hello World");
+}
+
+printSometh();
+
+// simple program to add two numebr
+function add(num1, num2) {
+  return num1 + num2;
+}
+add();
+
+// another simple program to print two number
+
+function addTwoNum(num1 = 1, num2 = 1) {
+  // default parameters
+  if (typeof num1 !== "number" || typeof num2 !== "number") {
+    throw new Error(
+      `Both input ${typeof num1 !== "number" ? num1 : num2} must be number`
+    );
+  } else {
+    return num1 + num2; // return to the caller
+  }
+}
+
+console.log(addTwoNum(1, 12));
+```
+
+- rest opeartors
+
+```js
+function add(...num1) {
+  // spread operator return array
+  return num1;
+}
+
+console.log(add(1, 1, 2, 3, 4));
+```
+
+### scopes
+
+- the whole story of scope come from `let` , `var` and `const`.
+- almost in every language we have scopes (`html` and `css` not harm 😂)
+- `var` is global scope
+
+```js
+if (true) {
+  // this is scope of if tue block
+}
+
+function one() {
+  const name = "Utsav";
+
+  function two() {
+    const age = 17;
+
+    console.log(name);
+  } // all the statement of function two destory here
+  two();
+  // console.log(age); // throw error
+}
+
+one();
+```
+
+```js
+doSomething(); // work properly
+function doSomething() {
+  return `hello`;
+}
+hola();
+let hola = function () {
+  return `hello from hola function`;
+};
+```
+
+- click here to read above thing
+
+- arrow function and teaser of `this` keyword
+
+```js
+const arrow_fun = () => {
+  console.log("Hello world");
+};
+const add = (num1, num2) => num + num2; // no need to return keyword
+const lol = () => ({ username: "Utsav" });
+```
+
+- `this` keyword
+
+```js
+let user = {
+  username: "Utsav",
+  age: 17,
+  welcomeMsg: function () {
+    console.log(`Hello ${this.username}`);
+  },
+};
+
+user.welcomeMsg();
+
+console.log(this);
+```
+
+- in node this -> `{ }`
+- in browser this -> `window object`
+
+### IIFE (Immediately Invoked Function Expression)
+
+- example
+
+```js
+(function () {
+  // function body
+})(); // function call
+```
+
+- **IIFE** usefull when we prevent varibales , and any other statement from global scope from polluting global scope
+- semi coolon play imporant role for ending scope of **IIFE**
+```js
+(function () {
+  let x = 12;
+  console.log(x);
+})();  // here semi coolon paly imporant role
+
+console.log(x); // raised error
+
+(
+  function hello(){
+    // named IIFE
+  }
+)();
+
+(
+  (name = "JS")=>{
+    console.log(name);
+  }
+)('utsav');
+```
