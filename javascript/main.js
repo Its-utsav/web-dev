@@ -601,9 +601,29 @@
 // })();
 // console.log(x); // raised error
 
+// (
+//   (name = "JS")=>{
+//     console.log(name);
+//   }
+// )('utsav');
+// var a= 123;
+// let v1 = 10;
+// let v2 = 5;
 
-(
-  (name = "JS")=>{
-    console.log(name);
-  }
-)('utsav');
+// function add(num1, num2) {
+//   let ans = num1 + num2;
+//   return ans;
+// }
+
+// console.log(add(v1, v2));
+// console.log(add(100, 100));
+
+function one() {
+  console.log("Hello From Function one");
+  two()
+}
+
+function two() {
+  console.log("Hello From Function Two");
+}
+one();
