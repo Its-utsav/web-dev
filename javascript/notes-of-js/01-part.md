@@ -916,4 +916,10 @@ console.log(x); // raised error
 })("utsav");
 ```
 
-**Note** - all the condintional statement are same as `c`, `c++` or `java` so learn yourself !!!
+---
+
+## Notes
+
+**Note** - all the conditionals statement are same as `c`, `c++` or `java` so learn yourself !!!
+
+**Note** - all the iterative (`for`, `while` , `do....while`) statement are same as `c`, `c++` or `java` so learn yourself !!!

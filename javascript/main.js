@@ -618,12 +618,223 @@
 // console.log(add(v1, v2));
 // console.log(add(100, 100));
 
-function one() {
-  console.log("Hello From Function one");
-  two()
-}
+// function one() {
+//   console.log("Hello From Function one");
+//   two()
+// }
 
-function two() {
-  console.log("Hello From Function Two");
-}
-one();
+// function two() {
+//   console.log("Hello From Function Two");
+// }
+// one();
+
+// let num = [1, 2, 3, 4];
+
+// for (let value of num) {
+//   console.log(value);
+// }
+
+// let greet = "Hello World";
+
+// for (let ch of greet) {
+//   if (ch == " ") {
+//     continue;
+//   }
+//   console.log(ch);
+// }
+
+// let map1 = new Map();
+
+// map1.set("1", 1);
+// map1.set("2", 2);
+// map1.set("3", 3);
+// map1.set("1", 1);
+
+// console.log(map1);
+// console.log(map1.get("1"));
+// console.log(map1.get("z"));
+
+// console.log(map1.keys());
+// console.log(map1.values());
+// console.log(map1.has('z'));
+// let one = map1.entries();
+
+// console.log(one.next().value);
+// console.log(one.next("2"));
+// console.log(map1.size);
+//
+// let mapvalues = map1.values()
+// console.log( mapvalues);
+
+// let map1 = new Map();
+
+// map1.set("1", 1);
+// map1.set("2", 2);
+// map1.set("3", 3);
+// map1.set("1", 1);
+
+// for (let [key, value] of map1) {
+//   console.log(`${key} :- ${value}`);
+// }
+
+// console.log(map1);
+
+// let obj = {
+//   name: "Utsav",
+//   age: 17,
+// };
+
+// let arr = ['html','css','js','react js','next js','express js']
+
+// for (let key in map1) {
+//   console.log(key);
+// }
+
+// language.forEach(function (val) {
+//   console.log(val);
+// });
+
+// let loopval = language.forEach((value, index, arr) => {
+//   console.log(`${value} index is ${index} in ${arr}`);
+//   if (value === "Java") {
+//     return value
+//   }
+// });
+
+// console.log(loopval);
+// function printArr(value) {
+//   console.log(value);
+// }
+
+// language.forEach(printArr);
+
+// const users = [
+//   {
+//     id: 101,
+//     name: "Utsav",
+//   },
+//   {
+//     id: 102,
+//     name: "Harry",
+//   },
+//   {
+//     id: 103,
+//     name: "Mark",
+//   },
+//   {
+//     id: 104,
+//     name: "Sam",
+//   },
+// ];
+
+// users.forEach((user) => {
+//   console.log(`at ${user.id} username is ${user.name}`);
+// });
+
+// let language = ["JavaScript", "C", "C++", "Java", "Python"];
+
+// let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// // let evenNumber = numberArray.filter((number) => {
+// //   return number % 2 === 0;
+// //   // number & 1 === 1
+// // });
+
+// let evenNumber = numberArray.filter((num) => num % 2 === 0); // implicit return
+// console.log(evenNumber);
+// // same with forEach
+
+// let newNum = [];
+
+// numberArray.forEach((num) => {
+//   if (num % 2 === 0) {
+//     newNum.push(num);
+//   }
+// });
+
+// console.log(newNum);
+
+// const books = [
+//   { title: "Book One", genre: "Fiction", publish: 1981, edition: 2004 },
+//   { title: "Book Two", genre: "Non-Fiction", publish: 1992, edition: 2008 },
+//   { title: "Book Three", genre: "History", publish: 1999, edition: 2007 },
+//   { title: "Book Four", genre: "Non-Fiction", publish: 1989, edition: 2010 },
+//   { title: "Book Five", genre: "Science", publish: 2009, edition: 2014 },
+//   { title: "Book Six", genre: "Fiction", publish: 1987, edition: 2010 },
+//   { title: "Book Seven", genre: "History", publish: 1986, edition: 1996 },
+//   { title: "Book Eight", genre: "Science", publish: 2011, edition: 2016 },
+//   { title: "Book Nine", genre: "Non-Fiction", publish: 1981, edition: 1989 },
+// ];
+
+// let userBook = books.filter((book) => {
+//   return book.genre === "History";
+// });
+
+// console.log(userBook);
+
+// let after2000 = books.filter((book)=>{
+//     return book.publish >= 2000;
+// })
+
+// console.log(after2000);
+
+// let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// let valuePlus10 = numberArray.map((num) => {
+//   return num + 10;
+// });
+
+// let newArray = [];
+
+// numberArray.forEach((num) => {
+//   newArray.push(num + 10);
+// });
+
+// console.log(valuePlus10);
+// console.log(numberArray);
+// console.log(newArray);
+
+// let newNumArr = numberArray
+//   .map((num) => num * 10)
+//   .map((num) => num + 1)
+//   .filter((num) => num > 60);
+
+// console.log(newNumArr);
+
+//
+
+let num = [1, 2, 3, 4, 5];
+
+let sum = 0;
+
+let totalArr = num.reduce((acc, cValue) => {
+  console.log(`${acc} :- ${cValue}`);
+  return acc + cValue;
+}, sum); // the whole reduce method start from here init value , it start form inital value than reduce method start
+
+console.log(totalArr);
+console.log(sum);
+
+const shoppingCart = [
+  {
+    itemName: "js course",
+    price: 2999,
+  },
+  {
+    itemName: "py course",
+    price: 999,
+  },
+  {
+    itemName: "mobile dev course",
+    price: 5999,
+  },
+  {
+    itemName: "data science course",
+    price: 12999,
+  },
+];
+
+const total = shoppingCart.reduce((acc, cValue) => acc + cValue.price, 0);
+
+
+console.log(total);

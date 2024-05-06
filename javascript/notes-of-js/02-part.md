@@ -3,6 +3,9 @@
 ## TOC
 
 1. [js working](#how-js-work)
+2. [Truthy anf Falsy Value](#truthy-and-falsy-value)
+3. [Advance Loops](#advanced-iterative-statements)
+4. [Map](#maps)
 
 ## How JS work
 
@@ -29,6 +32,7 @@ console.log(a);
 - let's understand those 2 phase using below example .
 
 ```js
+let a = 123;
 let v1 = 10;
 let v2 = 5;
 function add(num1, num2) {
@@ -91,3 +95,332 @@ one();
 - call stack have concept of `LIFO` aka Last In First Out .
 
 ![call stack](https://media.discordapp.net/attachments/1205479570900521003/1236639230017671229/diagram-export-5-5-2024-4_52_31-pm.png?ex=6638bd88&is=66376c08&hm=757025926a3e300a21672a75924b44ee15e34bfca7fbf3e56e1ada32f4387971&=&format=webp&quality=lossless&width=825&height=451)
+
+## Truthy and Falsy Value
+
+- `Falsy` value is a value that considered `false` when encounted in a `boolean` context .
+
+- `Falsy` values
+
+| Value          | Type      | Note              |
+| -------------- | --------- | ----------------- |
+| null           | null      | -                 |
+| NaN            | Number    | -                 |
+| undefined      | undefined | -                 |
+| 0              | Number    | -                 |
+| -0             | Number    | -                 |
+| false          | Boolean   | -                 |
+| 0n             | BigInt    | -                 |
+| ""             | string    | Empty string      |
+| `document.all` | Object    | only falsy Object |
+
+```js
+false == 0; // true
+0 == ""; // true
+false == ""; // true
+```
+
+- `Truthy` values are all the values that is other than `Falsy` value .
+- `"0"` , `function() {}` , `[]` , `{}` , `'false'`
+
+### Nullish Coalescing operator
+
+- `leftoperands ?? rightoperands` .
+- whole game on `null` and `undefined`.
+- it return right side operands when left side operands is `null` or `undefined` other wise it return left side operands
+
+- `null ?? 10` - > `10`
+- `undefined ?? 10` - > `10`
+- `11 ?? 10` -> `11`
+
+## Advanced Iterative Statements
+
+### Part 1
+
+1. `for...in` - iterates on `properties` aka `key` of object , loop on object `key`
+
+```js
+let obj = {
+  name: "Utsav",
+  age: 17,
+};
+
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+```
+
+- `for...in` in array
+
+```js
+let arr = ["html", "css", "js", "react js", "next js", "express js"];
+
+for (let key in arr) {
+  console.log(arr); //  we only get key aka array index
+  console.log(arr[key]); // now can print whole array each item
+}
+```
+
+- `for...in` in `maps`
+
+```js
+let map1 = new Map();
+
+map1.set("1", 1);
+map1.set("2", 2);
+map1.set("3", 3);
+map1.set("1", 1);
+
+for (let key in map1) {
+  console.log(key);
+}
+```
+
+2. `for...of` - use on iterate over a value of an iterable object such as `array` , `map` ,`set` , `string` .
+
+- `[" "," "," "]` , `[{ },{ },{ }]`
+
+```js
+let num = [1, 2, 3, 4];
+
+for (let value of num) {
+  console.log(value);
+}
+
+let greet = "Hello World";
+
+for (let ch of greet) {
+  if (ch == " ") {
+    continue;
+  }
+  console.log(ch);
+}
+```
+
+- in above each loop don't require loop updation
+
+```js
+let obj = {
+  name: "Utsav",
+  age: 17,
+};
+
+for (let key of obj) {
+  console.log(key); // obj is not iterable
+}
+```
+
+---
+
+### Part 2
+
+![level](https://media1.tenor.com/m/1TKYKm9SvmgAAAAd/sabke-niklenge-lavish-level.gif)
+
+- from here all loops are more usefull main for `Array` .
+
+1. `forEach()` - most usefull loop or `Array method`
+
+- this method use when we perform any operation on `each` array element . but no return
+
+```js
+let language = ["JavaScript", "C", "C++", "Java", "Python"];
+
+language.forEach(function (val) {
+  console.log(val);
+});
+
+language.forEach((value, index, arr) => {
+  console.log(`${value} index is ${index} in ${arr}`);
+});
+
+function printArr(value) {
+  console.log(value);
+}
+
+language.forEach(printArr);
+
+const users = [
+  {
+    id: 101,
+    name: "Utsav",
+  },
+  {
+    id: 102,
+    name: "Harry",
+  },
+  {
+    id: 103,
+    name: "Mark",
+  },
+  {
+    id: 104,
+    name: "Sam",
+  },
+];
+
+users.forEach((user) => {
+  console.log(`at ${user.id} username is ${user.name}`);
+});
+
+let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+let newNum = [];
+
+numberArray.forEach((num) => {
+  if (num % 2 === 0) {
+    newNum.push(num);
+  }
+});
+```
+
+```js
+let newArray = [];
+
+numberArray.forEach((num) => {
+  newArray.push(num + 10);
+});
+```
+
+- here we are trying to return value when value is java but we got `undefined`.
+
+```js
+let loopval = language.forEach((value, index, arr) => {
+  console.log(`${value} index is ${index} in ${arr}`);
+  if (value === "Java") {
+    return value;
+  }
+});
+```
+
+2. `fillter` -
+
+- almost similar to `forEach` but main differnt is that it return a value.
+- and return as per our `condition`
+
+```js
+let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+let evenNumber = numberArray.filter((number) => {
+  return number % 2 === 0;
+  // number & 1 === 1
+});
+
+console.log(evenNumber);
+let evenNumber = numberArray.filter((num) => num % 2 === 0); // implicit return
+```
+
+3. `map` -
+
+- easier than `filter`
+- `map` is used when we need to create new array based on the current array .
+
+```js
+let numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+let valuePlus10 = numberArray.map((num) => {
+  return num + 10;
+});
+
+console.log(valuePlus10); //  [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+console.log(numberArray); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+- chaining
+- up to `N` number of chaining possible
+
+```js
+let newNumArr = numberArray
+  .map((num) => num * 10)
+  .map((num) => num + 1)
+  .filter((num) => num > 60);
+
+console.log(newNumArr);
+```
+
+4. `reduce` -
+
+```js
+let num = [1, 2, 3, 4, 5];
+
+let sum = 0;
+
+let totalArr = num.reduce((acc, cValue) => {
+  console.log(`${acc} :- ${cValue}`);
+  return acc + cValue;
+}, sum); // the whole reduce method start from here init value , it start form inital value than reduce method start
+
+console.log(totalArr);
+console.log(sum);
+
+const shoppingCart = [
+  {
+    itemName: "js course",
+    price: 2999,
+  },
+  {
+    itemName: "py course",
+    price: 999,
+  },
+  {
+    itemName: "mobile dev course",
+    price: 5999,
+  },
+  {
+    itemName: "data science course",
+    price: 12999,
+  },
+];
+
+const total = shoppingCart.reduce((acc, cValue) => acc + cValue.price, 0);
+
+console.log(total);
+```
+
+## Maps
+
+- `maps` are similar to `object` they remebere the orignal insertion order of keys .
+- `maps` are `unique`
+
+```js
+let map1 = new Map();
+
+map1.set("1", 1);
+map1.set("2", 2);
+map1.set("3", 3);
+map1.set("1", 1);
+
+console.log(map1);
+console.log(map1.get("1"));
+console.log(map1.get("z"));
+
+console.log(map1.keys());
+console.log(map1.values());
+console.log(map1.has("z"));
+let one = map1.entries();
+
+console.log(one.next("1"));
+console.log(map1.size);
+```
+
+- `new Map()` - create a new map instance.
+- `Map.set()` - set value (only uniuqe).
+- `Map.get('<key require>')` - retrive the value
+- `Map.has('<key>')` - return `true` or `false`
+- `Map.keys()` - return only `keys`
+- `Map.values()` - return only values
+- `Map.entries()` - return a new `map` instanse that contain `map` object
+
+```js
+let map1 = new Map();
+
+map1.set("1", 1);
+map1.set("2", 2);
+map1.set("3", 3);
+map1.set("1", 1);
+
+for (let [key, value] of map1) {
+  console.log(`${key} :- ${value}`);
+}
+
+console.log(map1);
+```
