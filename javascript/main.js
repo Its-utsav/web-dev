@@ -803,38 +803,43 @@
 
 //
 
-let num = [1, 2, 3, 4, 5];
+// let num = [1, 2, 3, 4, 5];
 
-let sum = 0;
+// let sum = 0;
 
-let totalArr = num.reduce((acc, cValue) => {
-  console.log(`${acc} :- ${cValue}`);
-  return acc + cValue;
-}, sum); // the whole reduce method start from here init value , it start form inital value than reduce method start
+// let totalArr = num.reduce((acc, cValue) => {
+//   console.log(`${acc} :- ${cValue}`);
+//   return acc + cValue;
+// }, sum); // the whole reduce method start from here init value , it start form inital value than reduce method start
 
-console.log(totalArr);
-console.log(sum);
+// console.log(totalArr);
+// console.log(sum);
 
-const shoppingCart = [
-  {
-    itemName: "js course",
-    price: 2999,
-  },
-  {
-    itemName: "py course",
-    price: 999,
-  },
-  {
-    itemName: "mobile dev course",
-    price: 5999,
-  },
-  {
-    itemName: "data science course",
-    price: 12999,
-  },
-];
+// const shoppingCart = [
+//   {
+//     itemName: "js course",
+//     price: 2999,
+//   },
+//   {
+//     itemName: "py course",
+//     price: 999,
+//   },
+//   {
+//     itemName: "mobile dev course",
+//     price: 5999,
+//   },
+//   {
+//     itemName: "data science course",
+//     price: 12999,
+//   },
+// ];
 
-const total = shoppingCart.reduce((acc, cValue) => acc + cValue.price, 0);
+// const total = shoppingCart.reduce((acc, cValue) => acc + cValue.price, 0);
 
+// console.log(total);
 
-console.log(total);
+let h1Ele = document.querySelector('h1');
+// let h1Ele = document.querySelectorAll('h1');
+console.log(h1Ele.innerText);
+console.log(h1Ele.textContent);
+console.log(h1Ele.innerHTML);
