@@ -838,8 +838,61 @@
 
 // console.log(total);
 
-let h1Ele = document.querySelector('h1');
-// let h1Ele = document.querySelectorAll('h1');
-console.log(h1Ele.innerText);
-console.log(h1Ele.textContent);
-console.log(h1Ele.innerHTML);
+// let h1Ele = document.querySelector('h1');
+// // let h1Ele = document.querySelectorAll('h1');
+// console.log(h1Ele.innerText);
+// console.log(h1Ele.textContent);
+// console.log(h1Ele.innerHTML);
+
+let weekDiv = document.querySelector(".weekday");
+
+// console.log(weekDiv.children);
+
+// const div = document.createElement("div");
+
+// div.innerText = "Hello World from JS";
+// div.setAttribute("title", "hello from js");
+// div.style.backgroundColor = "red";
+// div.style.padding = "4rem";
+// let txt = document.createTextNode('Hello World from js');
+// div.append(txt); //  multiple element or can be string
+// weekDiv.appendChild(div); // only one element can add
+
+// const t1 = performance.now();
+
+// function addListItems(langauge) {
+//   let li = document.createElement("li");
+//   li.textContent = `${langauge}`;
+//   document.querySelector(".langauges").appendChild(li);
+// }
+
+// // addListItems("C")
+// addListItems("C");
+// addListItems("C++");
+// addListItems("Golang");
+
+// const t2 = performance.now();
+
+// console.log(t2 - t1);
+
+// const t3 = performance.now();
+// function addListItems(langauge){
+//     let li = document.createElement('li');
+//     li.appendChild(document.createTextNode(langauge))
+//     document.querySelector('.langauges').appendChild(li)
+// }
+
+
+// addListItems("C")
+// addListItems("C++")
+// addListItems("Golang")
+// const t4 = performance.now();
+// console.log(t4 - t3);
+
+// edit
+
+// const secLangauge = document.querySelector("li:nth-child(2)");
+// console.log(secLangauge);
+// secLangauge.textContent = "Mojo"
+
+
