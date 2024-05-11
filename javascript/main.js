@@ -882,7 +882,6 @@ let weekDiv = document.querySelector(".weekday");
 //     document.querySelector('.langauges').appendChild(li)
 // }
 
-
 // addListItems("C")
 // addListItems("C++")
 // addListItems("Golang")
@@ -895,4 +894,57 @@ let weekDiv = document.querySelector(".weekday");
 // console.log(secLangauge);
 // secLangauge.textContent = "Mojo"
 
+// document.getElementById("owl").addEventListener(
+//   "click",
+//   function (e) {
+//     console.log(e);
+//   },
+//   false
+// );
 
+// document.addEventListener("click", (e) => {
+//   console.log(e.altKey, e.ctrlKey, e.shiftKey);
+// });
+
+// document.addEventListener("keydown", (e) => {
+//   console.log();
+// });
+
+document.querySelector(".box1").addEventListener(
+  "click",
+  () => {
+    console.log("Box 1 Clicked from parent");
+  },
+  true
+);
+
+document.querySelector(".box2").addEventListener(
+  "click",
+  () => {
+    console.log("Box 2 Clicked from child");
+  },
+  true
+);
+
+document.getElementById("google").addEventListener(
+  "click",
+  (e) => {
+    console.log("google clicked");
+    e.preventDefault();
+    e.stopPropagation();
+  },
+  false
+);
+
+// remove image when we click
+
+document.getElementById("images").addEventListener(
+  "click",
+  (e) => {
+    if (e.target.tagName === "IMG") {
+      let remEle = e.target.parentNode;
+      remEle.remove();
+    }
+  },
+  false
+);
