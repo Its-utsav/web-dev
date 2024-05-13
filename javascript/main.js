@@ -948,3 +948,16 @@ document.getElementById("images").addEventListener(
   },
   false
 );
+
+function one() {
+  console.log("1. hello  from function one");
+  function two() {
+    console.log("2. hello  from function two");
+    setTimeout(function () {
+      console.log("Hello From setTimeout !!!");
+    }, 2000);
+  }
+  two()
+}
+
+one();
