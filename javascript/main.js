@@ -910,54 +910,113 @@ let weekDiv = document.querySelector(".weekday");
 //   console.log();
 // });
 
-document.querySelector(".box1").addEventListener(
-  "click",
-  () => {
-    console.log("Box 1 Clicked from parent");
-  },
-  true
-);
+// document.querySelector(".box1").addEventListener(
+//   "click",
+//   () => {
+//     console.log("Box 1 Clicked from parent");
+//   },
+//   true
+// );
 
-document.querySelector(".box2").addEventListener(
-  "click",
-  () => {
-    console.log("Box 2 Clicked from child");
-  },
-  true
-);
+// document.querySelector(".box2").addEventListener(
+//   "click",
+//   () => {
+//     console.log("Box 2 Clicked from child");
+//   },
+//   true
+// );
 
-document.getElementById("google").addEventListener(
-  "click",
-  (e) => {
-    console.log("google clicked");
-    e.preventDefault();
-    e.stopPropagation();
-  },
-  false
-);
+// document.getElementById("google").addEventListener(
+//   "click",
+//   (e) => {
+//     console.log("google clicked");
+//     e.preventDefault();
+//     e.stopPropagation();
+//   },
+//   false
+// );
 
-// remove image when we click
+// // remove image when we click
 
-document.getElementById("images").addEventListener(
-  "click",
-  (e) => {
-    if (e.target.tagName === "IMG") {
-      let remEle = e.target.parentNode;
-      remEle.remove();
-    }
-  },
-  false
-);
+// document.getElementById("images").addEventListener(
+//   "click",
+//   (e) => {
+//     if (e.target.tagName === "IMG") {
+//       let remEle = e.target.parentNode;
+//       remEle.remove();
+//     }
+//   },
+//   false
+// );
 
-function one() {
-  console.log("1. hello  from function one");
-  function two() {
-    console.log("2. hello  from function two");
-    setTimeout(function () {
-      console.log("Hello From setTimeout !!!");
-    }, 2000);
+// function one() {
+//   console.log("1. hello  from function one");
+//   function two() {
+//     console.log("2. hello  from function two");
+//     setTimeout(function () {
+//       console.log("Hello From setTimeout !!!");
+//     }, 2000);
+//   }
+//   two()
+// }
+
+// one();
+
+// const changeH2 = function () {
+//   document.querySelector(
+//     "h2"
+//   ).innerHTML = `JavaScript is best for web develpoment`;
+//   console.log("start ");
+// };
+
+// const change = setTimeout(changeH2, 5000);
+
+// document.getElementById("stop").addEventListener("click", () => {
+//   console.log("now stoped");
+//   clearTimeout(change);
+// });
+
+// setTimeout(function () {
+//   console.log("after 2 second i will print");
+// }, 2000);
+
+// change color in every second
+// with the help of hex value
+
+function genrateColor() {
+  let colorHex = `0123456789ABCDEF`;
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += colorHex[Math.floor(Math.random() * 16)];
   }
-  two()
+  console.log(color);
+  return color;
 }
 
-one();
+// first genrate color
+
+// than tack a referensec fot the two button
+const startBtn = document.querySelector("#start");
+const stopBtn = document.querySelector("#stop");
+// start change background color
+
+let interval = null;
+
+let startBGchange = () => {
+  if (!interval) {
+    // from preveing multiple chnage color when user click nultiple time on start
+    interval = setInterval(changeColor, 1000);
+  }
+  function changeColor() {
+    document.body.style.backgroundColor = genrateColor();
+  }
+};
+
+let stopBGchnage = () => {
+  clearInterval(interval);
+  interval = null; // good pratice
+  // edge case DSA
+};
+
+startBtn.addEventListener("click", startBGchange);
+stopBtn.addEventListener("click", stopBGchnage);

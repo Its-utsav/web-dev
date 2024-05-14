@@ -3,6 +3,7 @@
 ## TOC
 
 1. [theory](#theory)
+2. [with code](#with-code)
 
 ## theory
 
@@ -60,3 +61,32 @@ Hello From setTimeout !!!
 - `Register Callback` register `async` task when it need to execute than once agian need to add in call stack so in between `Register Callback` and `Callstack` (in LIFO order) their is `Task Queue` that add task in `task queue` in FIFO order and than execute that task
 
 - for `fetch` api we have separate `task queue` or we can say , `task queue` has been expanded but is has higher priority than normal `task queue`
+
+## with code
+
+- below code execute after 2 second for only one time
+- `setTimeout` take some argument first handler (function without name or function references)and second argument is time in milisecond than up to N argument for callback function
+
+```js
+setTimeout(function () {
+  console.log("after 2 second i will print");
+}, 2000);
+```
+
+- we can set and remove (clear) `setTimeout` with its references (with the help of variable)
+
+```js
+let num = 12;
+let printwithSetTime = function (timeinS) {
+  console.log(`print aftre  ${timeinS} seconed`);
+};
+
+let time = setTimeout(printwithSetTime, 2000, 2);
+
+if (num === 3) {
+  setTimeout(time);
+  console.log("set timeout is clear");
+}
+```
+
+- if we want to execute block of code multiple time we can use `setInterval` . 
