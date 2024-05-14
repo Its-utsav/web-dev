@@ -1021,53 +1021,111 @@ let weekDiv = document.querySelector(".weekday");
 // startBtn.addEventListener("click", startBGchange);
 // stopBtn.addEventListener("click", stopBGchnage);
 
-const GITHUBURL = "https://api.github.com/users/hiteshchoudhary";
-let xhr = new XMLHttpRequest();
+// const GITHUBURL = "https://api.github.com/users/hiteshchoudhary";
+// let xhr = new XMLHttpRequest();
 
-xhr.open("GET", GITHUBURL, true);
+// xhr.open("GET", GITHUBURL, true);
 
-xhr.send();
+// xhr.send();
 
-function displayOnPage(url, imgURl, name, followers, bio) {
-  document.body.innerHTML = `<section class="h-screen w-screen flex items-center justify-center text-black">
-  <div class="max-w-screen-sm m-4 flex flex-col rounded-xl bg-slate-300 p-2 duration-300 h-72">
-    <div class="m-3 flex items-center justify-center">
-      <a href=${url} target="_blank">
-        <img src=${imgURl} alt="img" class="w-24 rounded-xl hover:cursor-pointer hover:shadow-2xl" title="visit gihub url" />
-      </a>
-    </div>
-    <div class="bg-green-400 p-4 text-center font-semibold">
-      ${name}
-      <p><span class="font-normal capitalize"> followers </span> : ${followers}</p>
-    </div>
-    <div class="flex items-center py-2 text-center">
-      <p class="text-lg">Bio:-</p>
-      <p class="ml-3 hover:shadow">${bio}</p>
-    </div>
-  </div>`;
-}
+// function displayOnPage(url, imgURl, name, followers, bio) {
+//   document.body.innerHTML = `<section class="h-screen w-screen flex items-center justify-center text-black">
+//   <div class="max-w-screen-sm m-4 flex flex-col rounded-xl bg-slate-300 p-2 duration-300 h-72">
+//     <div class="m-3 flex items-center justify-center">
+//       <a href=${url} target="_blank">
+//         <img src=${imgURl} alt="img" class="w-24 rounded-xl hover:cursor-pointer hover:shadow-2xl" title="visit gihub url" />
+//       </a>
+//     </div>
+//     <div class="bg-green-400 p-4 text-center font-semibold">
+//       ${name}
+//       <p><span class="font-normal capitalize"> followers </span> : ${followers}</p>
+//     </div>
+//     <div class="flex items-center py-2 text-center">
+//       <p class="text-lg">Bio:-</p>
+//       <p class="ml-3 hover:shadow">${bio}</p>
+//     </div>
+//   </div>`;
+// }
 
-xhr.onreadystatechange = function () {
-  if (xhr.readyState === 4 && xhr.status === 200) {
-    let data = JSON.parse(this.response); // get string conver into object
-    displayOnPage(
-      GITHUBURL,
-      data.avatar_url,
-      data.name,
-      data.followers,
-      data.bio
-    );
-  } else {
-    document.body.innerHTML = `<div class="h-screen w-screen bg-slate-900 flex items-center justify-center ">
-    <h2 class="text-center text-4xl capitalize p-4 text-white font-bold">unable to load data from github status code :- ${xhr.status}</h2>
-  </div>`;
-  }
-};
+// xhr.onreadystatechange = function () {
+//   if (xhr.readyState === 4 && xhr.status === 200) {
+//     let data = JSON.parse(this.response); // get string conver into object
+//     displayOnPage(
+//       GITHUBURL,
+//       data.avatar_url,
+//       data.name,
+//       data.followers,
+//       data.bio
+//     );
+//   } else {
+//     document.body.innerHTML = `<div class="h-screen w-screen bg-slate-900 flex items-center justify-center ">
+//     <h2 class="text-center text-4xl capitalize p-4 text-white font-bold">unable to load data from github status code :- ${xhr.status}</h2>
+//   </div>`;
+//   }
+// };
 
-xhr.onerror = function () {
-  document.body.innerHTML = `<div class="h-screen w-screen bg-slate-900 flex items-center justify-center ">
-  <h2 class="text-center text-4xl capitalize p-4 text-white font-bold">unable to load data from github status code :- ${xhr.status}</h2>
-</div>`;
-};
+// xhr.onerror = function () {
+//   document.body.innerHTML = `<div class="h-screen w-screen bg-slate-900 flex items-center justify-center ">
+//   <h2 class="text-center text-4xl capitalize p-4 text-white font-bold">unable to load data from github status code :- ${xhr.status}</h2>
+// </div>`;
+// };
 
+// const primoseOne = new Promise(function (resolve, reject) {
+//   // async task
+//   // DB call
+//   // cryptography, network
 
+//   setTimeout(function () {
+//     console.log(`async task complete successfuly`);
+//     resolve(); // connet with .than
+//     // if this line we didn't write than .than never execute
+//   }, 1000);
+// });
+// primoseOne.then(function () {
+//   console.log(`promises consumed`);
+// });
+
+// new Promise((res, rej) => {
+//   setTimeout(() => {
+//     console.log(`async task 2 complete`);
+//   }, 1000);
+//   res();
+// }).then(() => {
+//   console.log(`promises 2 consumed`);
+// });
+
+// let promiseThree = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve({ username: "Utsav", email: "utsav@example.com" });
+//   }, 1000);
+// });
+
+// promiseThree.then((user) => {
+//   console.log(user.username);
+// });
+
+let promiseFour = new Promise((res, rej) => {
+  setTimeout(() => {
+    let err = false;
+    if (!err) {
+      res({ username: "Utsav", age: 17 });
+    } else {
+      rej("something wrong");
+    }
+  }, 2000);
+});
+
+promiseFour
+  .then((data) => {
+    if ("username" in data) {
+      return data.username;
+    } else {
+      return "JavaScript";
+    }
+  })
+  .then((username) => {
+    console.log(username);
+  })
+  .finally(() => {
+    console.log(`promise Four complete successfully or with error`);
+  });

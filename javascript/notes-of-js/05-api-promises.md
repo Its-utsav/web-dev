@@ -4,6 +4,7 @@
 
 1. [basic about API](#few-words-about-api)
 2. [XMLHttpRequest](#xmlhttprequest)
+3. [Promises](#promises)
 
 ## few words about API
 
@@ -84,14 +85,7 @@ function displayOnPage(url, imgURl, name, followers, bio) {
 }
 
 xhr.onreadystatechange = function () {
-  if (xhr.readyState === 1) {
-    console.log(`OPENED ${xhr.readyState}`);
-  } else if (xhr.readyState === 2) {
-    console.log(`HEADERS_RECEIVED ${xhr.readyState}`);
-  } else if (xhr.readyState === 3) {
-    console.log(`LOADING ${xhr.readyState}`);
-  } else if (xhr.readyState === 4 && xhr.status === 200) {
-    console.log(`DONE ${xhr.readyState}`);
+  if (xhr.readyState === 4 && xhr.status === 200) {
     let data = JSON.parse(this.response); // get string conver into object
     displayOnPage(
       GITHUBURL,
@@ -115,3 +109,83 @@ xhr.onerror = function () {
 ```
 
 - even we can execute block of code when we get error using `xhr.onerror`
+
+## Promises
+
+- the `promise` is the object that represent the eventual completion (or failure) of am asymchronous opreation and its resulting the value
+
+- promises have 3 state
+
+1. pending - initial state
+2. fulfilled - means operation complete successfuly
+3. rejected - means operation faild
+
+- in most of time we consumed promises but knowing how to create a promises can help to understrand `fetch` , `async/await` etc .
+
+1. createing promises
+
+- with the help of `new` keyword we can create a new promise object .
+- its just like a normal function , promise also help to reduse callback hell
+- promise have to part first promise may resolve or may be reject
+
+```js
+const primoseOne = new Promise(function (resolve, reject) {});
+```
+
+```js
+const primoseOne = new Promise(function (resolve, reject) {
+  // async task
+  // DB call
+  // cryptography, network
+
+  setTimeout(function () {
+    console.log(`async task complete successfuly`);
+    resolve(); // connet with .than
+    // if this line we didn't write than .than never execute
+  }, 1000);
+});
+```
+
+2. consumed promise
+
+```js
+primoseOne.then(function () {
+  console.log(`promises consumed`);
+});
+```
+
+---
+
+whole code
+
+```js
+const primoseOne = new Promise(function (resolve, reject) {
+  // async task
+  // DB call
+  // cryptography, network
+
+  setTimeout(function () {
+    console.log(`async task complete successfuly`);
+    resolve(); // connet with .than
+    // if this line we didn't write than .than never execute
+  }, 1000);
+});
+
+primoseOne.then(function () {
+  console.log(`promises consumed`);
+});
+```
+
+- Data consumption
+
+```js
+let promiseThree = new Promise((res, rej) => {
+  setTimeout(() => {
+    res({ username: "Utsav", age: 17 });
+  }, 1000);
+});
+
+promiseThree.then((data) => {
+  console.log(data.username); // Utsav will create 
+});
+```
