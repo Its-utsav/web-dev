@@ -983,40 +983,91 @@ let weekDiv = document.querySelector(".weekday");
 // change color in every second
 // with the help of hex value
 
-function genrateColor() {
-  let colorHex = `0123456789ABCDEF`;
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += colorHex[Math.floor(Math.random() * 16)];
-  }
-  console.log(color);
-  return color;
+// function genrateColor() {
+//   let colorHex = `0123456789ABCDEF`;
+//   let color = "#";
+//   for (let i = 0; i < 6; i++) {
+//     color += colorHex[Math.floor(Math.random() * 16)];
+//   }
+//   console.log(color);
+//   return color;
+// }
+
+// // first genrate color
+
+// // than tack a referensec fot the two button
+// const startBtn = document.querySelector("#start");
+// const stopBtn = document.querySelector("#stop");
+// // start change background color
+
+// let interval = null;
+
+// let startBGchange = () => {
+//   if (!interval) {
+//     // from preveing multiple chnage color when user click nultiple time on start
+//     interval = setInterval(changeColor, 1000);
+//   }
+//   function changeColor() {
+//     document.body.style.backgroundColor = genrateColor();
+//   }
+// };
+
+// let stopBGchnage = () => {
+//   clearInterval(interval);
+//   interval = null; // good pratice
+//   // edge case DSA
+// };
+
+// startBtn.addEventListener("click", startBGchange);
+// stopBtn.addEventListener("click", stopBGchnage);
+
+const GITHUBURL = "https://api.github.com/users/hiteshchoudhary";
+let xhr = new XMLHttpRequest();
+
+xhr.open("GET", GITHUBURL, true);
+
+xhr.send();
+
+function displayOnPage(url, imgURl, name, followers, bio) {
+  document.body.innerHTML = `<section class="h-screen w-screen flex items-center justify-center text-black">
+  <div class="max-w-screen-sm m-4 flex flex-col rounded-xl bg-slate-300 p-2 duration-300 h-72">
+    <div class="m-3 flex items-center justify-center">
+      <a href=${url} target="_blank">
+        <img src=${imgURl} alt="img" class="w-24 rounded-xl hover:cursor-pointer hover:shadow-2xl" title="visit gihub url" />
+      </a>
+    </div>
+    <div class="bg-green-400 p-4 text-center font-semibold">
+      ${name}
+      <p><span class="font-normal capitalize"> followers </span> : ${followers}</p>
+    </div>
+    <div class="flex items-center py-2 text-center">
+      <p class="text-lg">Bio:-</p>
+      <p class="ml-3 hover:shadow">${bio}</p>
+    </div>
+  </div>`;
 }
 
-// first genrate color
-
-// than tack a referensec fot the two button
-const startBtn = document.querySelector("#start");
-const stopBtn = document.querySelector("#stop");
-// start change background color
-
-let interval = null;
-
-let startBGchange = () => {
-  if (!interval) {
-    // from preveing multiple chnage color when user click nultiple time on start
-    interval = setInterval(changeColor, 1000);
-  }
-  function changeColor() {
-    document.body.style.backgroundColor = genrateColor();
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    let data = JSON.parse(this.response); // get string conver into object
+    displayOnPage(
+      GITHUBURL,
+      data.avatar_url,
+      data.name,
+      data.followers,
+      data.bio
+    );
+  } else {
+    document.body.innerHTML = `<div class="h-screen w-screen bg-slate-900 flex items-center justify-center ">
+    <h2 class="text-center text-4xl capitalize p-4 text-white font-bold">unable to load data from github status code :- ${xhr.status}</h2>
+  </div>`;
   }
 };
 
-let stopBGchnage = () => {
-  clearInterval(interval);
-  interval = null; // good pratice
-  // edge case DSA
+xhr.onerror = function () {
+  document.body.innerHTML = `<div class="h-screen w-screen bg-slate-900 flex items-center justify-center ">
+  <h2 class="text-center text-4xl capitalize p-4 text-white font-bold">unable to load data from github status code :- ${xhr.status}</h2>
+</div>`;
 };
 
-startBtn.addEventListener("click", startBGchange);
-stopBtn.addEventListener("click", stopBGchnage);
+
