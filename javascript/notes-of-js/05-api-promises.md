@@ -5,6 +5,7 @@
 1. [basic about API](#few-words-about-api)
 2. [XMLHttpRequest](#xmlhttprequest)
 3. [Promises](#promises)
+4. [Fetch](#fetch)
 
 ## few words about API
 
@@ -283,4 +284,41 @@ fetch(APIURL)
     console.error(err);
   });
 ```
-- **NOTE** - `fetch` have more prioriy than normal async task 
+
+- **NOTE** - `fetch` have more prioriy than normal async task
+
+## Fetch
+
+**NOTE** - here some words may be use for explniray purpose some books may have differnt names
+
+- when we use `fetch` it whole work compelete in two part
+
+1. Web Browser / Node
+2. space reserve in memory (kind of `Data`) aka memory allocte
+
+![fetch explain img](https://media.discordapp.net/attachments/1205479570900521003/1240254493195763742/diagram-export-15-5-2024-4_17_56-pm.png?ex=6645e481&is=66449301&hm=ebfb5d872bd15450047ed3bdd3bc6b01a622ebaaf548bca4e24e3ccb11e535ef&=&format=webp&quality=lossless&width=735&height=525)
+
+- explaintion for above image
+- for step 2 space reserve in memory (kind of `Data`)
+
+- data has two array (kind of)
+  1. `onFulfilled[]` - promise's resolve part
+  2. `onRejection[]` - promise's rejection part
+- we don't have access to direct interact with above (kind of) array it is completely private even data
+- than second part for network request `fetch` (we) used browser or `node` based API
+- network request has only two possiblity
+
+  1. we get data
+
+     - if data recevie than always go in on `onFulfilled[]` or reslove
+
+     - this include all type of code even error code like `200` or `404` or `500` **interview question**
+
+  2. we don't recevie data
+     - if no network request than go in on `onRejection[]` or rejection
+
+- for the data is value is empty (or may be undefined)
+
+- once network request work is complete thier is only two possibility it will fire `onFulfilled[]` (if any kind of data recive) , `onRejection[]` (unable to network request) , both array have some function and those function are responsible for fulfulling data
+
+- once data fulfuiled than its value is set for response

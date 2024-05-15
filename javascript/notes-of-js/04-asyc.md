@@ -60,7 +60,7 @@ Hello From setTimeout !!!
 
 - `Register Callback` register `async` task when it need to execute than once agian need to add in call stack so in between `Register Callback` and `Callstack` (in LIFO order) their is `Task Queue` that add task in `task queue` in FIFO order and than execute that task
 
-- for `fetch` api we have separate `task queue` or we can say , `task queue` has been expanded but is has **higher priority** than normal `task queue` [click here to read about it]()
+- for `fetch` api we have separate `task queue` or we can say , `task queue` has been expanded but is has **higher priority** or even know as **MICROTASK QUEUE** than normal `task queue` [click here to read about it](\05-api-promises.md)
 
 ## with code
 
@@ -89,4 +89,4 @@ if (num === 3) {
 }
 ```
 
-- if we want to execute block of code multiple time we can use `setInterval` . 
+- if we want to execute block of code multiple time we can use `setInterval` .

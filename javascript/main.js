@@ -1159,29 +1159,46 @@
 
 // consumePromiseFive();
 
-async function apifunction() {
-  try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    const jsonData = await response.json();
-    console.log(jsonData);
-  } catch (err) {
-    console.error(err);
-  }
-}
+// async function apifunction() {
+//   try {
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//     const jsonData = await response.json();
+//     console.log(jsonData);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
-// apifunction();
+// // apifunction();
 
 const APIURL = "https://jsonplaceholder.typicode.com/users";
 
-fetch(APIURL)
-  .then((res) => {
-    return res.json();
-  })
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+// fetch(APIURL)
+//   .then((res) => {
+//     return res.json();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// fetch(APIURL, {
+//   method: "post",
+// });
+
+const prm = new Promise((res, rej) => {
+  let err = true;
+
+  if (!err) {
+    res();
+  } else {
+    rej("SOMETHING WRONG");
+  }
+});
 
 
+prm.then(()=>{
+  
+})
