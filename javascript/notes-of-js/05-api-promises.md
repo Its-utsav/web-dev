@@ -186,6 +186,101 @@ let promiseThree = new Promise((res, rej) => {
 });
 
 promiseThree.then((data) => {
-  console.log(data.username); // Utsav will create 
+  console.log(data.username); // Utsav will create
 });
 ```
+
+- below is example of creating promise and consuming proimise with if error ocure (in catch block) , and use of `finally` block to excute block of code 100 % (even if error or promise complete)
+
+```js
+let promiseFour = new Promise((res, rej) => {
+  setTimeout(() => {
+    let err = false; // chnage to the true
+    if (!err) {
+      res({ username: "Utsav", age: 17 });
+    } else {
+      rej("something wrong");
+    }
+  }, 2000);
+});
+
+promiseFour
+  .then((data) => {
+    if ("username" in data) {
+      return data.username;
+    } else {
+      return "JavaScript";
+    }
+  })
+  .then((username) => {
+    console.log(username);
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+  .finally(() => {
+    console.log(`promise Four complete successfully or with error`);
+  });
+```
+
+- simple promise will complete in future so we may way to consume promise so we can use `async` / `await`
+
+- `async` / `await` is similar to `.then` , `.catch` but **`async`/`await` don't handle error directly we need handle error explicit using try/catch block**
+
+```js
+const promiseFive = new Promise((res, rej) => {
+  setTimeout(() => {
+    let err = false;
+    if (!err) {
+      res({ username: "utsav", age: 17 });
+    } else {
+      rej("SOMETHING WRONG");
+    }
+  }, 1000);
+});
+
+async function consumePromiseFive() {
+  try {
+    let res = await promiseFive;
+    let username = "JavaScript";
+    if ("username" in res) {
+      username = res.username;
+    }
+    console.log(username);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+consumePromiseFive();
+```
+
+- api request
+
+```js
+async function apifunction() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const jsonData = await response.json();
+    console.log(jsonData);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+apifunction();
+
+const APIURL = "https://jsonplaceholder.typicode.com/users";
+
+fetch(APIURL)
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+```
+- **NOTE** - `fetch` have more prioriy than normal async task 

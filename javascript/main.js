@@ -844,7 +844,7 @@
 // console.log(h1Ele.textContent);
 // console.log(h1Ele.innerHTML);
 
-let weekDiv = document.querySelector(".weekday");
+// let weekDiv = document.querySelector(".weekday");
 
 // console.log(weekDiv.children);
 
@@ -1104,28 +1104,84 @@ let weekDiv = document.querySelector(".weekday");
 //   console.log(user.username);
 // });
 
-let promiseFour = new Promise((res, rej) => {
-  setTimeout(() => {
-    let err = false;
-    if (!err) {
-      res({ username: "Utsav", age: 17 });
-    } else {
-      rej("something wrong");
-    }
-  }, 2000);
-});
+// let promiseFour = new Promise((res, rej) => {
+//   setTimeout(() => {
+//     let err = false;
+//     if (!err) {
+//       res({ username: "Utsav", age: 17 });
+//     } else {
+//       rej("something wrong");
+//     }
+//   }, 2000);
+// });
 
-promiseFour
+// promiseFour
+//   .then((data) => {
+//     if ("username" in data) {
+//       return data.username;
+//     } else {
+//       return "JavaScript";
+//     }
+//   })
+//   .then((username) => {
+//     console.log(username);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   })
+//   .finally(() => {
+//     console.log(`promise Four complete successfully or with error`);
+//   });
+
+// const promiseFive = new Promise((res, rej) => {
+//   setTimeout(() => {
+//     let err = false;
+//     if (!err) {
+//       res({ username: "utsav", age: 17 });
+//     } else {
+//       rej("SOMETHING WRONG");
+//     }
+//   }, 1000);
+// });
+
+// async function consumePromiseFive() {
+//   try {
+//     let res = await promiseFive;
+//     let username = "JavaScript";
+//     if ("username" in res) {
+//       username =  res.username;
+//     }
+//     console.log(username);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
+
+// consumePromiseFive();
+
+async function apifunction() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const jsonData = await response.json();
+    console.log(jsonData);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// apifunction();
+
+const APIURL = "https://jsonplaceholder.typicode.com/users";
+
+fetch(APIURL)
+  .then((res) => {
+    return res.json();
+  })
   .then((data) => {
-    if ("username" in data) {
-      return data.username;
-    } else {
-      return "JavaScript";
-    }
+    console.log(data);
   })
-  .then((username) => {
-    console.log(username);
-  })
-  .finally(() => {
-    console.log(`promise Four complete successfully or with error`);
+  .catch((err) => {
+    console.error(err);
   });
+
+

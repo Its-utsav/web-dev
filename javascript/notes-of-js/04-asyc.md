@@ -23,7 +23,7 @@
 1. JS engine - memory heap and Call stack
 2. WEB API or Enviornment likes `Node` , `Deno` or `Bun` etc.
 3. Task queue - it makes js async and fast
-4. Promises queue - only for promises and its priprity is high
+4. Promises queue - only for promises and its **priprity is high**
 
 - when js program execute , firstly execution comtext is created and one by one function loaded into top of the Global Execuution Context in call stack and if function execution is finished than it would unload
 - when we write `async` js code some problem created just like :-
@@ -60,7 +60,7 @@ Hello From setTimeout !!!
 
 - `Register Callback` register `async` task when it need to execute than once agian need to add in call stack so in between `Register Callback` and `Callstack` (in LIFO order) their is `Task Queue` that add task in `task queue` in FIFO order and than execute that task
 
-- for `fetch` api we have separate `task queue` or we can say , `task queue` has been expanded but is has higher priority than normal `task queue`
+- for `fetch` api we have separate `task queue` or we can say , `task queue` has been expanded but is has **higher priority** than normal `task queue` [click here to read about it]()
 
 ## with code
 
