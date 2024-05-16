@@ -1205,27 +1205,124 @@
 // console.log(user); // whole object
 // user.getUserInfo(); // function called
 
-function User(userName, age, gender) {
-  // variable   = value
-  this.userName = userName;
-  this.age = age;
-  this.gender = gender;
+// function User(userName, age, gender) {
+//   // variable   = value
+//   this.userName = userName;
+//   this.age = age;
+//   this.gender = gender;
 
-  this.greet = function () {
-    console.log(
-      `Hi ${this.name} and ${this.gender == "male" ? "his" : "her"} age is ${
-        this.age
-      }`
-    );
-  };
+//   this.greet = function () {
+//     console.log(
+//       `Hi ${this.name} and ${this.gender == "male" ? "his" : "her"} age is ${
+//         this.age
+//       }`
+//     );
+//   };
 
- // return this; // optional
+//  // return this; // optional
+// }
+
+// let userOne = new User("utsav", 17, "male");
+
+// let userTwo = new User("Sam",23,'male');
+
+// console.log(userOne.constructor); // reference to itself
+// console.log(userTwo);
+// console.log(userOne instanceof User);
+
+function multiplyBy5(num, x, name) {
+  this.x = x;
+  this.name = name;
+  return Number(num * 5);
 }
 
-let userOne = new User("utsav", 17, "male");
+multiplyBy5.power = 10;
 
-let userTwo = new User("Sam",23,'male');
+// console.log(multiplyBy5(5, 10)); // 25
+// console.log(multiplyBy5.power); // 10
+// console.log(multiplyBy5.prototype); // why {}
+// console.log(multiplyBy5); // whole function definition
 
-console.log(userOne.constructor); // reference to itself
-console.log(userTwo);
-console.log(userOne instanceof User);
+// let x = new multiplyBy5(10, 1000, "harry");
+// let y = new multiplyBy5(10, 1000, "raju");
+
+// function createUser(username, score) {
+//   this.username = username;
+//   this.price = score;
+// }
+
+// createUser.prototype.increment = function () {
+//   // score++; // not work because current context is missing
+//   this.price++;
+// };
+
+// createUser.prototype.printPrice = function () {
+//   console.log(`price is ${this.price}`);
+// };
+
+// console.log(createUser);
+// console.log(createUser.prototype);
+// let one = new createUser("Utsav", 100);
+
+// one.printPrice();
+
+// one.increment();
+// one.printPrice();
+
+// one.increment();
+// one.printPrice();
+
+let myName = "Utsav     ";
+
+// console.log(myName.length); // give 10 but their is only 5 character and 5 spaec
+// for removing space and for real length for string i need to use trim() method like this
+
+// console.log(myName.trim().length); // remove white space and give length
+
+// what if i need to make function for this
+
+// answer
+
+String.prototype.trueLengthOfString = function () {
+  console.log(this);
+  return console.log(Number(this.trim().length));
+};
+
+myName.trueLengthOfString();
+
+// let heroArr = ["Thor", "Spider man"];
+
+// let heroPower = {
+//   thor: "Hammer",
+//   spiderman: "spidy",
+
+//   getSpiderPower: function () {
+//     console.log(`spider man power is ${this.spiderman}`);
+//   },
+// };
+
+// Object.prototype.UtsavSayHello = function () {
+//   console.log(`Hello from Utsav `);
+// };
+
+// // heroPower.getSpiderPower();
+// // heroArr.getSpiderPower()
+
+// heroPower.UtsavSayHello();
+// heroArr.UtsavSayHello();
+
+let human = {
+  canFly: false,
+  canTalk: true,
+  willDead: true,
+};
+
+let itsMe = {
+  name: "Utsav",
+  // __proto__: human, // older syntax
+};
+
+// itsMe.__proto__ = human
+Object.setPrototypeOf(itsMe,human); // newer syntax
+
+console.log(itsMe);

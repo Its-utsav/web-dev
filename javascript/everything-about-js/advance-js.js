@@ -121,7 +121,7 @@ let human = {
 
 //  supose we need to give same property to randomPerson object 
 // do win copy paste , but bad parctise
-// so we can borrowe it from human object
+// so we can borrow it from human object
 
 let randomPerson = {
   goodInEnglish: true,
