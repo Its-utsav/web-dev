@@ -78,7 +78,7 @@ console.log(user2);
 })();
 
 console.log(a); // throw an error
-// used for prevanting them fro, pollutin the gloable envirnment and interface with other parts of code
+// used for prevanting them fro, polluting the gloable envirnment and interface with other parts of code
 
 
 let ans = (function () {

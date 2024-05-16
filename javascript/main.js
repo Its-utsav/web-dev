@@ -1171,7 +1171,7 @@
 
 // // apifunction();
 
-const APIURL = "https://jsonplaceholder.typicode.com/users";
+// const APIURL = "https://jsonplaceholder.typicode.com/users";
 
 // fetch(APIURL)
 //   .then((res) => {
@@ -1188,17 +1188,44 @@ const APIURL = "https://jsonplaceholder.typicode.com/users";
 //   method: "post",
 // });
 
-const prm = new Promise((res, rej) => {
-  let err = true;
+// const user = {
+//   name: "Utsav",
+//   age: 17,
+//   gender: "male",
+//   getUserInfo: function () {
+// console.log(
+//   `Hi ${this.name} and ${this.gender == "male" ? "his" : "her"} age is ${
+//     this.age
+//   }`
+// );
+//     console.log(this);
+//   },
+// };
 
-  if (!err) {
-    res();
-  } else {
-    rej("SOMETHING WRONG");
-  }
-});
+// console.log(user); // whole object
+// user.getUserInfo(); // function called
 
+function User(userName, age, gender) {
+  // variable   = value
+  this.userName = userName;
+  this.age = age;
+  this.gender = gender;
 
-prm.then(()=>{
-  
-})
+  this.greet = function () {
+    console.log(
+      `Hi ${this.name} and ${this.gender == "male" ? "his" : "her"} age is ${
+        this.age
+      }`
+    );
+  };
+
+ // return this; // optional
+}
+
+let userOne = new User("utsav", 17, "male");
+
+let userTwo = new User("Sam",23,'male');
+
+console.log(userOne.constructor); // reference to itself
+console.log(userTwo);
+console.log(userOne instanceof User);
