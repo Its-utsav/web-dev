@@ -43,6 +43,8 @@
   - [Inheritance](#inheritance)
   - Polymorphism
 
+4. [call apply and bind](#call-apply-bind)
+
 ### Object literal
 
 - before goning on class or other oop concept once agian revise object
@@ -217,7 +219,8 @@ String.prototype.trueLengthOfString = function () {
 
 ---
 
-- in below example we add own method in `Object` so it avaible for all other object 
+- in below example we add own method in `Object` so it avaible for all other object
+
 ```js
 let heroArr = ["Thor", "Spider man"];
 
@@ -238,8 +241,6 @@ heroPower.UtsavSayHello();
 heroArr.UtsavSayHello();
 ```
 
-
-
 ### Inheritance
 
 ```js
@@ -255,8 +256,99 @@ let itsMe = {
 };
 
 // itsMe.__proto__ = human
-Object.setPrototypeOf(itsMe,human); // newer syntax
+Object.setPrototypeOf(itsMe, human); // newer syntax
 
 console.log(itsMe);
+```
 
+### call-apply-bind
+
+- the main purpose of `call` , `apply` and `bind` is change (control) the value of `this`
+  in which function execute and `this` means it current context
+
+- some by default value of this like if `this` located in :-
+
+1. global -> `window` object `console.log(this)` in node `{ }`
+2. function -> `window` object only normal `this`
+
+```js
+function x() {
+  console.log(this);
+}
+x();
+```
+
+3. method -> return current `Object`
+
+```js
+let user = {
+  name: "Utsav",
+  age: 17,
+
+  printUserInfo: function () {
+    console.log(`i am ${this.name} , i am ${this.age}`);
+    console.log(this);
+  },
+};
+
+user.printUserInfo();
+```
+
+- `call`
+- its syntax like this `functionName.call(this,Argument1,Argument2,Argument3,ArgumentN)` here `this` is optional (sometime)
+- in below function we just outsourced `this.username = username` to the other function
+
+```js
+unction setUser(username) {
+  this.username = username;
+  console.log("called");
+}
+// problem is that above function is called but its execution context destrory so inside all variable is desotry
+function createUser(username, email, password) {
+
+  // setUser(username); // not working
+
+  setUser.call(this, username);
+  this.email = email;
+  this.password = password;
+}
+
+let userOne = new createUser("Utsav", "utsav@example.com", "123");
+console.log(userOne);
+```
+
+- simple example
+
+```js
+function one() {
+  console.log(this);
+}
+let harry = { username: "harray" };
+one.call(harry);
+```
+
+- `apply`
+- it is almost similar as `call` but main diffenr is in `apply` syntax
+- `functionName.apply(this,[argumentArray])` - this function take argument as array , here this (first param) is imporant otherwise it return `undefined`
+
+```js
+function one(name, age) {
+  console.log(`${name} age is ${age}`);
+}
+one.apply(this, ["utsav", 17]);
+```
+
+- `bind`
+
+- it is diffent from `call` and `apply` , this we need invoke function explicitly (even need to store function in variable)
+
+```js
+function person(name, age) {
+  console.log(`${name} age is ${age}`);
+}
+let itsMe = { name: "Utsav" };
+
+const bindFunction = person.bind(this, itsMe.name, 90);
+
+bindFunction();
 ```

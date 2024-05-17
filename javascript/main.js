@@ -1283,12 +1283,12 @@ let myName = "Utsav     ";
 
 // answer
 
-String.prototype.trueLengthOfString = function () {
-  console.log(this);
-  return console.log(Number(this.trim().length));
-};
+// String.prototype.trueLengthOfString = function () {
+//   console.log(this);
+//   return console.log(Number(this.trim().length));
+// };
 
-myName.trueLengthOfString();
+// myName.trueLengthOfString();
 
 // let heroArr = ["Thor", "Spider man"];
 
@@ -1311,18 +1311,74 @@ myName.trueLengthOfString();
 // heroPower.UtsavSayHello();
 // heroArr.UtsavSayHello();
 
-let human = {
-  canFly: false,
-  canTalk: true,
-  willDead: true,
-};
+// let human = {
+//   canFly: false,
+//   canTalk: true,
+//   willDead: true,
+// };
 
-let itsMe = {
-  name: "Utsav",
-  // __proto__: human, // older syntax
-};
+// let itsMe = {
+//   name: "Utsav",
+//   // __proto__: human, // older syntax
+// };
 
-// itsMe.__proto__ = human
-Object.setPrototypeOf(itsMe,human); // newer syntax
+// // itsMe.__proto__ = human
+// Object.setPrototypeOf(itsMe,human); // newer syntax
 
-console.log(itsMe);
+// console.log(itsMe);
+
+// console.log(this)
+
+// function x() {
+//   console.log(this);
+// }
+// x();
+
+// let user = {
+//   name: "Utsav",
+//   age: 17,
+
+//   printUserInfo: function () {
+//     console.log(`i am ${this.name} , i am ${this.age}`);
+//     console.log(this);
+//   },
+// };
+
+// user.printUserInfo()
+
+// function setUser(username) {
+//   this.username = username;
+//   console.log("called");
+// }
+// // problem is that above function is called but its execution context destrory
+// function createUser(username, email, password) {
+
+//   // setUser(username); // not working
+
+//   setUser.call(this, username);
+//   this.email = email;
+//   this.password = password;
+// }
+
+// let userOne = new createUser("Utsav", "utsav@example.com", "123");
+// console.log(userOne);
+
+// function one(name, age) {
+//   console.log(`${name} age is ${age}`);
+// }
+// one.apply(this, ["utsav", 17]);
+
+// function one() {
+//   console.log(this);
+// }
+// let harry = { username: "harray" };
+// one.call(harry);
+
+function person(name, age) {
+  console.log(`${name} age is ${age}`);
+}
+let itsMe = { name: "Utsav" };
+
+const bindFunction = person.bind(this, itsMe.name, 90);
+
+bindFunction();
