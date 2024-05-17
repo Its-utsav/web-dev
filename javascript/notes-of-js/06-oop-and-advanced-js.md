@@ -32,16 +32,18 @@
   - [Object Literl](#object-literal)
   - [Constructor Function](#constructor-function)
   - [Proto OR Prototype](#prototype)
-  - Classes
+  - [Classes](#classes)
   - Instance (keywords like `new` , `this`)
 
 3. Pillars of `oop` :-
 
 - same in all `opp` supported language
+- only diffrent in syntax
   - Abstraction
   - Encapsulation
   - [Inheritance](#inheritance)
   - Polymorphism
+- [more about oop](#more-about-opp)
 
 4. [call apply and bind](#call-apply-bind)
 
@@ -241,6 +243,51 @@ heroPower.UtsavSayHello();
 heroArr.UtsavSayHello();
 ```
 
+### Classes
+
+- in all about syntactic suger ober the js Prototype
+
+```js
+class User {
+  constructor(username, email, password) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
+
+  // Method
+  encryptPass() {
+    return console.log(`${this.password}${Math.random() * 10}`);
+  }
+}
+
+let userOne = new User("Utsav", "utsav@example.com", 123);
+
+console.log(userOne);
+
+userOne.encryptPass();
+```
+
+- behind the scene
+
+```js
+function User(username, email, password) {
+  this.username = username;
+  this.email = email;
+  this.password = password;
+}
+
+User.prototype.encryptPass = function () {
+  return console.log(`${this.password}${Math.random() * 100}`);
+};
+
+let userOne = new User("Utsav", "utsav@example.com", 123);
+
+console.log(userOne);
+
+userOne.encryptPass();
+```
+
 ### Inheritance
 
 ```js
@@ -259,6 +306,81 @@ let itsMe = {
 Object.setPrototypeOf(itsMe, human); // newer syntax
 
 console.log(itsMe);
+```
+
+- class based syntax
+
+```js
+class User {
+  constructor(username) {
+    this.username = username;
+  }
+  printUserInfo() {
+    console.log(this.username);
+  }
+}
+
+class Teacher extends User {
+  // inherit from user
+  constructor(username, email, password) {
+    super(username); // same as call method
+
+    this.email = email;
+    this.password = password;
+  }
+
+  TeacherInfo() {
+    console.log(`teacher name is ${this.username} and email ${this.email}`);
+  }
+}
+
+const ht = new Teacher("hitesh houdhary", "ht@example.com", 123);
+
+console.log(ht);
+
+ht.TeacherInfo();
+
+const userOne = new User("Utsav");
+
+console.log(userOne);
+
+userOne.printUserInfo();
+
+ht.printUserInfo();
+console.log(ht instanceof Teacher); // true
+console.log(ht instanceof User); // true due to inheritance
+
+// userOne.TeacherInfo(); // it will not work
+```
+
+### More about OPP
+
+- static Method - method that is part of a class rather than an instance of that class
+
+```js
+class User {
+  constructor(username) {
+    this.username = username;
+    User.userCount++;
+  }
+
+  logMe() {
+    return console.log(this.username);
+  }
+  static userCount = 0;
+  static TotalUser() {
+    return console.log(`total user ${this.userCount}`);
+  }
+
+}
+
+let userOne = new User("utsav");
+let userTwo = new User("Sam");
+
+console.log(userOne);
+console.log(userTwo);
+
+User.TotalUser();
 ```
 
 ### call-apply-bind

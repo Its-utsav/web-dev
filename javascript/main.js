@@ -1374,11 +1374,125 @@ let myName = "Utsav     ";
 // let harry = { username: "harray" };
 // one.call(harry);
 
-function person(name, age) {
-  console.log(`${name} age is ${age}`);
+// function person(name, age) {
+//   console.log(`${name} age is ${age}`);
+// }
+// let itsMe = { name: "Utsav" };
+
+// const bindFunction = person.bind(this, itsMe.name, 90);
+
+// bindFunction();
+
+// class User {
+//   constructor(username, email, password) {
+//     this.username = username;
+//     this.email = email;
+//     this.password = password;
+//   }
+//   encryptPass() {
+//     return console.log(`${this.password}${Math.random() * 10}`);
+//   }
+// }
+
+// let userOne = new User("Utsav", "utsav@example.com", 123);
+
+// console.log(userOne);
+
+// userOne.encryptPass();
+
+// function User(username, email, password) {
+//   this.username = username;
+//   this.email = email;
+//   this.password = password;
+// }
+
+// User.prototype.encryptPass = function () {
+//   return console.log(`${this.password}${Math.random() * 100}`);
+// };
+
+// let userOne = new User("Utsav","utsav@example.com",123);
+
+// console.log(userOne);
+
+// userOne.encryptPass()
+
+// class User {
+//   constructor(username) {
+//     this.username = username;
+//   }
+
+//   printUserInfo() {
+//     console.log(this.username);
+//   }
+// }
+
+// class Teacher extends User {
+//   constructor(username, email, password) {
+//     super(username); // same as call method
+
+//     this.email = email;
+//     this.password = password;
+//   }
+
+//   TeacherInfo() {
+//     console.log(`teacher name is ${this.username} and email ${this.email}`);
+//   }
+// }
+
+// const ht = new Teacher("hitesh houdhary","ht@example.com",123);
+
+// console.log(ht);
+
+// ht.TeacherInfo();
+
+// const userOne = new User("Utsav");
+
+// console.log(userOne);
+
+// userOne.printUserInfo();
+
+// ht.printUserInfo()
+// console.log(ht instanceof Teacher);
+// console.log(ht instanceof User);
+
+// // userOne.TeacherInfo(); // it will not work
+
+/**
+ * User Class that contains username and static method for only class
+ * @param User (username)
+ */
+class User {
+  constructor(username) {
+    this.username = username;
+    User.userCount++;
+  }
+
+  logMe() {
+    return console.log(this.username);
+  }
+  static userCount = 0;
+  static TotalUser() {
+    return console.log(`total user ${this.userCount}`);
+  }
 }
-let itsMe = { name: "Utsav" };
 
-const bindFunction = person.bind(this, itsMe.name, 90);
+let userOne = new User("utsav");
+let userTwo = new User("Sam");
 
-bindFunction();
+console.log(userOne);
+console.log(userTwo);
+
+User.TotalUser();
+
+class itsMe extends User {
+  constructor(username, email) {
+    super(username);
+    this.email = email;
+  }
+}
+
+let utsav = new itsMe("utsav", "utsav@exmpale.com");
+
+console.log(utsav);
+
+itsMe.TotalUser()
