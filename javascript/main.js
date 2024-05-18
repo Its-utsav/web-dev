@@ -1635,14 +1635,81 @@ const info = Object.getOwnPropertyDescriptor(Math, "PI");
 //     this._pass = value;
 //   },
 // };
-// // 
+// //
 // const utsav = Object.create(User)
 
 // console.log(utsav._username);
 
+// let arr = [1,2,3];
 
-let arr = [1,2,3];
+// arr.length = 0;
 
-arr.length = 0;
+// console.log(arr);
+// function init() {
+//   var name = "Mozilla";
+//   function displayName() {
+//     console.log(name);
+//   }
+//   displayName();
+// }
+// init();
 
-console.log(arr);
+// function outer() {
+//   let username = "utsav";
+
+//   function inner() {
+//     let num = 123;
+//     console.log(username);
+//   }
+//   function innerTwo() {
+//     console.log(username);
+//     console.log(num); /// give error
+//   }
+//   inner();
+//   innerTwo();
+// }
+
+// outer();
+// console.log(username); // give error
+
+// function makeFunc() {
+//   const name = "Mozilla";
+//   function displayName() {
+//     console.log(name);
+//   }
+//   return displayName;
+// }
+
+// const myFunc = makeFunc();
+// console.log(myFunc());
+// myFunc();
+
+// document.getElementById("orange").onclick = function () {
+//   document.body.style.backgroundColor = "orange";
+// };
+// document.getElementById("green").onclick = function () {
+//   document.body.style.backgroundColor = "green";
+// };
+
+function clickHandler(color) {
+  // return function () {
+  //   document.body.style.backgroundColor = color;
+  // };
+  function changecolor() {
+    document.body.style.backgroundColor = color;
+  }
+  return changecolor;
+}
+
+let colors = ["red", "green", "blue", "pink"];
+
+let cColor = colors.map((c) => {
+  return c;
+});
+
+document.getElementById("orange").onclick = clickHandler(cColor);
+document.getElementById("green").onclick = clickHandler("green");
+
+colors.map((c) => {
+  console.log(c);
+});
