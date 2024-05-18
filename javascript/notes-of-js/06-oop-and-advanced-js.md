@@ -3,6 +3,7 @@
 ## TOC
 
 1. [oop](#oop)
+2. [advanced about object](#advanced-about-object)
 
 ## oop
 
@@ -215,7 +216,7 @@ String.prototype.trueLengthOfString = function () {
 ```
 
 - why this is possible ?
-  ![Prototype Image](https://media.discordapp.net/attachments/1205479570900521003/1240673711900590140/image.png?ex=66476aef&is=6646196f&hm=d79d3fd62e993ac308da68caa4a943004e78457e2473f170126ea21b60e9ea28&=&format=webp&quality=lossless&width=825&height=369)
+  ![Prototype Image](https://cdn.discordapp.com/attachments/1205479570900521003/1240673711900590140/image.png?ex=6649652f&is=664813af&hm=1e0a84159e3852bf255b3f3931dc551c8b181c889bcfe2b8518d38e2045ad7c4&)
 
 - here we add own method in `String` object if we add something in `Object` level than it can be accessible to all object but here we add `trueLengthOfString()` method into only `String` object so it only avialable for string
 
@@ -371,7 +372,6 @@ class User {
   static TotalUser() {
     return console.log(`total user ${this.userCount}`);
   }
-
 }
 
 let userOne = new User("utsav");
@@ -473,4 +473,62 @@ let itsMe = { name: "Utsav" };
 const bindFunction = person.bind(this, itsMe.name, 90);
 
 bindFunction();
+```
+
+## Advanced About Object
+
+1. interview question :- chnage the value of `Math.pi` `3.14` to `5` is it is possible or not with proper explanation .
+
+```js
+console.log(Math.PI); // 3.141592653589793
+
+Math.PI = 5; // can't chnage
+
+console.log(Math.PI); // 3.141592653589793
+```
+
+- lets se why it value can't change
+
+```js
+const info = Object.getOwnPropertyDescriptor(Math, "PI");
+console.log(info);
+```
+
+- we get like this
+
+```js
+{
+    "value": 3.141592653589793,
+    "writable": false, // that why we can't change the value of PI
+    "enumerable": false,
+    "configurable": false
+}
+```
+
+- even we can config own object
+
+```js
+const chai = {
+  // Normal object
+  name: "Green Tea",
+  price: 250,
+  isAvailable: true,
+
+  printInfo: function () {
+    console.log(`${this.name} - price ${this.price}`);
+  },
+};
+
+Object.defineProperty(chai, "price", {
+  writable: false, // now we can't rewrite
+  enumerable: false, // price can't loop
+});
+
+chai.price = 2000; // will not work
+
+for (let [key, value] of Object.entries(chai)) {
+  if (typeof value !== "function") {
+    console.log(`${key} : ${value}`); // price will not print
+  }
+}
 ```

@@ -18,8 +18,6 @@
 
 - this is old way to call api in js (you may be learn about this is anywhere but now days developer don't use it but knowing this can be help full )
 
-|
-
 - use of `XMLhttpRequest`
 
 1. create `XMLhttpRequest` object
@@ -296,7 +294,7 @@ fetch(APIURL)
 1. Web Browser / Node
 2. space reserve in memory (kind of `Data`) aka memory allocte
 
-![fetch explain img](https://media.discordapp.net/attachments/1205479570900521003/1240254493195763742/diagram-export-15-5-2024-4_17_56-pm.png?ex=6645e481&is=66449301&hm=ebfb5d872bd15450047ed3bdd3bc6b01a622ebaaf548bca4e24e3ccb11e535ef&=&format=webp&quality=lossless&width=735&height=525)
+![fetch explain img](https://cdn.discordapp.com/attachments/1205479570900521003/1240254493195763742/diagram-export-15-5-2024-4_17_56-pm.png?ex=66493041&is=6647dec1&hm=6f985eea0242529245bb8227d9b142ad1f9ff9eb6d84a17237a0b856f725b999&)
 
 - explaintion for above image
 - for step 2 space reserve in memory (kind of `Data`)

@@ -31,7 +31,7 @@
 - for this above `HTML` code `DOM` parse like this
   **NOTE:-** this is only for `visualization`
 
-  - ![DOM visualization](https://media.discordapp.net/attachments/1205479570900521003/1237304330512633936/image.png?ex=663b28f4&is=6639d774&hm=0de30707bbd532f487410d2fef725ddde8d938a04df54895fa133056aa7291bd&=&format=webp&quality=lossless&width=949&height=583)
+  - ![DOM visualization](https://cdn.discordapp.com/attachments/1205479570900521003/1237304330512633936/image.png?ex=6649a974&is=664857f4&hm=44fe6afc5a1c1f16d10643a1e21620dfa449164be07cbac99cbfcab2cc34bcbd&)
 
 - selecting `HTML` Elements
 

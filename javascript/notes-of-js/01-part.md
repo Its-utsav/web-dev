@@ -171,7 +171,7 @@ function abc() {
 - stack memory - we get a copy of a variable
 - heap memory - we get reference of variable (modification apply in even in original)
 - some graphical represntion
-  ![image of stack and heap memory](https://media.discordapp.net/attachments/1205479570900521003/1235546985927540766/stack-heap.png?ex=6634c44c&is=663372cc&hm=d5b5f78416ccc921c8bcd7c4745e3a35245ddea645173dff0ede242f69d139cd&=&format=webp&quality=lossless&width=1431&height=580)
+  ![image of stack and heap memory](https://cdn.discordapp.com/attachments/1205479570900521003/1235546985927540766/stack-heap.png?ex=6649338c&is=6647e20c&hm=217ea060710816ba08c577cd08b3d911d5816e56ff6b27dee45b0d2a43889001&)
 
 ## Type conversion And Opeartions
 

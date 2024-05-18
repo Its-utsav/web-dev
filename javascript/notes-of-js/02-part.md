@@ -48,11 +48,11 @@ console.log(add(100, 100));
 1. Global Execution Context is created (`this` , `Window` object for Browser)
 2. Memory For all variable are allocated and set `undefined` value for all variable includeig `let` and `const` and for the function whole function statement copy into function name (function defination) , i only decalre function not a invoke the function
 
-![Memory Creation Pahse](https://media.discordapp.net/attachments/1205479570900521003/1236548827373375528/EC-1.png?ex=66386956&is=663717d6&hm=08fcf325fc20040cbf41788072dec037356bfde36654969ba5faf234ea897c03&=&format=webp&quality=lossless&width=1260&height=583)
+![Memory Creation Pahse](https://cdn.discordapp.com/attachments/1205479570900521003/1236548827373375528/EC-1.png?ex=66498cd6&is=66483b56&hm=4a262b76fa638c9247a7211d92cdab7649378188c1140e8516447629618bbbab&)
 
 3. Execution Phase in this phase all the value of variable replace `undefined`
 
-![Execution Phase](https://media.discordapp.net/attachments/1205479570900521003/1236550294800699502/EC_-2.png?ex=66386ab4&is=66371934&hm=e6bdba4f49d9511e02483e6e7da3032e4eb5d36f2fc15d226765926dea5fed7a&=&format=webp&quality=lossless&width=1174&height=583)
+![Execution Phase](https://cdn.discordapp.com/attachments/1205479570900521003/1236550294800699502/EC_-2.png?ex=66498e34&is=66483cb4&hm=1f5361bbb8dddcb7b0426010fe95069657a05c86eff854db0ec841807e51f38f&)
 
 4. now `console.log(add(v1, v2));` line encounted here function is invoked , so another Execution contex is created for the function but now it is not a Global Exceution contex
 
@@ -70,7 +70,7 @@ console.log(add(100, 100));
 
 - in between this call stack also create as per function execute .
 
-![Call Stack](https://media.discordapp.net/attachments/1205479570900521003/1236633652431949855/call_stack_1.png?ex=6638b856&is=663766d6&hm=7e194bb24167bf65bb4e7146e05321325b8e794d8acfa831861f8fa55b02259b&=&format=webp&quality=lossless&width=825&height=384)
+![Call Stack](https://cdn.discordapp.com/attachments/1205479570900521003/1236633652431949855/call_stack_1.png?ex=66493316&is=6647e196&hm=f6d78bdfe3c616d98f87951c57dd2f7229709af33bbb348b66cc89fa5de6a4d9&)
 
 - Graphical Example of Call stack for the below code
 
@@ -90,11 +90,11 @@ one();
 - than function one call and it will place at up from `global exacution context` than function two call and function two place top of function `one` execution context
 - firstly two execution context destory than function one execution context destory and if thrie on statement so even global execution will also destory .
 
-![call stack](https://media.discordapp.net/attachments/1205479570900521003/1236636059027116052/call_stack_2.png?ex=6638ba94&is=66376914&hm=5f1ea73bf1a27ce49e0d64988e05a8399e5a71ebf8c2b2598ba68e11016f788e&=&format=webp&quality=lossless&width=1267&height=583)
+![call stack](https://cdn.discordapp.com/attachments/1205479570900521003/1236636059027116052/call_stack_2.png?ex=66493554&is=6647e3d4&hm=9ccf81423b26ba2b5eeb70cd593e90ed81f20d6586734081518b7d135b8800a8&)
 
 - call stack have concept of `LIFO` aka Last In First Out .
 
-![call stack](https://media.discordapp.net/attachments/1205479570900521003/1236639230017671229/diagram-export-5-5-2024-4_52_31-pm.png?ex=6638bd88&is=66376c08&hm=757025926a3e300a21672a75924b44ee15e34bfca7fbf3e56e1ada32f4387971&=&format=webp&quality=lossless&width=825&height=451)
+![call stack](https://cdn.discordapp.com/attachments/1205479570900521003/1236639230017671229/diagram-export-5-5-2024-4_52_31-pm.png?ex=66493848&is=6647e6c8&hm=eb62d5281a4d469a6a45b3fe03a34ee5efc5dc8916c2c0c495353849c5890670&)
 
 ## Truthy and Falsy Value
 

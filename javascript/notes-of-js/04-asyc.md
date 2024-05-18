@@ -16,7 +16,7 @@
 
 - above both code writing style is imp both sytle depended on our use case
 
-![Event Loop](https://media.discordapp.net/attachments/1205479570900521003/1239576331889672294/diagram-export-13-5-2024-7_09_08-pm.png?ex=66436ceb&is=66421b6b&hm=46f0f4484018ebf1278eb5e3100ff375599cfbe2c82afd7856a46cbd528f3590&=&format=webp&quality=lossless&width=594&height=525)
+![Event Loop](https://cdn.discordapp.com/attachments/1205479570900521003/1239576331889672294/diagram-export-13-5-2024-7_09_08-pm.png?ex=66495bab&is=66480a2b&hm=28a8562538ffcb7d2922f35171a4f32eba312a97a157a252fa7c75bc50bd176d&)
 
 - for async javascript few things are imporant
 

@@ -1461,38 +1461,97 @@ let myName = "Utsav     ";
  * User Class that contains username and static method for only class
  * @param User (username)
  */
-class User {
-  constructor(username) {
-    this.username = username;
-    User.userCount++;
-  }
+// class User {
+//   constructor(username) {
+//     this.username = username;
+//     User.userCount++;
+//   }
 
-  logMe() {
-    return console.log(this.username);
-  }
-  static userCount = 0;
-  static TotalUser() {
-    return console.log(`total user ${this.userCount}`);
-  }
-}
+//   logMe() {
+//     return console.log(this.username);
+//   }
+//   static userCount = 0;
+//   static TotalUser() {
+//     return console.log(`total user ${this.userCount}`);
+//   }
+// }
 
-let userOne = new User("utsav");
-let userTwo = new User("Sam");
+// let userOne = new User("utsav");
+// let userTwo = new User("Sam");
 
-console.log(userOne);
-console.log(userTwo);
+// console.log(userOne);
+// console.log(userTwo);
 
-User.TotalUser();
+// User.TotalUser();
 
-class itsMe extends User {
-  constructor(username, email) {
-    super(username);
-    this.email = email;
-  }
-}
+// class itsMe extends User {
+//   constructor(username, email) {
+//     super(username);
+//     this.email = email;
+//   }
+// }
 
-let utsav = new itsMe("utsav", "utsav@exmpale.com");
+// let utsav = new itsMe("utsav", "utsav@exmpale.com");
 
-console.log(utsav);
+// console.log(utsav);
 
-itsMe.TotalUser()
+// itsMe.TotalUser()
+
+// class React {
+//   constructor() {
+//     this.library = "React";
+//     this.server = "https://localhost:3000";
+
+//     document
+//       .getElementById("btn")
+//       .addEventListener("click", this.handleClick.bind(this));
+//   }
+//   handleClick() {
+//     console.log("Button Click server: ", this);
+//   }
+// }
+
+// new React();
+
+const info = Object.getOwnPropertyDescriptor(Math, "PI");
+
+// console.log(info);
+
+// console.log(Math.PI);
+
+// Math.PI = 5;
+
+// console.log(Math.PI);
+
+// const chai = {
+//   name: "Green Tea",
+//   price: 250,
+//   isAvailable: true,
+
+//   printInfo: function () {
+//     console.log(`${this.name} - price ${this.price}`);
+//   },
+// };
+
+// console.log(Object.getOwnPropertyDescriptor(chai, "price"));
+
+// Object.defineProperty(chai, "price", {
+//   writable: false, // now we can't write
+//   enumerable: false, // price can't loop
+// });
+
+// console.log(Object.getOwnPropertyDescriptor(chai, "price"));
+
+// chai.price = 2000;
+
+// console.log(chai);
+
+// for (let [key, value] of Object.entries(chai)) {
+//   if (typeof value !== "function") {
+//     console.log(`${key} : ${value}`);
+//   }
+// }
+
+
+
+
