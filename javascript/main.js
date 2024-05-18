@@ -1552,6 +1552,97 @@ const info = Object.getOwnPropertyDescriptor(Math, "PI");
 //   }
 // }
 
+// class User {
+//   constructor(username, email) {
+//     this.username = username;
+//     this.email = email;
+//   }
+
+//   get username() {
+//     return this._username.toUpperCase(); // geting value
+//   }
+
+//   set username(value) {
+//     this._username = value; // seting the value
+//   }
+
+//   get email() {
+//     return this._email.toUpperCase();
+//   }
+
+//   set email(value) {
+//     this._email = value;
+//   }
+// }
+
+// const utsav = new User("Utsav", "utsav@example.com");
+// console.log(utsav);
+// console.log(utsav.username);
+
+// class Person {
+//   constructor(firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+
+//   get firstName() {
+//     return this._fname;
+//   }
+
+//   set firstName(fname) {
+//     this._fname = fname.toUpperCase();
+//   }
+
+//   get fullName() {
+//     return `${this.firstName} ${this.lastName}`;
+//   }
+// }
+
+// let utsav = new Person("Utsav", "Dhimmar");
+
+// console.log(utsav.fullName);
+
+// function User(username, pass) {
+//   this._username = username;
+//   this._pass = pass;
+
+//   Object.defineProperty(this, "username", {
+//     get: function () {
+//       return this._username.toUpperCase();
+//     },
+//     set: function (value) {
+//       this._username = value;
+//     },
+//   });
+
+//   Object.defineProperty(this, "pass", {
+//     get: function () {
+//       return this._pass.toUpperCase() + 123;
+//     },
+//     set: function (value) {
+//       this._pass = value;
+//     },
+//   });
+// }
+
+// let User = {
+//   _username: "Utsav",
+//   _pass: "abc",
+//   get: function () {
+//     return this._pass.toUpperCase() + 123;
+//   },
+//   set: function (value) {
+//     this._pass = value;
+//   },
+// };
+// // 
+// const utsav = Object.create(User)
+
+// console.log(utsav._username);
 
 
+let arr = [1,2,3];
 
+arr.length = 0;
+
+console.log(arr);

@@ -4,6 +4,7 @@
 
 1. [oop](#oop)
 2. [advanced about object](#advanced-about-object)
+3. [getter and setter](#getter-and-setter)
 
 ## oop
 
@@ -531,4 +532,113 @@ for (let [key, value] of Object.entries(chai)) {
     console.log(`${key} : ${value}`); // price will not print
   }
 }
+```
+
+## getter and setter
+
+- `getter` ans `setter` are special method that provide a way to access and update the propertise of an object
+
+- `get` and `set` are complementry to eachother once we set `get` than we must set `set` .
+- by defualt for all propiertise already `getter` and `setter` available
+
+most possible error ` Uncaught RangeError: Maximum call stack size exceeded`
+
+- getter
+- getter is a method that get the value of a property .
+-
+
+```js
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+let utsav = new Person("Utsav", "Dhimmar");
+
+console.log(utsav.fullName);
+```
+
+- setter
+- setter are the method that set the value of property .
+-
+
+```js
+class User {
+  constructor(username, email) {
+    this.username = username;
+    this.email = email;
+  }
+
+  get username() {
+    return this._username.toUpperCase(); // geting value
+  }
+
+  set username(value) {
+    this._username = value; // seting the value
+  }
+
+  get email() {
+    return this._email.toUpperCase();
+  }
+
+  set email(value) {
+    this._email = value;
+  }
+}
+
+const utsav = new User("Utsav", "utsav@example.com");
+console.log(utsav);
+console.log(utsav.username);
+```
+
+- function based
+
+```js
+function User(username, pass) {
+  this._username = username;
+  this._pass = pass;
+
+  Object.defineProperty(this, "username", {
+    get: function () {
+      return this._username.toUpperCase();
+    },
+    set: function (value) {
+      this._username = value;
+    },
+  });
+
+  Object.defineProperty(this, "pass", {
+    get: function () {
+      return this._pass.toUpperCase() + 123;
+    },
+    set: function (value) {
+      this._pass = value;
+    },
+  });
+}
+```
+
+- rarest
+
+```js
+let User = {
+  _username: "Utsav",
+  _pass: "abc",
+  get: function () {
+    return this._pass.toUpperCase() + 123;
+  },
+  set: function (value) {
+    this._pass = value;
+  },
+};
+//
+const utsav = Object.create(User); // factiry function
+
+console.log(utsav);
 ```
