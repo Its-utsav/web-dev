@@ -217,7 +217,7 @@ String.prototype.trueLengthOfString = function () {
 ```
 
 - why this is possible ?
-  ![Prototype Image](https://cdn.discordapp.com/attachments/1205479570900521003/1240673711900590140/image.png?ex=6649652f&is=664813af&hm=1e0a84159e3852bf255b3f3931dc551c8b181c889bcfe2b8518d38e2045ad7c4&)
+  ![Prototype Image](./images/proto.png)
 
 - here we add own method in `String` object if we add something in `Object` level than it can be accessible to all object but here we add `trueLengthOfString()` method into only `String` object so it only avialable for string
 

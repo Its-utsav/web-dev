@@ -16,7 +16,7 @@
 
 - above both code writing style is imp both sytle depended on our use case
 
-![Event Loop](https://cdn.discordapp.com/attachments/1205479570900521003/1239576331889672294/diagram-export-13-5-2024-7_09_08-pm.png?ex=66495bab&is=66480a2b&hm=28a8562538ffcb7d2922f35171a4f32eba312a97a157a252fa7c75bc50bd176d&)
+![Event Loop](./images/event-loop.png)
 
 - for async javascript few things are imporant
 

@@ -27,10 +27,11 @@
 
 ## props
 
-- react props (properties) is the mechanism that pass data from the parent component to child componets 
-1. props are immutable 
-2. props shlod be passdown from parent to child 
-3. 
+- react props (properties) is the mechanism that pass data from the parent component to child componets
+
+1. props are immutable
+2. props shlod be passdown from parent to child
+3.
 
 ## hooks
 
@@ -60,3 +61,8 @@ function Counter() {
   );
 }
 ```
+
+## Redux
+
+- it is state mangenent libray .
+- for connecting react with redux we have `react-redux`.

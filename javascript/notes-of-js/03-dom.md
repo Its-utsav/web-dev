@@ -31,7 +31,7 @@
 - for this above `HTML` code `DOM` parse like this
   **NOTE:-** this is only for `visualization`
 
-  - ![DOM visualization](https://cdn.discordapp.com/attachments/1205479570900521003/1237304330512633936/image.png?ex=6649a974&is=664857f4&hm=44fe6afc5a1c1f16d10643a1e21620dfa449164be07cbac99cbfcab2cc34bcbd&)
+  - ![DOM visualization](./images/dom-1.png)
 
 - selecting `HTML` Elements
 
@@ -189,27 +189,43 @@ document.querySelector(".box2").addEventListener("click", () => {
 //            SAME AS ABOVE
 // ------------------------------------------
 // ------------------------------------------
-document.querySelector(".box1").addEventListener("click", () => {
-  console.log("Box 1 Clicked from parent");
-},false);
+document.querySelector(".box1").addEventListener(
+  "click",
+  () => {
+    console.log("Box 1 Clicked from parent");
+  },
+  false
+);
 
-document.querySelector(".box2").addEventListener("click", () => {
-  console.log("Box 2 Clicked from child");
-},false);
+document.querySelector(".box2").addEventListener(
+  "click",
+  () => {
+    console.log("Box 2 Clicked from child");
+  },
+  false
+);
 ```
 
 1. `bubbling` - run event for the own component than its parent compnent event just like bubble bottom to top
 
+2. `capturing` - `opposite` of bubbling top to bottom
 
-2. `capturing` - `opposite` of bubbling top to bottom 
 - now first `box1` event called than `box2`
+
 ```js
-document.querySelector(".box1").addEventListener("click", () => {
-  console.log("Box 1 Clicked from parent");
-},true);
+document.querySelector(".box1").addEventListener(
+  "click",
+  () => {
+    console.log("Box 1 Clicked from parent");
+  },
+  true
+);
 
-document.querySelector(".box2").addEventListener("click", () => {
-  console.log("Box 2 Clicked from child");
-},true);
+document.querySelector(".box2").addEventListener(
+  "click",
+  () => {
+    console.log("Box 2 Clicked from child");
+  },
+  true
+);
 ```
-
