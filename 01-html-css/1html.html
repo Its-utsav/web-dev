@@ -32,6 +32,9 @@
       <li>
         <a href="#img">img</a>
       </li>
+      <li>
+        <a href="#form">form</a>
+      </li>
     </ul>
     <fieldset id="headings">
       <legend>Headings</legend>
@@ -79,6 +82,82 @@
       <br />
       <a href="https://www.google.com" target="_blank">google.com</a>
     </fieldset>
+    <fieldset>
+      <legend>Form</legend>
+      <form action="" autocomplete="on" dir="auto">
+        <label for="">
+          Text:-
+          <input
+            type="text"
+            placeholder="Enter text"
+            title="text"
+            name="text"
+          />
+        </label>
+        <br />
+        <br />
+        <label>
+          Password
+          <input type="password" />
+        </label>
+        <br /><br />
+        <label>
+          Password
+          <input type="number" />
+        </label>
+        <br />
+        <br />
+        <label>
+          email
+          <input type="email" required />
+        </label>
+        <br />
+        <br />
+        Gender :
+        <label>
+          Male <input type="radio" name="gender" value="Male" checked />
+        </label>
+        <label>
+          Female <input type="radio" name="gender" value="Female" />
+        </label>
+        <br />
+        <br />
+
+        Language:
+        <label>
+          HTML <input type="checkbox" name="language" value="html"
+        /></label>
+        <label>
+          css <input type="checkbox" name="language" value="css"
+        /></label>
+        <label> js <input type="checkbox" name="language" value="js" /></label>
+        <label>
+          python <input type="checkbox" name="language" value="python"
+        /></label>
+        <label>
+          golang <input type="checkbox" name="language" value="golang"
+        /></label>
+        <label>
+          c++
+          <input type="checkbox" name="language" value="c++"
+        /></label>
+        <br />
+        <br />
+        <input type="file" />
+        <br />
+        <br />
+        <input type="date" />
+        <br />
+        <br />
+        <input type="submit" value="login" />
+        <br />
+        <br />
+
+        <br />
+        <br />
+      </form>
+    </fieldset>
+
     <script src="script.js"></script>
   </body>
 </html>

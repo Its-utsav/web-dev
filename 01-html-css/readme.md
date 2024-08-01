@@ -1,0 +1,188 @@
+# HTML and CSS
+## toc
+
+[html](#html)
+
+## HTML
+- html stand for hyper text markup language 
+- this html is ok
+```js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>This is title</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #goUp {
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="goUp">
+      <button type="button" onclick="stopReload()">
+        Click me stop auto refresh
+      </button>
+    </div>
+    Table Of Content
+    <ul>
+      <li>
+        <a href="#headings">headings</a>
+      </li>
+      <li>
+        <a href="#textFormat">textFormat</a>
+      </li>
+      <li>
+        <a href="#img">img</a>
+      </li>
+      <li>
+        <a href="#form">form</a>
+      </li>
+    </ul>
+    <fieldset id="headings">
+      <legend>Headings</legend>
+      <h1>Title 1</h1>
+      <h2>Title 2</h2>
+      <h3>Title 3</h3>
+      <h4>Title 4</h4>
+      <h5>Title 5</h5>
+      <h6>Title 6</h6>
+      <h7>This is worst title</h7>
+    </fieldset>
+
+    <fieldset id="textFormat">
+      <legend>text Formatting tags</legend>
+
+      <p>
+        This is paragraph, formula of Water is H<sub>2</sub>O, 2<sup>2</sup> = 4
+      </p>
+      <p>
+        <b> text only for view angle</b> ,
+        <strong>this text have important </strong>
+        <i>Italic text</i>
+        <em>emphasized text</em>
+        <del>JavaScript is very easy</del>
+        <ins>This text inserted</ins>
+        <u>This text have underline</u>
+        <big>Big text Don't use it</big>
+        <small>This is small text it can be used </small>
+        <mark>HTML , CSS , JS</mark>
+        <kbd>ctrl + c</kbd>
+      </p>
+    </fieldset>
+    <hr />
+    <br />
+
+    <hr />
+    <fieldset id="img">
+      <legend>Image and link</legend>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+        alt="htmlLogo"
+        loading="lazy"
+        width="200px"
+      />
+      <br />
+      <a href="https://www.google.com" target="_blank">google.com</a>
+    </fieldset>
+    <fieldset>
+      <legend>Form</legend>
+      <form action="" autocomplete="on" dir="auto">
+        <label for="">
+          Text:-
+          <input
+            type="text"
+            placeholder="Enter text"
+            title="text"
+            name="text"
+          />
+        </label>
+        <br />
+        <br />
+        <label>
+          Password
+          <input type="password" />
+        </label>
+        <br /><br />
+        <label>
+          Password
+          <input type="number" />
+        </label>
+        <br />
+        <br />
+        <label>
+          email
+          <input type="email" required />
+        </label>
+        <br />
+        <br />
+        Gender :
+        <label>
+          Male <input type="radio" name="gender" value="Male" checked />
+        </label>
+        <label>
+          Female <input type="radio" name="gender" value="Female" />
+        </label>
+        <br />
+        <br />
+
+        Language:
+        <label>
+          HTML <input type="checkbox" name="language" value="html"
+        /></label>
+        <label>
+          css <input type="checkbox" name="language" value="css"
+        /></label>
+        <label> js <input type="checkbox" name="language" value="js" /></label>
+        <label>
+          python <input type="checkbox" name="language" value="python"
+        /></label>
+        <label>
+          golang <input type="checkbox" name="language" value="golang"
+        /></label>
+        <label>
+          c++
+          <input type="checkbox" name="language" value="c++"
+        /></label>
+        <br />
+        <br />
+        <input type="file" />
+        <br />
+        <br />
+        <input type="date" />
+        <br />
+        <br />
+        <input type="submit" value="login" />
+        <br />
+        <br />
+
+        <br />
+        <br />
+      </form>
+    </fieldset>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+```
+
+## css
+- when we write css code we have some boilerplate code 
+```css
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html, body{
+    height:100%;
+    width:100%;
+}
+```
