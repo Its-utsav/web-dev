@@ -2,6 +2,7 @@
 ## toc
 
 [html](#html)
+[css](#css)
 
 ## HTML
 - html stand for hyper text markup language 
