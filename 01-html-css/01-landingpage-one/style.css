@@ -1,13 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Junge&family=Roboto+Slab:wght@100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Junge";
 }
-@font-face {
-  font-family: Anurati;
-  src: url(Anurati-Regular.otf);
+.junge-regular {
+  font-family: "Junge", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
-
 html,
 body {
   height: 100%;
@@ -21,40 +23,32 @@ body {
   background-size: cover;
 }
 
-#mainDiv h1 {
+.center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: "Anurati", sans-serif;
-  text-transform: uppercase;
+  text-align: center;
   color: #fff;
-  font-size: 4rem;
-  font-weight: 100;
+}
+.center h1 {
+  font-size: 90px;
+  text-transform: uppercase;
   letter-spacing: 10px;
 }
-#line {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 2px;
-  width: 15%;
-  background-color: #fff;
+#tagLine {
+  font-size: 18px;
+  margin: 15px 15px;
 }
 
 button {
-  height: 60px;
-  width: 150px;
-  position: absolute;
-  top: 67%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 160px;
   background-color: transparent;
   border: 1px solid #fff;
+  border-radius: 4%;
   color: #fff;
-  border-radius: 3%;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
 }
 button:hover {
   background-color: #fff;
