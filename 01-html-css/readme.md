@@ -187,3 +187,9 @@ html, body{
     width:100%;
 }
 ```
+- Positions in css
+1. `static` - default value no `top` , `bottom`, `left` , `right` , `z-index`
+2. `relative` - can set above values 
+3. `absolute`
+4. `sticky`
+5. `fixed`

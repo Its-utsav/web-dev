@@ -39,6 +39,7 @@ body {
 #tagLine {
   font-size: 18px;
   margin: 15px 15px;
+  letter-spacing: 5px;
 }
 
 button {
